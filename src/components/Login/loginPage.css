@@ -1,0 +1,54 @@
+/* loginPage.css */
+.Main-box {
+    display: flex;
+    width: 100%;
+    margin: 200px auto;
+    gap: 50px;
+    max-width: 800px; 
+  }
+  
+  .logo {
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  .logo-box {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .form-box {
+    height: 100%;
+    width: 100%;
+  }
+  
+  .text-input {
+    margin: 15px;
+    color: aqua;
+  }
+  
+  .send-otp{
+    margin-top: 20px;
+  }
+
+@media screen and (max-width: 600px) {
+  .Main-box {
+    flex-direction: column;
+    margin-top: 100px;
+  }
+  .logo {
+    width: 200px;
+    height: 200px;
+  }
+  .form-box{
+    flex-direction: column;
+    text-align: center;
+  }
+  .otp-button{
+    width: "100px";
+  }
+}

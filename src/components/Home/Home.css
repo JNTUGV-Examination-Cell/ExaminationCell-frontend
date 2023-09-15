@@ -1,0 +1,45 @@
+.logo{
+    width: 216px;
+    height: 193px;
+}
+.Main-head{
+    text-align: center;
+}
+.user-head{
+    text-align: center;
+    margin-top: 20px;
+}
+.role-box {
+    width: 180px;
+    height: 160px;
+    flex-shrink: 0;
+    border-radius: 10px; 
+    background: #f0f0f0;
+    margin-right: 20px;
+    margin-top: 25px;
+    padding: 20px; 
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  }
+ 
+  .role-function{
+    font-size: 16px; 
+    color: #555; 
+  }
+  
+  
+.role-main-box{
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+    .role-main-box{
+        flex-direction: column;
+    }
+    
+}
