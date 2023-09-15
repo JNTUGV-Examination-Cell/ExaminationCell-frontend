@@ -36,7 +36,7 @@ const Home = () => {
                 marginBottom: "10px",
               }}
               component={RouterLink}
-              to="/random"
+              to="/layout"
               variant="h6"
             >
               Admin
