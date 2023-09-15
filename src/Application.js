@@ -8,6 +8,7 @@ const Application = () => {
   return (
     <div>
       <Routes>
+        <Route path="/application" element={<Application />} />
         <Route path="/home" element={<Home />} />
         <Route path="/random" element={<Random />} />
         <Route path="/" element={<LoginPage />} />
