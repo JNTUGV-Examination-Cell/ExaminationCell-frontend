@@ -1,0 +1,62 @@
+[
+  {
+    "batch": 1,
+    "reg": "R20 mca"
+  },
+  {
+    "batch": 2,
+    "reg": "R21 mca"
+  },
+  {
+    "batch": 3,
+    "reg": "R22 mca"
+  },
+  {
+    "batch": 4,
+    "reg": "R23 mca"
+  },
+  {
+    "batch": 5,
+    "reg": "R24 mca"
+  },
+  {
+    "batch": 6,
+    "reg": "R25 mca"
+  },
+  {
+    "batch": 7,
+    "reg": "R26 mca"
+  },
+  {
+    "batch": 8,
+    "reg": "R27 mca"
+  },
+  {
+    "batch": 9,
+    "reg": "R28 mca"
+  },
+  {
+    "batch": 10,
+    "reg": "R29 mca"
+  },
+  {
+    "batch": 11,
+    "reg": "R30 mca"
+  },
+  {
+    "batch": 12,
+    "reg": "R31 mca"
+  },
+  {
+    "batch": 13,
+    "reg": "R32 mca"
+  },
+  {
+    "batch": 14,
+    "reg": "R33 mca"
+  },
+  {
+    "batch": 15,
+    "reg": "R34 mca"
+  }
+]
