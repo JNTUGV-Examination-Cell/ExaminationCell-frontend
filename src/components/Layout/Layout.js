@@ -9,12 +9,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { Route, Routes } from "react-router-dom";
-import HomePage from "./LayoutSubPages/HomeSection/HomePage";
-import CollegePage from "./LayoutSubPages/CollegeSection/CollegePage";
-import { Link, Link as RouterLink } from "react-router-dom";
-import ProfilePage from "./LayoutSubPages/ProfileSection/ProfilePage";
-import { blue } from "@mui/material/colors";
+import { Outlet, Link } from "react-router-dom";
 
 const Layout = () => {
   const role = "Administrator";
@@ -35,19 +30,19 @@ const Layout = () => {
             <Link to="/layout">
               <HomeIcon className="Nav-icons" />
             </Link>
-            <Link to="/">
+            <Link to="/layout/batches">
               <GroupsIcon className="Nav-icons" />
             </Link>
-            <Link to="/layout/college">
+            <Link to="/layout/colleges">
               <CorporateFareIcon className="Nav-icons" />
             </Link>
-            <Link to="/">
+            <Link to="/layout/staff">
               <PersonIcon className="Nav-icons" />
             </Link>
-            <Link to="/">
+            <Link to="/layout/notifications">
               <NotificationsActiveIcon className="Nav-icons" />
             </Link>
-            <Link to="/">
+            <Link to="/layout/profilepage">
               <AccountCircleIcon className="Nav-icons" />
             </Link>
             <Link to="/">
@@ -55,11 +50,7 @@ const Layout = () => {
             </Link>
           </Box>
           <Box className="Content">
-            <Routes>
-              <Route path="/profile" element={<ProfilePage />} />
-              <Route path="/layout/college" element={<CollegePage />} />
-              <Route path="/layout" element={<HomePage />} />
-            </Routes>
+            <Outlet />
           </Box>
         </Box>
       </Box>
