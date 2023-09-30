@@ -36,7 +36,7 @@ const Home = () => {
                 marginBottom: "10px",
               }}
               component={RouterLink}
-              to="/layout"
+              to="/layout?role=Admin"
               variant="h6"
             >
               Admin
@@ -52,7 +52,7 @@ const Home = () => {
                 marginBottom: "10px",
               }}
               component={RouterLink}
-              to="/random"
+              to="/layout?role=CBTexpert"
               variant="h6"
             >
               CBT Expert
@@ -68,7 +68,7 @@ const Home = () => {
                 marginBottom: "10px",
               }}
               component={RouterLink}
-              to="/random"
+              to="/layout?role=Examinationadmin"
               variant="h6"
             >
               Examination Admin

@@ -1,4 +1,5 @@
 import { Box, Typography } from "@mui/material";
+import { useLocation } from "react-router-dom";
 import jntugv from "../../assests/jntugv.png";
 import React from "react";
 import "./Layout.css";
@@ -12,7 +13,35 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { Outlet, Link } from "react-router-dom";
 
 const Layout = () => {
-  const role = "Administrator";
+  const location = useLocation();
+  const role = new URLSearchParams(location.search).get("role");
+
+  const roleLinks = {
+    Admin: [
+      { to: "/layout/homepage", icon: <HomeIcon className="Nav-icons" /> },
+      { to: "/layout/batches", icon: <GroupsIcon className="Nav-icons" /> },
+      {
+        to: "/layout/colleges",
+        icon: <CorporateFareIcon className="Nav-icons" />,
+      },
+      { to: "/layout/staff", icon: <PersonIcon className="Nav-icons" /> },
+      {
+        to: "/layout/notifications",
+        icon: <NotificationsActiveIcon className="Nav-icons" />,
+      },
+    ],
+    CBTexpert: [
+      { to: "/layout/homepage", icon: <HomeIcon className="Nav-icons" /> },
+      { to: "/layout/batches", icon: <GroupsIcon className="Nav-icons" /> },
+      { to: "/layout/examinations", icon: <HomeIcon className="Nav-icons" /> },
+      // { to: "/layout/mid-exams", icon: <GroupsIcon className="Nav-icons" /> },
+      // { to: "/layout/staff", icon: <PersonIcon className="Nav-icons" /> },
+    ],
+    // Add more roles and their respective links here
+  };
+
+  const links = roleLinks[role] || [];
+
   return (
     <Box>
       <Box>
@@ -27,21 +56,11 @@ const Layout = () => {
         </Box>
         <Box className="Nav-Content">
           <Box className="Side-nav">
-            <Link to="/layout/homepage">
-              <HomeIcon className="Nav-icons" />
-            </Link>
-            <Link to="/layout/batches">
-              <GroupsIcon className="Nav-icons" />
-            </Link>
-            <Link to="/layout/colleges">
-              <CorporateFareIcon className="Nav-icons" />
-            </Link>
-            <Link to="/layout/staff">
-              <PersonIcon className="Nav-icons" />
-            </Link>
-            <Link to="/layout/notifications">
-              <NotificationsActiveIcon className="Nav-icons" />
-            </Link>
+            {links.map((link, index) => (
+              <Link to={link.to} key={index}>
+                {link.icon}
+              </Link>
+            ))}
             <Link to="/layout/profilepage">
               <AccountCircleIcon className="Nav-icons" />
             </Link>
