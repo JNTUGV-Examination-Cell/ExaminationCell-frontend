@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Application from "./Application";
 import NoAccess from "./components/Login/NoAcess";
-import axios from "axios";
+// import axios from "axios";
 const App = () => {
-  const [isAllowed, setIsAllowed] = useState(true);
-  const [userIp, setUserIp] = useState("");
+  const isAllowed = useState(true);
+  // const [userIp, setUserIp] = useState("");
   // const valid_ips = [
   //   "117.221.58.207",
   //   "223.187.31.81",

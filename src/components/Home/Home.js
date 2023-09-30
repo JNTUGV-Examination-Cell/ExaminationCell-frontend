@@ -36,7 +36,7 @@ const Home = () => {
                 marginBottom: "10px",
               }}
               component={RouterLink}
-              to="/random"
+              to="/layout"
               variant="h6"
             >
               Admin
@@ -80,7 +80,7 @@ const Home = () => {
         <Button
           sx={{ alignContent: "center", width: "80px", marginTop: "20px" }}
           LinkComponent={Link}
-          to="/random"
+          to="/application"
           variant="contained"
         >
           LOGOUT
