@@ -3,8 +3,7 @@ import Application from "./Application";
 import NoAccess from "./components/Login/NoAcess";
 // import axios from "axios";
 const App = () => {
-  const [isAllowed, setIsAllowed] = useState(false);
-  setIsAllowed(true);
+  const isAllowed = useState(true);
   // const [userIp, setUserIp] = useState("");
   // const valid_ips = [
   //   "117.221.58.207",
