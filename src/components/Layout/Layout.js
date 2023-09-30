@@ -19,7 +19,7 @@ const Layout = () => {
         <Box className="Top-nav">
           <img className="logo1" src={jntugv} alt="jntugv-logo" />
           <Box className="Nav-right-header">
-            <Typography variant="h6">
+            <Typography>
               JAWAHARLAL NEHRU TECHNOLOGY UNIVERSITY - GURAJADA VIZIANAGRAM
             </Typography>
             <Typography variant="h6">{role}</Typography>
@@ -27,7 +27,7 @@ const Layout = () => {
         </Box>
         <Box className="Nav-Content">
           <Box className="Side-nav">
-            <Link to="/layout">
+            <Link to="/layout/homepage">
               <HomeIcon className="Nav-icons" />
             </Link>
             <Link to="/layout/batches">
@@ -49,7 +49,12 @@ const Layout = () => {
               <LogoutIcon className="Nav-icons" />
             </Link>
           </Box>
-          <Box className="Content">
+          <Box
+            sx={{
+              margin: "20px",
+            }}
+            className="Content"
+          >
             <Outlet />
           </Box>
         </Box>
