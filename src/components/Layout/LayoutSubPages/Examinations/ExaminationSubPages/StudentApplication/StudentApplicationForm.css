@@ -1,0 +1,132 @@
+.head{
+    color: black;
+}
+.ApplicationDetails {
+    float: left;
+    width: 50%;
+    padding: 20px;
+    background-color: aliceblue;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    flex-wrap: wrap;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+}
+.ApplicationDetails p,h2,span,h1{
+    margin: 0;
+    padding: 0;
+}
+.branchtable{
+    float: left;
+    width: 50%;
+    padding: 20px;
+    background-color: aliceblue;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    flex-wrap: wrap;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+}
+.Uni_Amount{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 13px;
+    background-color: aliceblue;
+    flex-wrap: wrap;
+    width: 150px;
+    height: 150px;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+}
+.Uni_Amount {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 13px;
+    background-color: aliceblue;
+    flex-wrap: wrap;
+    width: 150px;
+    height: 120px;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+  }
+  
+  .Uni_Amount p,
+  .Uni_Amount h1 {
+    margin: 0;
+    padding: 0;
+  }
+.registered_students {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 13px;
+    background-color: aliceblue;
+    flex-wrap: wrap;
+    width: 150px;
+    height: 120px;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+  }
+  
+  .registered_students p,
+  .registered_students h1 {
+    margin: 0;
+    padding: 0;
+  }
+  .not_registered_students {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 13px;
+    background-color: aliceblue;
+    flex-wrap: wrap;
+    width: 150px;
+    height: 120px;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+  }
+  
+  .not_registered_students p,
+  .not_registered_students h1 {
+    margin: 0;
+    padding: 0;
+  }
+  .Students_Applied{
+    width: 41%;
+    padding: 20px;
+    background-color: aliceblue;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    flex-wrap: wrap;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+  }
+  .table2{
+    margin: 35px;
+    margin-left: auto;
+  }
+  .filter{
+    margin: auto;
+    text-align: left;
+  }

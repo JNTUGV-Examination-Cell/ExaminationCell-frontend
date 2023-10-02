@@ -12,11 +12,16 @@ import ProfilePage from "./components/Layout/LayoutSubPages/ProfileSection/Profi
 import HomePage from "./components/Layout/LayoutSubPages/HomeSection/HomePage";
 import PortalNotification from "./components/Layout/LayoutSubPages/PortalNotification/PortalNotification";
 import Staff from "./components/Layout/LayoutSubPages/Staff/Staff";
+import StudentApplicationForm from "./components/Layout/LayoutSubPages/Examinations/ExaminationSubPages/StudentApplication/StudentApplicationForm";
 
 const Application = () => {
   return (
     <div>
       <Routes>
+        <Route
+        path="/admin/Examinations/StudentApplication/StudentApplicatonForm"
+        element={<StudentApplicationForm />}
+        />
         <Route
           path="/admin/batches/managebatches/uploadstudents"
           element={<UploadStudentDetails />}
