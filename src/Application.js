@@ -12,7 +12,7 @@ import ProfilePage from "./components/Layout/LayoutSubPages/ProfileSection/Profi
 import HomePage from "./components/Layout/LayoutSubPages/HomeSection/HomePage";
 import PortalNotification from "./components/Layout/LayoutSubPages/PortalNotification/PortalNotification";
 import Staff from "./components/Layout/LayoutSubPages/Staff/Staff";
-
+import Examdata from "./components/Layout/Exams/Examdata";
 const Application = () => {
   return (
     <div>
@@ -28,6 +28,7 @@ const Application = () => {
         <Route path="/admin/batches" element={<Batchesmain />} />
         <Route path="/layout" element={<Layout />}>
           <Route path="colleges" element={<CollegePage />} />
+          <Route path="examdata" element={<Examdata />} />
           <Route path="profilepage" element={<ProfilePage />} />
           <Route path="homepage" element={<HomePage />} />
           <Route path="batches" element={<Batchesmain />} />
