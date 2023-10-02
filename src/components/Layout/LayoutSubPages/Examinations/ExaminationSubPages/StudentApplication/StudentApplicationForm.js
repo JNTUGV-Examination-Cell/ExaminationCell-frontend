@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import './StudentApplicationForm.css'
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
@@ -41,6 +41,13 @@ const StudentApplicationForm = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [filteredData, setFilteredData] = useState(Studentslist);
     const [filterStatus, setFilterStatus] = useState("All");
+    const [totalAmount, setTotalAmount] = useState(0);
+    
+  useEffect(() => {
+    const amountPerStudent = 560;
+    const totalAmount = amountPerStudent * filteredData.length;
+    setTotalAmount(totalAmount);
+  }, [filteredData]);
 
     const handleSearchChange = (event) => {
       const newSearchTerm = event.target.value;
@@ -98,6 +105,7 @@ const StudentApplicationForm = () => {
       const notRegisteredStudentsCount = Studentslist.filter(
         (student) => student.registration === "Not Registered"
       ).length;
+      
       
 
   return (
@@ -162,11 +170,11 @@ const StudentApplicationForm = () => {
       </div>
       <div className="IconsHead">
         <Stack spacing={2} direction="row">
-          <div className="Uni_Amount">
-            <CurrencyRupeeIcon fontSize="large" />
-            <p>Total University Amount</p>
-            <h1>3,86,960</h1>
-          </div>
+        <div className="Uni_Amount">
+        <CurrencyRupeeIcon fontSize="large" />
+        <p>Total University Amount</p>
+        <h1>{totalAmount}</h1>
+      </div>
           <div className="registered_students">
             <GroupsIcon fontSize="large" />
             <p>Registered Students</p>

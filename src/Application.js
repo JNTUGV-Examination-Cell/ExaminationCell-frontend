@@ -19,10 +19,6 @@ const Application = () => {
     <div>
       <Routes>
         <Route
-        path="/admin/Examinations/StudentApplication/StudentApplicatonForm"
-        element={<StudentApplicationForm />}
-        />
-        <Route
           path="/admin/batches/managebatches/uploadstudents"
           element={<UploadStudentDetails />}
         />
@@ -32,6 +28,7 @@ const Application = () => {
         />
         <Route path="/admin/batches" element={<Batchesmain />} />
         <Route path="/layout" element={<Layout />}>
+          <Route path="studentexamapplication" element={<StudentApplicationForm />} />
           <Route path="colleges" element={<CollegePage />} />
           <Route path="profilepage" element={<ProfilePage />} />
           <Route path="homepage" element={<HomePage />} />
