@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Application from "./Application";
 import NoAccess from "./components/Login/NoAcess";
-import HallTickets from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/HallTickets/HallTickets"
+
 // import axios from "axios";
 const App = () => {
   const isAllowed = useState(true);
@@ -23,7 +23,7 @@ const App = () => {
   //   fetchip();
   // });
   if (isAllowed) {
-    return <HallTickets />;
+    return <Application />;
   } else {
     return <NoAccess />;
   }
