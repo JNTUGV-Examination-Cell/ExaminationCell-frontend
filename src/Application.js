@@ -12,7 +12,8 @@ import ProfilePage from "./components/Layout/LayoutSubPages/ProfileSection/Profi
 import HomePage from "./components/Layout/LayoutSubPages/HomeSection/HomePage";
 import PortalNotification from "./components/Layout/LayoutSubPages/PortalNotification/PortalNotification";
 import Staff from "./components/Layout/LayoutSubPages/Staff/Staff";
-import StudentApplicationForm from "./components/Layout/LayoutSubPages/Examinations/ExaminationSubPages/StudentApplication/StudentApplicationForm";
+import StudentApplicationForm from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/StudentApplication/StudentApplicationForm";
+import Examdata from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Exams/Examdata";
 
 const Application = () => {
   return (
@@ -30,6 +31,7 @@ const Application = () => {
         <Route path="/layout" element={<Layout />}>
           <Route path="studentexamapplication" element={<StudentApplicationForm />} />
           <Route path="colleges" element={<CollegePage />} />
+          <Route path="examdata" element={<Examdata />} />
           <Route path="profilepage" element={<ProfilePage />} />
           <Route path="homepage" element={<HomePage />} />
           <Route path="batches" element={<Batchesmain />} />

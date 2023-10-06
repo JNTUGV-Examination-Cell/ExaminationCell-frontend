@@ -14,7 +14,7 @@
     border-radius: 10px;
     flex-wrap: wrap;
     padding: 20px;
-    margin: 20px;
+    margin: 5px;
     text-align: center;
 }
 .ApplicationDetails p,h2,span,h1{
@@ -34,7 +34,7 @@
     border-radius: 10px;
     flex-wrap: wrap;
     padding: 20px;
-    margin: 20px;
+    margin: 5px;
     text-align: center;
 }
 .Uni_Amount{
@@ -47,7 +47,7 @@
     width: 150px;
     height: 150px;
     padding: 20px;
-    margin: 10px;
+    margin: 12px;
     text-align: center;
 }
 .Uni_Amount {
@@ -60,7 +60,7 @@
     width: 150px;
     height: 120px;
     padding: 20px;
-    margin: 10px;
+    margin: 12px;
     text-align: center;
   }
   
@@ -108,7 +108,8 @@
     padding: 0;
   }
   .Students_Applied{
-    width: 41%;
+    float: auto;
+    width: 40%;
     padding: 20px;
     background-color: aliceblue;
     text-align: center;
@@ -118,7 +119,7 @@
     align-items: center;
     border-radius: 10px;
     flex-wrap: wrap;
-    padding: 20px;
+    padding: 10px;
     margin: 20px;
     text-align: center;
   }
