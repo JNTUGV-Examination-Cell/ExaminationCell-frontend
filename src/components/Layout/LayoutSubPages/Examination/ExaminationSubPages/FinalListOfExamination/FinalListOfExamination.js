@@ -1,6 +1,6 @@
 import React from 'react';
-import './HallTickets.css'; 
-
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button } from '@mui/material';
+import './FinalListOfExamination.css'; 
 
 const jsonData = [
   { SIno: 1 , Hallticket: '22NM1A0201', Name:'AGARPU YASASWINI',Branch:'Electrical and Electronics Engineering',Mobile:'8121504788',Id:'8621010564'},
@@ -11,43 +11,45 @@ const jsonData = [
   { SIno: 6 , Hallticket: '22NM1A0207', Name:'BANTUBILLI ANUSHA',Branch:'Electrical and Electronics Engineering',Mobile:'9346817970',Id:'5136547972'},
   { SIno: 7 , Hallticket: '22NM1A0208', Name:'BHUMIREDDY SAI DIVYA',Branch:'Electrical and Electronics Engineering',Mobile:'9949124498',Id:'2888664721'},
   { SIno: 8 , Hallticket: '22NM1A0209', Name:'BODDAPATI NANDINI',Branch:'Electrical and Electronics Engineering',Mobile:'9381486459',Id:'2181844270'},
-]
-function App() {
-    const handleDownload = () => {
-          // Add the logic for downloading hall tickets here
-          // For example, you could create a link to a file or generate a file for download
-        };
+];
+
+function FinalListOfExamination() {
+  const handleDownload = () => {
+    // Add the logic for downloading hall tickets here
+  };
+
   return (
     <div>
       <h1>FINAL LIST OF EXAMINATION - R111223 - B.Tech I YEAR I SEM R20 EG FEBRUARY 2023</h1>
-      <button className="Button" onClick={handleDownload}>Download Hall Tickets</button>
-      <table>
-        <thead>
-          <tr>
-            <th>SIno</th>
-            <th>Hallticket</th>
-            <th>Name</th>
-            <th>Branch</th>
-            <th>Mobile</th>
-            <th>Id</th>
-          </tr>
-        </thead>
-        <tbody>
-          {jsonData.map((user) => (
-            <tr key={user.id}>
-            <td>{user.SIno}</td>
-              <td>{user.Hallticket}</td>
-              <td>{user.Name}</td>
-              <td>{user.Branch}</td>
-              <td>{user.Mobile}</td>
-              <td>{user.Id}</td>
-               </tr>
-          )
-          )
-          }
-        </tbody>
-      </table>
+      <Button variant="contained" color="primary" onClick={handleDownload}>Download Hall Tickets</Button>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>SIno</TableCell>
+              <TableCell>Hallticket</TableCell>
+              <TableCell>Name</TableCell>
+              <TableCell>Branch</TableCell>
+              <TableCell>Mobile</TableCell>
+              <TableCell>Id</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {jsonData.map((user, index) => (
+              <TableRow key={index}>
+                <TableCell>{user.SIno}</TableCell>
+                <TableCell>{user.Hallticket}</TableCell>
+                <TableCell>{user.Name}</TableCell>
+                <TableCell>{user.Branch}</TableCell>
+                <TableCell>{user.Mobile}</TableCell>
+                <TableCell>{user.Id}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </div>
   );
 }
-export default App;
+
+export default FinalListOfExamination;
