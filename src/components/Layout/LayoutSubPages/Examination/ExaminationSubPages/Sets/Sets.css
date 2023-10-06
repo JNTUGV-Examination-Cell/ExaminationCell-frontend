@@ -1,0 +1,59 @@
+.head{
+    color:black;
+}
+.setline1{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+
+}
+.set1{
+    background-color:  rgba(0,123,255,.12549019607843137);
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    width: 780px; /* Set a fixed width for your buttons */
+    height: 150px; /* Set a fixed height for your buttons */
+    align-items: center;
+}
+.set2{
+    background-color:  rgba(0,123,255,.12549019607843137);
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    width: 780px; /* Set a fixed width for your buttons */
+    height: 150px; /* Set a fixed height for your buttons */
+    align-items: center;
+}
+.setline2{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+
+}
+.set3{
+    background-color:  rgba(0,123,255,.12549019607843137);
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    width: 780px; /* Set a fixed width for your buttons */
+    height: 150px; /* Set a fixed height for your buttons */
+    align-items: center;
+}
+.set4{
+    background-color:  rgba(0,123,255,.12549019607843137);
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    width: 780px; /* Set a fixed width for your buttons */
+    height: 150px; /* Set a fixed height for your buttons */
+    align-items: center;
+}
+
+
+
+
