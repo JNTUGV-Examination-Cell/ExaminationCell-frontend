@@ -13,7 +13,7 @@ import HomePage from "./components/Layout/LayoutSubPages/HomeSection/HomePage";
 import PortalNotification from "./components/Layout/LayoutSubPages/PortalNotification/PortalNotification";
 import Staff from "./components/Layout/LayoutSubPages/Staff/Staff";
 import Examdata from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Exams/Examdata";
-import Hallticket from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Hallticket/Hallticket";
+import InternalMarks from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/InternalMarks/InternalMarks";
 const Application = () => {
   return (
     <div>
@@ -27,8 +27,8 @@ const Application = () => {
           element={<ManageBatches />}
         />
         <Route path="/admin/batches" element={<Batchesmain />} />
-        <Route path="/layout" element={<Layout />}>
-        <Route path="Hallticket" element={<Hallticket />} />
+        <Route path="/layout" element={<Layout />} > 
+        <Route path="InternalMarks" element={<InternalMarks />} />
           <Route path="colleges" element={<CollegePage />} />
           <Route path="examdata" element={<Examdata />} />
           <Route path="profilepage" element={<ProfilePage />} />
