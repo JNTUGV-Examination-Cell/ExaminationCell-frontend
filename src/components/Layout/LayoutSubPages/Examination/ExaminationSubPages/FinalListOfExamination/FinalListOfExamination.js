@@ -42,15 +42,15 @@ function FinalListOfExamination() {
   };
 
   return (
-    <div>
+    <div style={{ margin: '50px' }}>
       <Typography variant="h5">
         FINAL LIST OF EXAMINATION - R111223 - B.Tech I YEAR I SEM R20 REG FEBRUARY 2023
       </Typography>
-      <Button variant="contained" color="primary" onClick={handleDownload} className='HTBtn'>Download Hall Tickets</Button>
+      <Button variant="contained" color="primary" onClick={handleDownload} className='HTBtn' style={{ margin: '50px 0' }}>Download Hall Tickets</Button>
     
     
       <TableContainer component={Paper}>
-        <Table>
+        <Table style={{ marginTop: '100px' }}>
           <TableHead>
             <TableRow>
               <TableCell>SIno</TableCell>
