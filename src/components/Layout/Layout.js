@@ -1,15 +1,20 @@
 import { Box, Typography } from "@mui/material";
-import { useLocation } from "react-router-dom";
 import jntugv from "../../assests/jntugv.png";
 import React from "react";
 import "./Layout.css";
-import { Outlet } from "react-router-dom";
-import Sidebar from "./LayoutSubPages/PortalNotification/Sidebar";
+import HomeIcon from "@mui/icons-material/Home";
+import GroupsIcon from "@mui/icons-material/Groups";
+import CorporateFareIcon from "@mui/icons-material/CorporateFare";
+import PersonIcon from "@mui/icons-material/Person";
+import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import LogoutIcon from "@mui/icons-material/Logout";
+import { Outlet, Link, useLocation } from "react-router-dom";
 
-const Layout = () => {
+const Layout = (props) => {
   const location = useLocation();
-  const role = new URLSearchParams(location.search).get("role");
-
+  const role = location.state.role;
+  console.log({ role });
   return (
     <Box>
       <Box>
@@ -23,7 +28,29 @@ const Layout = () => {
           </Box>
         </Box>
         <Box className="Nav-Content">
-          <Sidebar role={role} />
+          <Box className="Side-nav">
+            <Link to="/layout/homepage">
+              <HomeIcon className="Nav-icons" />
+            </Link>
+            <Link to="/layout/batches">
+              <GroupsIcon className="Nav-icons" />
+            </Link>
+            <Link to="/layout/colleges">
+              <CorporateFareIcon className="Nav-icons" />
+            </Link>
+            <Link to="/layout/staff">
+              <PersonIcon className="Nav-icons" />
+            </Link>
+            <Link to="/layout/notifications">
+              <NotificationsActiveIcon className="Nav-icons" />
+            </Link>
+            <Link to="/layout/profilepage">
+              <AccountCircleIcon className="Nav-icons" />
+            </Link>
+            <Link to="/">
+              <LogoutIcon className="Nav-icons" />
+            </Link>
+          </Box>
           <Box
             sx={{
               margin: "20px",

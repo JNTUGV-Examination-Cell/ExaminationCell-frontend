@@ -7,7 +7,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 const Sidebar = (role) => {
   console.log({ role });
   const roleLinks = RollData[role.role] || [];
-
+  console.log(roleLinks);
   return (
     <div className="Side-nav">
       {roleLinks.map((link, index) => (
