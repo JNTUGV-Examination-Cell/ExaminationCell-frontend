@@ -43,16 +43,16 @@ function MarkAbsents() {
               </div>
               <hr />
               <div>
-                <h4>CE - ENGINEERING PHYSICS</h4>
+                <Typography variant='h5'>CE - ENGINEERING PHYSICS</Typography>
                 <hr />
-                <h4>ME - ENGINEERING PHYSICS</h4>
+                <Typography variant='h5'>ME - ENGINEERING PHYSICS</Typography>
               </div>
             </form>
           </div>
         </div>
       </div>
       <div>
-        <h2>Absentees:</h2>
+        <Typography variant='h5'>Absentees:</Typography>
         
         <ul>
           {absentees.map((rollNumber, index) => (
