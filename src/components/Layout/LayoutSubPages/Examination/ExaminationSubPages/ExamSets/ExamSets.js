@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './ExamSets.css';
 import ExamSetsData from './ExamSetsData.json';
+import { Typography } from '@mui/material';
+import Button from '@mui/material/Button';
 
 const ExamSets = () => {
   const [examSets, setExamSets] = useState([]);
@@ -13,17 +15,22 @@ const ExamSets = () => {
   return (
     <>
       <div className='examsets'>
-        <div className='examsetstitle'>{title}</div>
+      <Typography variant="h5" className='examsetstitle'>
+          {title}
+        </Typography>
         <div className='setsblocks'>
           {examSets.map((examSet, index) => (
             <div className='sets' key={index}>
-              <div className='timings'>{examSet.date}</div>
+              <Typography variant='h6' className='timings'>{examSet.date}</Typography>
               <hr style={{ width: '60%' }} />
               {examSet.subjects.map((subject, subjectIndex) => (
                 <div key={subjectIndex}>
-                  <div className='subjects'>{subject.name}</div>
-                  <div className={`managelink-manage-link-${subjectIndex}`}>
-                    <Link to={subject.manageLink}>Manage</Link>
+                  <div className='SubLink'>
+                  <Typography variant='h6' className='subjects'>{subject.name}</Typography>
+                  <div className={`managelink-manage-link-${subjectIndex}`} align="right">
+                    <Button component={Link} to={subject.manageLink} variant="contained" className='managebtn'> Manage
+                    </Button>
+                    </div>
                   </div>
                 </div>
               ))}
