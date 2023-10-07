@@ -1,34 +1,6 @@
-
-
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+.HTBtn {
+  margin-bottom: 120px; 
 }
 
-.title {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
 
-.button {
-  margin-bottom: 20px;
-}
 
-.tableContainer {
-  margin-bottom: 20px;
-}
-
-.tableHeadCell {
-  font-weight: bold;
-}
-
-.tableRow {
-  &:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-}
-
-.tableCell {
-  padding: 8px;
-}

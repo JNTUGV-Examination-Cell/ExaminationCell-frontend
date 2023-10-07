@@ -1,6 +1,7 @@
 import React from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button } from '@mui/material';
-import './FinalListOfExamination.css'; 
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button,Typography } from '@mui/material';
+import './FinalListOfExamination.css';
+import ExcelJS from 'exceljs';
 
 const jsonData = [
   { SIno: 1 , Hallticket: '22NM1A0201', Name:'AGARPU YASASWINI',Branch:'Electrical and Electronics Engineering',Mobile:'8121504788',Id:'8621010564'},
@@ -14,14 +15,40 @@ const jsonData = [
 ];
 
 function FinalListOfExamination() {
-  const handleDownload = () => {
-    // Add the logic for downloading hall tickets here
+  const handleDownload = async () => {
+    const workbook = new ExcelJS.Workbook();
+    const worksheet = workbook.addWorksheet('Examination Data');
+
+    
+    const headers = ['SIno', 'Hallticket', 'Name', 'Branch', 'Mobile', 'Id'];
+    worksheet.addRow(headers);
+
+    
+    jsonData.forEach((user) => {
+      const row = [];
+      headers.forEach((header) => {
+        row.push(user[header]);
+      });
+      worksheet.addRow(row);
+    });
+
+    
+    const buffer = await workbook.xlsx.writeBuffer();
+    const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    const link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    link.download = 'exam_data.xlsx';
+    link.click();
   };
 
   return (
     <div>
-      <h1>FINAL LIST OF EXAMINATION - R111223 - B.Tech I YEAR I SEM R20 EG FEBRUARY 2023</h1>
-      <Button variant="contained" color="primary" onClick={handleDownload}>Download Hall Tickets</Button>
+      <Typography variant="h3">
+        FINAL LIST OF EXAMINATION - R111223 - B.Tech I YEAR I SEM R20 REG FEBRUARY 2023
+      </Typography>
+      <Button variant="contained" color="primary" onClick={handleDownload} className='HTBtn'>Download Hall Tickets</Button>
+    
+    
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
