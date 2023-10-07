@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button,Typography } from '@mui/material';
 import './FinalListOfExamination.css';
-import ExcelJS from 'excel.js';
+import ExcelJS from 'exceljs';
 
 const jsonData = [
   { SIno: 1 , Hallticket: '22NM1A0201', Name:'AGARPU YASASWINI',Branch:'Electrical and Electronics Engineering',Mobile:'8121504788',Id:'8621010564'},

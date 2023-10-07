@@ -4,13 +4,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px; 
+  padding-bottom: 30px; 
+  padding-top: 20px;
 }
 
 .search-container {
   display: flex;
   align-items: center;
-  width: 90%;
+  width: 1155px;
 }
 
 .search-bar {
@@ -19,5 +20,22 @@
 }
 
 .branch-filter {
-width: 100px;
+width: 80px;
+}
+
+.sub-heading{
+  align-content: center;
+}
+
+.main-heading{
+  align-content: center;
+}
+
+.table-row{
+align-items: center;
+}
+
+
+.table-header-cell {
+  text-align: center;
 }

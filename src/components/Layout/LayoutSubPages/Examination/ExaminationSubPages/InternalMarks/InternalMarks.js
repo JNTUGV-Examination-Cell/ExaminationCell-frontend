@@ -12,6 +12,9 @@ import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
 import TableBody from '@mui/material/TableBody';
 import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button';
+
+
 
 const jsonData = [
   { SIno: 1, Hallticket: '22NM1A05B5', Name: 'PALADUGU ANITHA', Branch: 'CSE', SubjectCode: 'R201102', Subject: 'COMMUNICATIVE ENGLISH', FinalInternalMarks: 23 },
@@ -29,7 +32,7 @@ function InternalMarks() {
   const [selectedBranch, setSelectedBranch] = useState('All');
   const [selectedSubject, setSelectedSubject] = useState('');
   const [filteredData, setFilteredData] = useState([]);
-  const [internalmarks]=useState('');
+  const [internalmarks]=useState('R111223-B.Tech Ist Year I Sem R20 Reg February 2023');
   const dataKey = 'internalMarksData';
 
   useEffect(() => {
@@ -99,18 +102,22 @@ function InternalMarks() {
   return (
     <div className="page-container">
       <div className="header">
-        <Typography variant="h4" className="main-heading">
+        <Typography variant="h5" className="main-heading">
         Internal Marks - {internalmarks}
         </Typography>
       </div>
 
-      <div className="buttons" style={{paddingTop:'10px',}}>
-        <button className="download-button" onClick={downloadCSV} style={{backgroundColor:'#c0c0c0'}}>
-        <Typography variant="b" className="main-heading">
+      <div className="buttons" style={{ paddingTop: '10px' ,paddingBottom:'10px'}}>
+        <Button // Wrap the button in the Material-UI Button component
+          className="download-button"
+          onClick={downloadCSV}
+          style={{ backgroundColor: '#c0c0c0', color:'black' }}
+          variant="contained"
+        >
           Download Final Internal Marks
-        </Typography>
-        </button>
+        </Button>
       </div>
+
       <center>
         <Typography variant="h5" className="sub-heading">
           List of Students with Final Internal Marks
@@ -130,8 +137,8 @@ function InternalMarks() {
         />
       </div>
       <div className="branch-filter">
-  <FormControl variant="outlined" className="branch-select" style={{ width: '200px' }}>
-    <InputLabel htmlFor="branch-select">Filter</InputLabel>
+  <FormControl variant="outlined" className="branch-select" style={{ width: '245px' }}>
+    <InputLabel htmlFor="branch-select" style={{alignItems:'center'}}>Filter</InputLabel>
     <Select
       label="Branch"
       value={selectedBranch}
@@ -140,28 +147,29 @@ function InternalMarks() {
       <MenuItem value="All">Select Branch</MenuItem>
       <MenuItem value="CSE">CSE</MenuItem>
       <MenuItem value="ECE">ECE</MenuItem>
-      <MenuItem value="CSE">IT</MenuItem>
-      <MenuItem value="ECE">CIVIL</MenuItem>
-      <MenuItem value="CSE">MET</MenuItem>
-      <MenuItem value="ECE">MECH</MenuItem>
-      <MenuItem value="CSE">CHEMICAL</MenuItem>
-      <MenuItem value="ECE">EEE</MenuItem>
+      <MenuItem value="IT">IT</MenuItem>
+      <MenuItem value="CIVIL">CIVIL</MenuItem>
+      <MenuItem value="MET">MET</MenuItem>
+      <MenuItem value="MECH">MECH</MenuItem>
+      <MenuItem value="CHEMICAL">CHEMICAL</MenuItem>
+      <MenuItem value="EEE">EEE</MenuItem>
     </Select>
   </FormControl>
 </div>
       </div>
       </div>
-      <Paper elevation={3} className="table-container" style={{ width: '120%' }}>
-        <Table className="data-table">
+      <div className="table-container" style={{ width: '114%' }}>
+      <Paper elevation={3}>
+        <Table className="data-table" style={{ minWidth: '800px', maxWidth: '1200px'}}>
           <TableHead>
             <TableRow>
-              <TableCell>Sl.no</TableCell>
-              <TableCell>Hallticket</TableCell>
-              <TableCell>Name</TableCell>
-              <TableCell>Branch</TableCell>
-              <TableCell>Subject Code</TableCell>
-              <TableCell>Subject</TableCell>
-              <TableCell>Final Internal Marks</TableCell>
+              <TableCell align="center">Sl.no</TableCell>
+              <TableCell align="center">Hallticket</TableCell>
+              <TableCell align="center">Name</TableCell>
+              <TableCell align="center">Branch</TableCell>
+              <TableCell align="center">Subject Code</TableCell>
+              <TableCell align="center">Subject</TableCell>
+              <TableCell align="center">Final Internal Marks</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -171,13 +179,13 @@ function InternalMarks() {
                   key={user.Slno}
                   className={`table-row ${index % 2 === 0 ? 'even-row' : ''} hover-row`}
                 >
-                  <TableCell>{user.SIno}</TableCell>
-                  <TableCell>{user.Hallticket}</TableCell>
-                  <TableCell>{user.Name}</TableCell>
-                  <TableCell>{user.Branch}</TableCell>
-                  <TableCell>{user.SubjectCode}</TableCell>
-                  <TableCell>{user.Subject}</TableCell>
-                  <TableCell>{user.FinalInternalMarks}</TableCell>
+                  <TableCell align="center">{user.SIno}</TableCell>
+                  <TableCell align="center">{user.Hallticket}</TableCell>
+                  <TableCell align="center">{user.Name}</TableCell>
+                  <TableCell align="center">{user.Branch}</TableCell>
+                  <TableCell align="center">{user.SubjectCode}</TableCell>
+                  <TableCell align="center">{user.Subject}</TableCell>
+                  <TableCell align="center">{user.FinalInternalMarks}</TableCell>
                 </TableRow>
               ))
             ) : (
@@ -188,6 +196,7 @@ function InternalMarks() {
           </TableBody>
         </Table>
       </Paper>
+    </div>
     </div>
   );
 }
