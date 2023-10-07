@@ -43,7 +43,7 @@ function FinalListOfExamination() {
 
   return (
     <div>
-      <Typography variant="h3">
+      <Typography variant="h5">
         FINAL LIST OF EXAMINATION - R111223 - B.Tech I YEAR I SEM R20 REG FEBRUARY 2023
       </Typography>
       <Button variant="contained" color="primary" onClick={handleDownload} className='HTBtn'>Download Hall Tickets</Button>
