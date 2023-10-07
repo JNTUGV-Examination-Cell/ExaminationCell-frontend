@@ -1,112 +1,23 @@
-/* Style the entire table */
-.data-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-  }
-  
-  /* Style table headers (th) */
-  .data-table th {
-    background-color: #f2f2f2;
-    text-align: left;
-    padding: 10px;
-    border: 1px solid #ddd;
-  }
-  
-  /* Style table rows (tr) */
-  .data-table tr {
-    border: 1px solid #ddd;
-  }
-  
-  /* Style table cells (td) */
-  .data-table td {
-    padding: 10px;
-    border: 1px solid #ddd;
-  }
-  
-  /* Alternating row colors for better readability */
-  .data-table tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  /* Hover effect on table rows */
-  .data-table tr:hover {
-    background-color: #e0e0e0;
-  }
-  
-  .setline1 {
-    display: flex;
-    justify-content: space-around;
-    padding: 10px;
-  }
-  
-  .setline1 {
-    text-align: left;
-    padding-left: 10px;
-  }
-  
-  /* Add styles for other elements as needed */
-  .main-heading {
-    font-size: 24px; /* Example font size */
-    color: #333;   /* Example text color */
-  }
-  
-  .sub-heading {
-    font-size: 18px; /* Example font size */
-    color: #666;    /* Example text color */
-  }
-  
-  .buttons {
-    display: flex;
-    justify-content: left;
-    margin-top: 20px; /* Example margin */
-  }
-  
-  .download-button {
-    background-color: lightskyblue;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  .set1 {
-    display: flex;
-    align-items: left;
-    margin-bottom: 10px; /* Example margin */
-  }
-  
-  .search-button {
-    background-color: #dbe3eb; /* Example background color */
-    color: rgb(14, 1, 1);
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    height: 30px; /* Apply the height style here */
-    width: 1300px; /* Apply the width style here */
-    text-align: left; /* Apply the text-align style here */
-  }
-  
-  
-  .search-results {
-    margin-left: 10px; /* Example margin */
-  }
-  
-  .set2 {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px; /* Example margin */
-  }
-  
-  .dropdown-select {
-    background-color: #dbe3eb; /* Example background color */
-    color: rgb(14, 1, 1);
-    padding: 5px;
-    border: 1px solid #ccc; /* Example border style */
-    border-radius: 5px; /* Example border radius */
-    height: 30px; /* Apply the height style here */
-    width: 110px; /* Apply the width style here */
-  }
-  
-  
+
+.wrap {
+  width: 117%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px; 
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  width: 90%;
+}
+
+.search-bar {
+  flex-grow: 1; 
+  margin-right: 20px; 
+}
+
+.branch-filter {
+width: 100px;
+}
