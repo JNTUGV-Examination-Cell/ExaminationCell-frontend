@@ -14,11 +14,9 @@ import PortalNotification from "./components/Layout/LayoutSubPages/PortalNotific
 import Staff from "./components/Layout/LayoutSubPages/Staff/Staff";
 import StudentApplicationForm from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/StudentApplication/StudentApplicationForm";
 import Examdata from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Exams/Examdata";
-<<<<<<< HEAD
 
-=======
 import FinalListOfExamination from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/FinalListOfExamination/FinalListOfExamination";
->>>>>>> ea49bf98f28b5ce282324b4241640a706f051a02
+
 const Application = () => {
   return (
     <div>
@@ -33,11 +31,8 @@ const Application = () => {
         />
         <Route path="/admin/batches" element={<Batchesmain />} />
         <Route path="/layout" element={<Layout />}>
-<<<<<<< HEAD
           <Route path="studentexamapplication" element={<StudentApplicationForm />} />
-=======
-        <Route path="FinalListOfExamination" element={<FinalListOfExamination />} />
->>>>>>> ea49bf98f28b5ce282324b4241640a706f051a02
+          <Route path="FinalListOfExamination" element={<FinalListOfExamination />} />
           <Route path="colleges" element={<CollegePage />} />
           <Route path="examdata" element={<Examdata />} />
           <Route path="profilepage" element={<ProfilePage />} />
