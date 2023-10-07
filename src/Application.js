@@ -14,7 +14,6 @@ import PortalNotification from "./components/Layout/LayoutSubPages/PortalNotific
 import Staff from "./components/Layout/LayoutSubPages/Staff/Staff";
 import StudentApplicationForm from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/StudentApplication/StudentApplicationForm";
 import Examdata from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Exams/Examdata";
-
 import FinalListOfExamination from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/FinalListOfExamination/FinalListOfExamination";
 
 const Application = () => {
