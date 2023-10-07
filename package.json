@@ -6,16 +6,10 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-<<<<<<< HEAD
-    "@mui/icons-material": "^5.14.12",
-    "@mui/material": "^5.14.12",
-    "@mui/styled-engine-sc": "^5.14.7",
-=======
     "@fontsource/roboto": "^5.0.8",
     "@mui/icons-material": "^5.14.11",
     "@mui/material": "^5.14.11",
     "@mui/styled-engine-sc": "^5.14.11",
->>>>>>> 60b6c498d16d99c1bd715b6a33c8c943bdc6f862
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -52,5 +46,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  } 
+  }
 }

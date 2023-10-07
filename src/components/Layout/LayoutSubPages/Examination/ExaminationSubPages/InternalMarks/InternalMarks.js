@@ -14,14 +14,14 @@ import TableBody from '@mui/material/TableBody';
 import Paper from '@mui/material/Paper';
 
 const jsonData = [
-  { Slno: 1, Hallticket: '22NM1A05B5', Name: 'PALADUGU ANITHA', Branch: 'CSE', SubjectCode: 'R201102', Subject: 'COMMUNICATIVE ENGLISH', FinalInternalMarks: 23 },
-  { Slno: 2, Hallticket: '22NM1A04G9', Name: 'YENUMULA VIRAJA SHANMUKHI', Branch: 'ECE', SubjectCode: 'R201101', Subject: 'MATHEMATICS-I[CALCULUS]', FinalInternalMarks: 28 },
-  { Slno: 3, Hallticket: '22NM1A04G9', Name: 'YENUMULA VIRAJA SHANMUKHI', Branch: 'ECE', SubjectCode: 'R201102', Subject: 'COMMUNICATIVE ENGLISH', FinalInternalMarks: 27 },
-  { Slno: 4, Hallticket: '22NM1A04G8', Name: 'YELLAMELLI ANKITA', Branch: 'ECE', SubjectCode: 'R201102', Subject: 'COMMUNICATIVE ENGLISH', FinalInternalMarks: 24 },
-  { Slno: 5, Hallticket: '22NM1A04G6', Name: 'YARIPALLI AMANI', Branch: 'ECE', SubjectCode: 'R201115', Subject: 'APPLIED CHEMISTRY', FinalInternalMarks: 25 },
-  { Slno: 6, Hallticket: '22NM1A04G6', Name: 'YARIPALLI AMANI', Branch: 'ECE', SubjectCode: 'R201101', Subject: 'MATHEMATICS-I[CALCULUS]', FinalInternalMarks: 26 },
-  { Slno: 7, Hallticket: '22NM1A04G6', Name: 'YARIPALLI AMANI', Branch: 'ECE', SubjectCode: 'R201102', Subject: 'COMMUNICATIVE ENGLISH', FinalInternalMarks: 24 },
-  { Slno: 8, Hallticket: '22NM1A04F6', Name: 'VAITLA SUREKHA', Branch: 'ECE', SubjectCode: 'R201101', Subject: 'MATHEMATICS-I[CALCULUS]', FinalInternalMarks: 26 },
+  { SIno: 1, Hallticket: '22NM1A05B5', Name: 'PALADUGU ANITHA', Branch: 'CSE', SubjectCode: 'R201102', Subject: 'COMMUNICATIVE ENGLISH', FinalInternalMarks: 23 },
+  { SIno: 2, Hallticket: '22NM1A04G9', Name: 'YENUMULA VIRAJA SHANMUKHI', Branch: 'ECE', SubjectCode: 'R201101', Subject: 'MATHEMATICS-I[CALCULUS]', FinalInternalMarks: 28 },
+  { SIno: 3, Hallticket: '22NM1A04G9', Name: 'YENUMULA VIRAJA SHANMUKHI', Branch: 'ECE', SubjectCode: 'R201102', Subject: 'COMMUNICATIVE ENGLISH', FinalInternalMarks: 27 },
+  { SIno: 4, Hallticket: '22NM1A04G8', Name: 'YELLAMELLI ANKITA', Branch: 'ECE', SubjectCode: 'R201102', Subject: 'COMMUNICATIVE ENGLISH', FinalInternalMarks: 24 },
+  { SIno: 5, Hallticket: '22NM1A04G6', Name: 'YARIPALLI AMANI', Branch: 'ECE', SubjectCode: 'R201115', Subject: 'APPLIED CHEMISTRY', FinalInternalMarks: 25 },
+  { SIno: 6, Hallticket: '22NM1A04G6', Name: 'YARIPALLI AMANI', Branch: 'ECE', SubjectCode: 'R201101', Subject: 'MATHEMATICS-I[CALCULUS]', FinalInternalMarks: 26 },
+  { SIno: 7, Hallticket: '22NM1A04G6', Name: 'YARIPALLI AMANI', Branch: 'ECE', SubjectCode: 'R201102', Subject: 'COMMUNICATIVE ENGLISH', FinalInternalMarks: 24 },
+  { SIno: 8, Hallticket: '22NM1A04F6', Name: 'VAITLA SUREKHA', Branch: 'ECE', SubjectCode: 'R201101', Subject: 'MATHEMATICS-I[CALCULUS]', FinalInternalMarks: 26 },
 ];
 
 function InternalMarks() {
@@ -171,7 +171,7 @@ function InternalMarks() {
                   key={user.Slno}
                   className={`table-row ${index % 2 === 0 ? 'even-row' : ''} hover-row`}
                 >
-                  <TableCell>{user.Slno}</TableCell>
+                  <TableCell>{user.SIno}</TableCell>
                   <TableCell>{user.Hallticket}</TableCell>
                   <TableCell>{user.Name}</TableCell>
                   <TableCell>{user.Branch}</TableCell>
