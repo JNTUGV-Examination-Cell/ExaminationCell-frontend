@@ -12,8 +12,14 @@ import ProfilePage from "./components/Layout/LayoutSubPages/ProfileSection/Profi
 import HomePage from "./components/Layout/LayoutSubPages/HomeSection/HomePage";
 import PortalNotification from "./components/Layout/LayoutSubPages/PortalNotification/PortalNotification";
 import Staff from "./components/Layout/LayoutSubPages/Staff/Staff";
+import StudentApplicationForm from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/StudentApplication/StudentApplicationForm";
 import Examdata from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Exams/Examdata";
+<<<<<<< HEAD
 import InternalMarks from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/InternalMarks/InternalMarks";
+=======
+import FinalListOfExamination from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/FinalListOfExamination/FinalListOfExamination";
+
+>>>>>>> 60b6c498d16d99c1bd715b6a33c8c943bdc6f862
 const Application = () => {
   return (
     <div>
@@ -27,8 +33,14 @@ const Application = () => {
           element={<ManageBatches />}
         />
         <Route path="/admin/batches" element={<Batchesmain />} />
+<<<<<<< HEAD
         <Route path="/layout" element={<Layout />} > 
         <Route path="InternalMarks" element={<InternalMarks />} />
+=======
+        <Route path="/layout" element={<Layout />}>
+          <Route path="studentexamapplication" element={<StudentApplicationForm />} />
+          <Route path="FinalListOfExamination" element={<FinalListOfExamination />} />
+>>>>>>> 60b6c498d16d99c1bd715b6a33c8c943bdc6f862
           <Route path="colleges" element={<CollegePage />} />
           <Route path="examdata" element={<Examdata />} />
           <Route path="profilepage" element={<ProfilePage />} />
