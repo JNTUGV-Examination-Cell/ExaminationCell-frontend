@@ -63,5 +63,4 @@ function MarkAbsents() {
     </div>
   );
 }
-
 export default MarkAbsents;
