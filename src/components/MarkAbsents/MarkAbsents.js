@@ -53,6 +53,7 @@ function MarkAbsents() {
       </div>
       <div>
         <h2>Absentees:</h2>
+        
         <ul>
           {absentees.map((rollNumber, index) => (
             <li key={index}>{rollNumber}</li>

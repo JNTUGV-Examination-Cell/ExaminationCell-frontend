@@ -53,6 +53,7 @@ function MarkMalpractice() {
       </div>
 
       <div>
+        
         <h2>Malpractice:</h2>
         <ul>
           {Malpractice.map((rollNumber, index) => (
