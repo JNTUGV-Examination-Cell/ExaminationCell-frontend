@@ -30,10 +30,8 @@ const Application = () => {
           element={<ManageBatches />}
         />
         <Route path="/admin/batches" element={<Batchesmain />} />
-        <Route path="/layout" element={<Layout />} /> 
-        <Route path="InternalMarks" element={<InternalMarks />} />
-=======
         <Route path="/layout" element={<Layout />}>
+          <Route path="InternalMarks" element={<InternalMarks />} />
           <Route path="studentexamapplication" element={<StudentApplicationForm />} />
           <Route path="FinalListOfExamination" element={<FinalListOfExamination />} />
           <Route path="colleges" element={<CollegePage />} />
