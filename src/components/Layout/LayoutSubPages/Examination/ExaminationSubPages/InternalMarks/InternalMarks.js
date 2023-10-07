@@ -13,7 +13,6 @@ import TableCell from '@mui/material/TableCell';
 import TableBody from '@mui/material/TableBody';
 import Paper from '@mui/material/Paper';
 
-
 const jsonData = [
   { Slno: 1, Hallticket: '22NM1A05B5', Name: 'PALADUGU ANITHA', Branch: 'CSE', SubjectCode: 'R201102', Subject: 'COMMUNICATIVE ENGLISH', FinalInternalMarks: 23 },
   { Slno: 2, Hallticket: '22NM1A04G9', Name: 'YENUMULA VIRAJA SHANMUKHI', Branch: 'ECE', SubjectCode: 'R201101', Subject: 'MATHEMATICS-I[CALCULUS]', FinalInternalMarks: 28 },
@@ -30,6 +29,7 @@ function InternalMarks() {
   const [selectedBranch, setSelectedBranch] = useState('All');
   const [selectedSubject, setSelectedSubject] = useState('');
   const [filteredData, setFilteredData] = useState([]);
+  const [internalmarks]=useState('');
   const dataKey = 'internalMarksData';
 
   useEffect(() => {
@@ -54,8 +54,6 @@ function InternalMarks() {
       user.Subject.toLowerCase().includes(searchQuery.toLowerCase())) &&
       (selectedBranch === 'All' || user.Branch === selectedBranch) 
     );
-    
-    
 
     setFilteredData(filteredData);
   }, [searchQuery, selectedBranch, selectedSubject]);
@@ -68,7 +66,6 @@ function InternalMarks() {
     );
     return header + csvData.join('\n');
   };
-
   
   const downloadCSV = () => {
     const csvContent = generateCSV();
@@ -103,15 +100,15 @@ function InternalMarks() {
     <div className="page-container">
       <div className="header">
         <Typography variant="h4" className="main-heading">
-          Internal Marks - R111223 - B.Tech I Year I Sem R20 Reg February 2023
+        Internal Marks - {internalmarks}
         </Typography>
       </div>
 
       <div className="buttons" style={{paddingTop:'10px',}}>
         <button className="download-button" onClick={downloadCSV} style={{backgroundColor:'#c0c0c0'}}>
-          <b>
+        <Typography variant="b" className="main-heading">
           Download Final Internal Marks
-          </b>
+        </Typography>
         </button>
       </div>
       <center>
@@ -140,21 +137,25 @@ function InternalMarks() {
       value={selectedBranch}
       onChange={(e) => setSelectedBranch(e.target.value)}
     >
-      
       <MenuItem value="All">Select Branch</MenuItem>
       <MenuItem value="CSE">CSE</MenuItem>
       <MenuItem value="ECE">ECE</MenuItem>
+      <MenuItem value="CSE">IT</MenuItem>
+      <MenuItem value="ECE">CIVIL</MenuItem>
+      <MenuItem value="CSE">MET</MenuItem>
+      <MenuItem value="ECE">MECH</MenuItem>
+      <MenuItem value="CSE">CHEMICAL</MenuItem>
+      <MenuItem value="ECE">EEE</MenuItem>
     </Select>
   </FormControl>
 </div>
-
       </div>
       </div>
       <Paper elevation={3} className="table-container" style={{ width: '120%' }}>
         <Table className="data-table">
           <TableHead>
             <TableRow>
-              <TableCell>Sl no</TableCell>
+              <TableCell>Sl.no</TableCell>
               <TableCell>Hallticket</TableCell>
               <TableCell>Name</TableCell>
               <TableCell>Branch</TableCell>
