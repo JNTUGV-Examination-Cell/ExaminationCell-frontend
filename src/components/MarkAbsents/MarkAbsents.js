@@ -1,61 +1,81 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './MarkAbsents.css';
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 function MarkAbsents() {
   const [inputRollNumber, setInputRollNumber] = useState('');
-  const [absentees, setAbsentees] = useState([]);
+  const [Absents, setAbsents] = useState([]);
+  const [examData, setexamData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('your_api_endpoint_here');
+        const data = await response.json();
+
+        setexamData(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (inputRollNumber.trim() !== '') {
-      setAbsentees([...absentees, inputRollNumber]);
+      setAbsents([...Absents, inputRollNumber]);
 
       setInputRollNumber('');
-      window.alert('Roll number marked as absent.');
+      window.alert('Roll number marked as Absents.');
     }
   };
 
   return (
     <div>
       <div>
-        <h1>Mark Absent - R111223 - B.Tech I Year I Sem R20 Reg February 2023 - R201103 - ENGINEERING PHYSICS - 03 March 2023 10:00 AM</h1>
+        <Typography variant="h4">
+          Mark Absents - {examData.join(' - ')}
+        </Typography>
       </div>
       <br />
       <div className='set' align='center'>
         <div className='set5'>
           <div>
-            <h4>Absentees for the Slot</h4>
+            <Typography variant='h5'>Absents for the Slot</Typography>
             <hr />
             <form onSubmit={handleSubmit}>
               <div>
-                <label>Roll Numbers for marking Absent </label><br />
+                <label>Roll Numbers for marking Absents </label><br />
                 <input
                   type='text'
                   value={inputRollNumber}
                   onChange={(e) => setInputRollNumber(e.target.value)}
                 /><br />
-                {/* Material-UI Button */}
                 <Button type='submit' variant='contained' color='primary'>
-                  Proceed
+                  {examData.length > 0 ? 'Proceed with Dynamic Data' : 'Proceed'}
                 </Button>
               </div>
               <hr />
               <div>
-                <Typography variant='h5'>CE - ENGINEERING PHYSICS</Typography>
-                <hr />
-                <Typography variant='h5'>ME - ENGINEERING PHYSICS</Typography>
+                {examData.map((data, index) => (
+                  <Typography key={index} variant="h4">
+                    {data}
+                  </Typography>
+                ))}
               </div>
             </form>
           </div>
         </div>
       </div>
+
       <div>
-        <Typography variant='h5'>Absentees:</Typography>
-        
+        <Typography variant='h5'>Absents:</Typography>
         <ul>
-          {absentees.map((rollNumber, index) => (
+          {Absents.map((rollNumber, index) => (
             <li key={index}>{rollNumber}</li>
           ))}
         </ul>
@@ -63,4 +83,5 @@ function MarkAbsents() {
     </div>
   );
 }
+
 export default MarkAbsents;
