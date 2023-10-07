@@ -26,7 +26,6 @@
     width: 30%;
     padding: 20px; 
     margin: 20px;
-    text-align: center;
   }
   
   .timings {
@@ -38,19 +37,22 @@
   .subjects {
     font-family: Tienne;
     font-size: 20px; 
-    text-align: center; 
     padding: 10px;
     
   }
-  
-  .managebtn {
-    height: 20px;
-    width: 15px;
-    
-  }
   .SubLink{
-    display:flex;
-    justify-content:column;
+    display:flex ; 
+    justify-content: flex-end;
     justify-content: space-between;
     align-items: center;
+    
+  
   }
+.managebtn{
+    display:flex;
+    justify-content: flex-end;
+    margin-left: 50px;
+    height: 27px;
+    width: 70px;
+   
+}
