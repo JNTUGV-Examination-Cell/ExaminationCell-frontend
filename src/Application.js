@@ -23,6 +23,7 @@ import FinalListOfExamination from "./components/Layout/LayoutSubPages/Examinati
 const Application = () => {
   return (
     <div>
+
       <Routes>
         <Route
           path="/admin/batches/managebatches/uploadstudents"
@@ -39,8 +40,7 @@ const Application = () => {
           <Route path="studentexamapplication" element={<StudentApplicationForm />} />
           <Route path="FinalListOfExamination" element={<FinalListOfExamination />} />
 
-        <Route path="/Sets" element={<Sets />} />
-
+          <Route path="/Sets" element={<Sets />} />
           <Route path="colleges" element={<CollegePage />} />
           <Route path="examdata" element={<Examdata />} />
           <Route path="profilepage" element={<ProfilePage />} />
