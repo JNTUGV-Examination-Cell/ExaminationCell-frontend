@@ -1,3 +1,4 @@
+
 body, html {
     margin: 0;
     padding: 0;
@@ -21,6 +22,17 @@ body, html {
   
   .set1{
     color: rgba(0, 123, 255, 0.12549019607843137);
+.head{
+    color:black;
+}
+.setline1{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+
+}
+.set1{
+    background-color:  rgba(0,123,255,.12549019607843137);
     padding: 5px;
     text-align: center;
     text-decoration: none;
@@ -60,5 +72,4 @@ body, html {
     background-color: lightblue;
     color: blueviolet;
   }
-  
- 
+  }

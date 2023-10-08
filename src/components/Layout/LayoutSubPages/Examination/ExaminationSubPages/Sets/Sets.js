@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import './Sets.css';
 import { Typography, Button, Paper,Grid } from '@mui/material';
@@ -32,9 +33,9 @@ function Sets() {
         <Grid item>
           <Button
             variant="contained"
-            // style={{
-            //   height: 30,
-            // }}
+            style={{
+               height: 30,
+             }}
             onClick={() => handleSettingsClick('Mark Absent')}
           >
             Mark Absent
@@ -86,3 +87,6 @@ function Sets() {
 
 
 export default Sets;
+
+
+

@@ -19,6 +19,7 @@ import StudentApplicationForm from "./components/Layout/LayoutSubPages/Examinati
 import Examdata from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Exams/Examdata";
 import InternalMarks from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/InternalMarks/InternalMarks";
 import FinalListOfExamination from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/FinalListOfExamination/FinalListOfExamination";
+
 const Application = () => {
   return (
     <div>
@@ -33,9 +34,13 @@ const Application = () => {
         />
         <Route path="/admin/batches" element={<Batchesmain />} />
         <Route path="/layout" element={<Layout />}>
+
           <Route path="InternalMarks" element={<InternalMarks />} />
           <Route path="studentexamapplication" element={<StudentApplicationForm />} />
           <Route path="FinalListOfExamination" element={<FinalListOfExamination />} />
+
+        <Route path="/Sets" element={<Sets />} />
+
           <Route path="colleges" element={<CollegePage />} />
           <Route path="examdata" element={<Examdata />} />
           <Route path="profilepage" element={<ProfilePage />} />
@@ -43,7 +48,7 @@ const Application = () => {
           <Route path="batches" element={<Batchesmain />} />
           <Route path="notifications" element={<PortalNotification />} />
           <Route path="staff" element={<Staff />} />
-          <Route path="sets" element={<Sets/>}/>
+          
 
         </Route>
          <Route path="/markabsent" element={<MarkAbsents />} />
