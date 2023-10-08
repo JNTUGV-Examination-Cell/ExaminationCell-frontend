@@ -36,7 +36,6 @@ function MarkAbsents() {
                   value={inputRollNumber}
                   onChange={(e) => setInputRollNumber(e.target.value)}
                 /><br />
-                {/* Material-UI Button */}
                 <Button type='submit' variant='contained' color='primary'>
                   Proceed
                 </Button>

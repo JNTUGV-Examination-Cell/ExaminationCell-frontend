@@ -14,8 +14,8 @@
     text-decoration: none;
     font-style: normal;
     border: none;
-    width: 680px; /* Set a fixed width for your buttons */
-    height: 50px; /* Set a fixed height for your buttons */
+    width: 680px; 
+    height: 50px;
     align-items: center;
 }
 .set2{
@@ -24,8 +24,8 @@
     text-align: center;
     text-decoration: none;
     border: none;
-    width: 680px; /* Set a fixed width for your buttons */
-    height: 50px; /* Set a fixed height for your buttons */
+    width: 680px;
+    height: 50px; 
     align-items: center;
 }
 .setline2{
@@ -41,8 +41,8 @@
     text-decoration: none;
     color: rgb(74, 114, 246);
     border: black;
-    width: 100px; /* Set a fixed width for your buttons */
-    height: 20px; /* Set a fixed height for your buttons */
+    width: 100px; 
+    height: 20px;
     align-items: left;
 }
 .set4{
@@ -51,8 +51,8 @@
     text-align: center;
     text-decoration: none;
     border: none;
-    width: 680px; /* Set a fixed width for your buttons */
-    height: 150px; /* Set a fixed height for your buttons */
+    width: 680px;
+    height: 150px;
     align-items: center;
 }
 .buttons{
@@ -60,8 +60,8 @@
     text-align: center;
     text-decoration: none;
     border: none;
-    width: 680px; /* Set a fixed width for your buttons */
-    height: 150px; /* Set a fixed height for your buttons */
+    width: 680px;
+    height: 150px; 
     align-items: center;
     
 
@@ -72,6 +72,6 @@
     text-align: center;
     text-decoration: none;
     border: none;
-    width: 680px; /* Set a fixed width for your buttons */
-    height: 300px; /* Set a fixed height for your buttons */
+    width: 680px; 
+    height: 300px; 
 }
