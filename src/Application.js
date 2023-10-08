@@ -14,7 +14,11 @@ import PortalNotification from "./components/Layout/LayoutSubPages/PortalNotific
 import Staff from "./components/Layout/LayoutSubPages/Staff/Staff";
 import StudentApplicationForm from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/StudentApplication/StudentApplicationForm";
 import Examdata from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Exams/Examdata";
+<<<<<<< HEAD
 import CondonationandDetention from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/CondonationandDetention/CondonationandDetention";
+=======
+import Sets from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Sets/Sets";
+>>>>>>> 9fa9a40a88b8881f81b16e2ca97b87bd46147f59
 import InternalMarks from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/InternalMarks/InternalMarks";
 import FinalListOfExamination from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/FinalListOfExamination/FinalListOfExamination";
 
@@ -33,8 +37,12 @@ const Application = () => {
         />
         <Route path="/admin/batches" element={<Batchesmain />} />
         <Route path="/layout" element={<Layout />}>
+<<<<<<< HEAD
 
         <Route path="CondonationandDetention" element={<CondonationandDetention />} />
+=======
+          <Route path="Sets" element={<Sets />} />
+>>>>>>> 9fa9a40a88b8881f81b16e2ca97b87bd46147f59
           <Route path="InternalMarks" element={<InternalMarks />} />
           <Route path="studentexamapplication" element={<StudentApplicationForm />} />
           <Route path="FinalListOfExamination" element={<FinalListOfExamination />} />
