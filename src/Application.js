@@ -17,6 +17,8 @@ import MarkAbsents from "./components/Layout/LayoutSubPages/Examination/Examinat
 import MarkMalpractice from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Sets/MarkMalpractice";
 import StudentApplicationForm from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/StudentApplication/StudentApplicationForm";
 import Examdata from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Exams/Examdata";
+import ExamSets from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/ExamSets/ExamSets";
+import ManageSubjects from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/ExamSets/ManageSubjects";
 import InternalMarks from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/InternalMarks/InternalMarks";
 import FinalListOfExamination from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/FinalListOfExamination/FinalListOfExamination";
 
@@ -34,6 +36,7 @@ const Application = () => {
         />
         <Route path="/admin/batches" element={<Batchesmain />} />
         <Route path="/layout" element={<Layout />}>
+          <Route path="Sets" element={<Sets />} />
           <Route path="InternalMarks" element={<InternalMarks />} />
           <Route
             path="studentexamapplication"
@@ -43,7 +46,6 @@ const Application = () => {
             path="FinalListOfExamination"
             element={<FinalListOfExamination />}
           />
-
           <Route path="/Sets" element={<Sets />} />
           <Route path="colleges" element={<CollegePage />} />
           <Route path="examdata" element={<Examdata />} />
@@ -54,6 +56,8 @@ const Application = () => {
           <Route path="staff" element={<Staff />} />
           <Route path="markabsent" element={<MarkAbsents />} />
           <Route path="markmalpractice" element={<MarkMalpractice />} />
+          <Route path="examsets" element={<ExamSets />} />
+          <Route path="managesubject" element={<ManageSubjects />} />
         </Route>
         <Route path="/home" element={<Home />} />
         <Route path="/random" element={<Random />} />

@@ -1,0 +1,58 @@
+.examsetstitle {
+    padding: 10px;
+    margin-top: 10px;
+    color: #4D4D4D;
+    font-family: Tienne;
+    font-size: 24px; 
+    font-weight: 400;
+  }
+  
+  .setsblocks {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 30px;
+    padding-left: 60px;
+    align-items: center;
+    width: 135%;
+  }
+  
+  .sets {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background: #e9e6e6;
+    width: 30%;
+    padding: 20px; 
+    margin: 20px;
+  }
+  
+  .timings {
+    font-family: Tienne;
+    font-weight: 400;
+    font-size: 21px;
+  }
+  
+  .subjects {
+    font-family: Tienne;
+    font-size: 20px; 
+    padding: 10px;
+    
+  }
+  .SubLink{
+    display:flex ; 
+    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
+    
+  
+  }
+.managebtn{
+    display:flex;
+    justify-content: flex-end;
+    margin-left: 50px;
+    height: 27px;
+    width: 90px;
+   
+}
