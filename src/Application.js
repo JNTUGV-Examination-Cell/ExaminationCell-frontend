@@ -49,7 +49,6 @@ const Application = () => {
           />
           <Route path="Sets" element={<Sets />} />
           <Route path="colleges" element={<CollegePage />} />
-          <Route path="examdata" element={<Examdata />} />
           <Route path="profilepage" element={<ProfilePage />} />
           <Route path="homepage" element={<HomePage />} />
           <Route path="batches" element={<Batchesmain />} />
