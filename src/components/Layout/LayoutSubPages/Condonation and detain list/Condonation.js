@@ -14,7 +14,7 @@ const jsonData = [
     { Slno: 1, Hallticket: '22NM1A0267', Amount:500},
     
   ]; 
-function App() {
+function Condonation() {
     return (
         <div className='set'>
           <div>  <h1>Condonation and Detention - R111223 - B.Tech I Year I Sem R20 Reg February 2023 </h1></div>
@@ -78,4 +78,4 @@ function handleSettingsClick() {
     // Add logic for handling settings button click here
 }
 
-export default App;
+export default Condonation;

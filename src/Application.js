@@ -16,6 +16,7 @@ import StudentApplicationForm from "./components/Layout/LayoutSubPages/Examinati
 import Examdata from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Exams/Examdata";
 import InternalMarks from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/InternalMarks/InternalMarks";
 import FinalListOfExamination from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/FinalListOfExamination/FinalListOfExamination";
+import Condonation from "./components/Layout/LayoutSubPages/Condonation and detain list/Condonation";
 
 const Application = () => {
   return (
@@ -41,6 +42,7 @@ const Application = () => {
           <Route path="batches" element={<Batchesmain />} />
           <Route path="notifications" element={<PortalNotification />} />
           <Route path="staff" element={<Staff />} />
+          <Route path="condonation-detain" element={<Condonation />} />
         </Route>
         <Route path="/home" element={<Home />} />
         <Route path="/random" element={<Random />} />
