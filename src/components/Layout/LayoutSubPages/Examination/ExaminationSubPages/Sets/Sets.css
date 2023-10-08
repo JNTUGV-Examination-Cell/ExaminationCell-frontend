@@ -1,0 +1,93 @@
+<<<<<<< HEAD
+
+body, html {
+    margin: 0;
+    padding: 0;
+  }
+
+  .Paper, .Grid {
+    margin: 0;
+    padding: 0;
+  }
+  
+.head {
+    color: black;
+  }
+  
+  .set {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-top: 60px;
+  }
+  
+  .set1{
+    color: rgba(0, 123, 255, 0.12549019607843137);
+.head{
+    color:black;
+}
+.setline1{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+
+}
+.set1{
+    background-color:  rgba(0,123,255,.12549019607843137);
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    width: 580px;
+    height: 150px;
+    align-items: center;
+    margin: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .set-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #b8e7ee;
+    padding: 10px;
+  }
+  
+  .set-line {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+  }
+  
+  .buttons {
+    padding-top: 40px;
+  }
+  
+  .button-contained {
+    background-color: blue;
+    color: white;
+    height: 30px;
+  }
+  
+  .button-contained.active {
+    background-color: lightblue;
+    color: blueviolet;
+  }
+  }
+=======
+.message-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+}
+
+
+
+.Button{
+    font-size: 20px; 
+  padding: 12px 24px;
+  background: rgb(199, 233, 243);
+  color:white;
+}
+>>>>>>> 68c73056541f01dfcebe351b7349cea521c66eb7
