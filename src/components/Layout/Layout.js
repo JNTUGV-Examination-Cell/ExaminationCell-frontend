@@ -1,20 +1,22 @@
 import { Box, Typography } from "@mui/material";
 import jntugv from "../../assests/jntugv.png";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Layout.css";
-import HomeIcon from "@mui/icons-material/Home";
-import GroupsIcon from "@mui/icons-material/Groups";
-import CorporateFareIcon from "@mui/icons-material/CorporateFare";
-import PersonIcon from "@mui/icons-material/Person";
-import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import LogoutIcon from "@mui/icons-material/Logout";
-import { Outlet, Link, useLocation } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
+import Sidebar from "./Sidebar";
 
 const Layout = (props) => {
   const location = useLocation();
+  const [admin, setAdmin] = useState(false);
+  const [cbtExpert, setCbtExpert] = useState(false);
+  const [examinationAdmin, setExaminationAdmin] = useState(false);
+  // const [role, setRole] = useState("")
+  useEffect(() =>{
+
+  })
   const role = location.state.role;
-  console.log({ role });
+  // setRole(location.state.role);
+  // console.log({ role });
   return (
     <Box>
       <Box>
@@ -28,29 +30,7 @@ const Layout = (props) => {
           </Box>
         </Box>
         <Box className="Nav-Content">
-          <Box className="Side-nav">
-            <Link to="/layout/homepage">
-              <HomeIcon className="Nav-icons" />
-            </Link>
-            <Link to="/layout/batches">
-              <GroupsIcon className="Nav-icons" />
-            </Link>
-            <Link to="/layout/colleges">
-              <CorporateFareIcon className="Nav-icons" />
-            </Link>
-            <Link to="/layout/staff">
-              <PersonIcon className="Nav-icons" />
-            </Link>
-            <Link to="/layout/notifications">
-              <NotificationsActiveIcon className="Nav-icons" />
-            </Link>
-            <Link to="/layout/profilepage">
-              <AccountCircleIcon className="Nav-icons" />
-            </Link>
-            <Link to="/">
-              <LogoutIcon className="Nav-icons" />
-            </Link>
-          </Box>
+          <Sidebar />
           <Box
             sx={{
               margin: "20px",
