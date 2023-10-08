@@ -8,16 +8,11 @@ function MarkAbsent() {
   const [Absents, setAbsents] = useState([]);
   const [examData, setexamData] = useState([]);
 
-  // Simulate fetching dynamic data when the component mounts
   useEffect(() => {
-    // Simulate fetching data from an API or other source
     const fetchData = async () => {
       try {
-        // Replace with actual data fetching logic
-        const response = await fetch('your_api_endpoint_here');
+        const response = await fetch("Path");
         const data = await response.json();
-
-        // Assuming the data is an array of strings
         setexamData(data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -70,6 +65,11 @@ function MarkAbsent() {
                     {data}
                   </Typography>
                 ))}
+              </div>
+              <div>
+                <Typography variant='h5'>CE - ENGINEERING PHYSICS</Typography><br></br>
+                <hr /><br></br>
+                <Typography variant='h5'>ME - ENGINEERING PHYSICS</Typography>
               </div>
             </form>
           </div>

@@ -11,7 +11,7 @@ function MarkMalpractice() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('path');
+        const response = await fetch("");
         const data = await response.json();
 
         setexamData(data);
@@ -67,11 +67,15 @@ function MarkMalpractice() {
                   </Typography>
                 ))}
               </div>
+              <div>
+                <Typography variant='h5'>CE - ENGINEERING PHYSICS</Typography><br></br>
+                <hr /><br></br>
+                <Typography variant='h5'>ME - ENGINEERING PHYSICS</Typography>
+              </div>
             </form>
           </div>
         </div>
       </div>
-
       <div>
         <Typography variant='h5'>Malpractice :</Typography>
         <ul>
@@ -83,5 +87,4 @@ function MarkMalpractice() {
     </div>
   );
 }
-
 export default MarkMalpractice;

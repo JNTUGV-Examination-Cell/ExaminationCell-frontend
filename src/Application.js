@@ -12,6 +12,8 @@ import ProfilePage from "./components/Layout/LayoutSubPages/ProfileSection/Profi
 import HomePage from "./components/Layout/LayoutSubPages/HomeSection/HomePage";
 import PortalNotification from "./components/Layout/LayoutSubPages/PortalNotification/PortalNotification";
 import Staff from "./components/Layout/LayoutSubPages/Staff/Staff";
+import MarkAbsent from "./components/MarkAbsents/MarkAbsents";
+import MarkMalpractice from "./components/MarkMalpractice/MarkMalpractice";
 
 const Application = () => {
   return (
@@ -35,6 +37,8 @@ const Application = () => {
           <Route path="staff" element={<Staff />} />
         </Route>
         <Route path="/home" element={<Home />} />
+        <Route path="/Abs" element={<MarkAbsent/>}/>
+        <Route path="/Mal" element={<MarkMalpractice/>}/>
         <Route path="/random" element={<Random />} />
         <Route path="/" element={<LoginPage />} />
       </Routes>
