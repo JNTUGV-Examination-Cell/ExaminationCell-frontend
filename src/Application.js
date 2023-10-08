@@ -18,6 +18,7 @@ import InternalMarks from "./components/Layout/LayoutSubPages/Examination/Examin
 import FinalListOfExamination from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/FinalListOfExamination/FinalListOfExamination";
 import Condonation from "./components/Layout/LayoutSubPages/Condonation and detain list/Condonation";
 
+import CondonationandDetention from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/CondonationandDetention/CondonationandDetention";
 const Application = () => {
   return (
     <div>
@@ -35,6 +36,7 @@ const Application = () => {
           <Route path="InternalMarks" element={<InternalMarks />} />
           <Route path="studentexamapplication" element={<StudentApplicationForm />} />
           <Route path="FinalListOfExamination" element={<FinalListOfExamination />} />
+          <Route path="CondonationandDetention" element={<CondonationandDetention />} />
           <Route path="colleges" element={<CollegePage />} />
           <Route path="examdata" element={<Examdata />} />
           <Route path="profilepage" element={<ProfilePage />} />
