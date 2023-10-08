@@ -23,7 +23,6 @@ import FinalListOfExamination from "./components/Layout/LayoutSubPages/Examinati
 const Application = () => {
   return (
     <div>
-
       <Routes>
         <Route
           path="/admin/batches/managebatches/uploadstudents"
@@ -35,10 +34,15 @@ const Application = () => {
         />
         <Route path="/admin/batches" element={<Batchesmain />} />
         <Route path="/layout" element={<Layout />}>
-
           <Route path="InternalMarks" element={<InternalMarks />} />
-          <Route path="studentexamapplication" element={<StudentApplicationForm />} />
-          <Route path="FinalListOfExamination" element={<FinalListOfExamination />} />
+          <Route
+            path="studentexamapplication"
+            element={<StudentApplicationForm />}
+          />
+          <Route
+            path="FinalListOfExamination"
+            element={<FinalListOfExamination />}
+          />
 
           <Route path="/Sets" element={<Sets />} />
           <Route path="colleges" element={<CollegePage />} />
@@ -48,11 +52,9 @@ const Application = () => {
           <Route path="batches" element={<Batchesmain />} />
           <Route path="notifications" element={<PortalNotification />} />
           <Route path="staff" element={<Staff />} />
-          
-
+          <Route path="markabsent" element={<MarkAbsents />} />
+          <Route path="markmalpractice" element={<MarkMalpractice />} />
         </Route>
-         <Route path="/markabsent" element={<MarkAbsents />} />
-            <Route path="/markmalpractice" element={<MarkMalpractice />} />
         <Route path="/home" element={<Home />} />
         <Route path="/random" element={<Random />} />
         <Route path="/" element={<LoginPage />} />
