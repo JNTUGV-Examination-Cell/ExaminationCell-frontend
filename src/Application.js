@@ -12,7 +12,9 @@ import ProfilePage from "./components/Layout/LayoutSubPages/ProfileSection/Profi
 import HomePage from "./components/Layout/LayoutSubPages/HomeSection/HomePage";
 import PortalNotification from "./components/Layout/LayoutSubPages/PortalNotification/PortalNotification";
 import Staff from "./components/Layout/LayoutSubPages/Staff/Staff";
-
+import Sets from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Sets/Sets";
+import MarkAbsents from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Sets/MarkAbsents";
+import MarkMalpractice from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Sets/MarkMalpractice";
 const Application = () => {
   return (
     <div>
@@ -33,7 +35,11 @@ const Application = () => {
           <Route path="batches" element={<Batchesmain />} />
           <Route path="notifications" element={<PortalNotification />} />
           <Route path="staff" element={<Staff />} />
+          <Route path="sets" element={<Sets/>}/>
+
         </Route>
+         <Route path="/markabsent" element={<MarkAbsents />} />
+            <Route path="/markmalpractice" element={<MarkMalpractice />} />
         <Route path="/home" element={<Home />} />
         <Route path="/random" element={<Random />} />
         <Route path="/" element={<LoginPage />} />
