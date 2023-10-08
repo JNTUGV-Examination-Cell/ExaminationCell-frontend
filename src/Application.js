@@ -14,6 +14,7 @@ import PortalNotification from "./components/Layout/LayoutSubPages/PortalNotific
 import Staff from "./components/Layout/LayoutSubPages/Staff/Staff";
 import StudentApplicationForm from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/StudentApplication/StudentApplicationForm";
 import Examdata from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Exams/Examdata";
+import Sets from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Sets/Sets";
 import InternalMarks from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/InternalMarks/InternalMarks";
 import FinalListOfExamination from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/FinalListOfExamination/FinalListOfExamination";
 
@@ -31,6 +32,7 @@ const Application = () => {
         />
         <Route path="/admin/batches" element={<Batchesmain />} />
         <Route path="/layout" element={<Layout />}>
+          <Route path="Sets" element={<Sets />} />
           <Route path="InternalMarks" element={<InternalMarks />} />
           <Route path="studentexamapplication" element={<StudentApplicationForm />} />
           <Route path="FinalListOfExamination" element={<FinalListOfExamination />} />
