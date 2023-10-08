@@ -12,13 +12,16 @@ import ProfilePage from "./components/Layout/LayoutSubPages/ProfileSection/Profi
 import HomePage from "./components/Layout/LayoutSubPages/HomeSection/HomePage";
 import PortalNotification from "./components/Layout/LayoutSubPages/PortalNotification/PortalNotification";
 import Staff from "./components/Layout/LayoutSubPages/Staff/Staff";
+import Sets from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Sets/Sets";
+import MarkAbsents from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Sets/SetForParticularExam/MarkAbsents";
+import MarkMalpractice from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Sets/SetForParticularExam/MarkMalpractice";
 import StudentApplicationForm from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/StudentApplication/StudentApplicationForm";
 import Examdata from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Exams/Examdata";
 import ExamSets from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/ExamSets/ExamSets";
 import ManageSubjects from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/ExamSets/ManageSubjects";
-import Sets from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Sets/Sets";
 import InternalMarks from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/InternalMarks/InternalMarks";
 import FinalListOfExamination from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/FinalListOfExamination/FinalListOfExamination";
+import SetForParticularExam from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Sets/SetForParticularExam/SetForParticularExam";
 
 const Application = () => {
   return (
@@ -44,15 +47,19 @@ const Application = () => {
             path="FinalListOfExamination"
             element={<FinalListOfExamination />}
           />
+          <Route path="Sets" element={<Sets />} />
           <Route path="colleges" element={<CollegePage />} />
-          <Route path="examdata" element={<Examdata />} />
           <Route path="profilepage" element={<ProfilePage />} />
           <Route path="homepage" element={<HomePage />} />
           <Route path="batches" element={<Batchesmain />} />
           <Route path="notifications" element={<PortalNotification />} />
           <Route path="staff" element={<Staff />} />
+          <Route path="markabsent" element={<MarkAbsents />} />
+          <Route path="markmalpractice" element={<MarkMalpractice />} />
           <Route path="examsets" element={<ExamSets />} />
           <Route path="managesubject" element={<ManageSubjects />} />
+          <Route path="setforparticularexam" element={<SetForParticularExam/>} />
+          <Route path="examdata" element={<Examdata />} />
         </Route>
         <Route path="/home" element={<Home />} />
         <Route path="/random" element={<Random />} />
