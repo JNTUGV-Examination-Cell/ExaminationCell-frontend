@@ -1,13 +1,12 @@
 import React from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './ExamSets.css';
 import ExamSetsData from './ExamSetsData.json';
 import { Typography } from '@mui/material';
 import Button from '@mui/material/Button';
-import ManageSubjects from './ManageSubjects';
 const ExamSets = () => {
   const title = "Exam Sets - R111223 - B.Tech I Year I Sem R20 Reg February 2023";
-
+   
   return (
     <>
       <div className='examsets'>
@@ -22,12 +21,8 @@ const ExamSets = () => {
               {examSet.subjects.map((subject, subjectIndex) => (
                 <div key={subjectIndex}>
                   <div className='SubLink'>
-                    <Typography className='subjects'>{subject.name}</Typography>
-                    <div className={`managelink-manage-link-${subjectIndex}`}>
-                      <Button component={Link} to={`/manage/${subject.name}`} variant="contained" className='managebtn'>
-                        Manage
-                      </Button>
-                    </div>
+                  <Typography className='subjects'>{subject.code}-{subject.name}</Typography>
+                  <Button component={Link} to={`/layout/ManageSubject`} variant='contained' className='managebtn'  state={{code:subject.code}}> manage</Button>
                   </div>
                 </div>
               ))}
@@ -35,9 +30,7 @@ const ExamSets = () => {
           ))}
         </div>
       </div>
-      <Routes>
-      <Route path="/manage/:subjectId" component={ManageSubjects} />
-      </Routes>
+      
     </>
   );
 }

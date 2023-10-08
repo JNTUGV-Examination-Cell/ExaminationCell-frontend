@@ -1,73 +1,82 @@
 [
-    {
-      "date": "20 February 2023 10:00 AM",
-      "subjects": [
-        {
-          "name": "R201102 - COMMUNICATIVE ENGLISH -",
-          "manageLink": "/ExamSets/subject/0"
-        }
-      ]
-    },
-    {
-      "date": "22 February 2023 10:00 AM",
-      "subjects": [
-        {
-          "name": "R201101 - MATHEMATICS-I -",
-          "manageLink": "/ExamSets/subject/1"
-        }
-      ]
-    },
-    {
-      "date": "24 February 2023 10:00 AM",
-      "subjects": [
-        {
-          "name": "R201105 - ENGINEERING GEOLOGY INTEGRATED THEORY - ",
-          "manageLink": "/ExamSets/subject/2"
-        },
-        {
-          "name": "R201110 - PROGRAMMING FOR PROBLEM SOLVING USING C -",
-          "manageLink": "/ExamSets/subject/3"
-        }
-      ]
-    },
-    {
-      "date": "27 February 2023 10:00 AM",
-      "subjects": [
-        {
-          "name": "R201104 - ENGINEERING DRAWING - ",
-          "manageLink": "/ExamSets/subject/4"
-        }
-      ]
-    },
-    {
-      "date": "01 March 2023 10:00 AM",
-      "subjects": [
-        {
-          "name": "R201111 - ENGINEERING DRAWING & DESIGN - ",
-          "manageLink": "/ExamSets/subject/5"
-        },
-        {
-          "name": "R201117 - APPLIED PHYSICS -",
-          "manageLink": "/ExamSets/subject/6"
-        }
-      ]
-    },
-    {
-      "date": "03 March 2023 10:00 AM",
-      "subjects": [
-        {
-          "name": "R201103- ENGINEERING PHYSICS -",
-          "manageLink": "/ExamSets/subject/7"
-        },
-        {
-            "name":"R201109 - MATHEMATICS - II -",
-            "manageLink":"/ExamSets/subject/8"
-        },
-        {
-          "name": "R201115 -APPLIED CHEMISTRY -",
-          "manageLink": "/ExamSets/subject/9"
-        }
-      ]
-    }
-  ]
-  
+  {
+    "date": "20 February 2023 10:00 AM",
+    "subjects": [
+      {
+        "code": "R201102",
+        "name": "COMMUNICATIVE ENGLISH",
+        "manageLink": "/ExamSets/subject/0"
+      }
+    ]
+  },
+  {
+    "date": "22 February 2023 10:00 AM",
+    "subjects": [
+      {
+        "code": "R201101",
+        "name": "MATHEMATICS-I",
+        "manageLink": "/ExamSets/subject/1"
+      }
+    ]
+  },
+  {
+    "date": "24 February 2023 10:00 AM",
+    "subjects": [
+      {
+        "code": "R201105",
+        "name": "ENGINEERING GEOLOGY INTEGRATED THEORY",
+        "manageLink": "/ExamSets/subject/2"
+      },
+      {
+        "code": "R201110",
+        "name": "PROGRAMMING FOR PROBLEM SOLVING USING C",
+        "manageLink": "/ExamSets/subject/3"
+      }
+    ]
+  },
+  {
+    "date": "27 February 2023 10:00 AM",
+    "subjects": [
+      {
+        "code": "R201104",
+        "name": "ENGINEERING DRAWING",
+        "manageLink": "/ExamSets/subject/4"
+      }
+    ]
+  },
+  {
+    "date": "01 March 2023 10:00 AM",
+    "subjects": [
+      {
+        "code": "R201111",
+        "name": "ENGINEERING DRAWING & DESIGN",
+        "manageLink": "/ExamSets/subject/5"
+      },
+      {
+        "code": "R201117",
+        "name": "APPLIED PHYSICS",
+        "manageLink": "/ExamSets/subject/6"
+      }
+    ]
+  },
+  {
+    "date": "03 March 2023 10:00 AM",
+    "subjects": [
+      {
+        "code": "R201103",
+        "name": "ENGINEERING PHYSICS",
+        "manageLink": "/ExamSets/subject/7"
+      },
+      {
+        "code": "R201109",
+        "name": "MATHEMATICS - II",
+        "manageLink": "/ExamSets/subject/8"
+      },
+      {
+        "code": "R201115",
+        "name": "APPLIED CHEMISTRY",
+        "manageLink": "/ExamSets/subject/9"
+      }
+    ]
+  }
+]
