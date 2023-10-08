@@ -1,22 +1,29 @@
 import React, { useState } from 'react';
+import { Typography, Button } from '@mui/material';
 import './Sets.css';
 
-function ExamCenterDashboard() {
-    const [examCenter, setExamCenter] = useState("NM-Vignans Institute of Engineering for Women");
+const CustomComponent = () => {
+    const [showMessage, setShowMessage] = useState(false);
 
     const handleSettingsClick = () => {
-        // Add logic for handling settings button click here
+        setShowMessage(true);
     }
 
     return (
         <div>
-            <h1>Exam Center Dashboard - R111223 - B.Tech I Year I sem R20 Reg February 2023</h1>
-            <button className="Button" onClick={handleSettingsClick}>Sets</button>
-            <div className="message">
-                <h1>You are hosting this examination for {examCenter}</h1>
-            </div>
+            <Typography variant="h5" style={{ marginBottom: '20px' }}>
+                Exam Center Dashboard - R111223 - B.Tech I Year I sem R20 Reg February 2023
+            </Typography>
+            <Button variant="contained" onClick={handleSettingsClick}>Sets</Button>
+            {showMessage && (
+                <div className="message">
+                    <Typography variant="h5">
+                        You are hosting this examination for NM-Vignans Institute of Engineering for women
+                    </Typography>
+                </div>
+            )}
         </div>
     )
 } 
 
-export default ExamCenterDashboard;
+export default CustomComponent;
