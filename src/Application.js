@@ -12,8 +12,15 @@ import ProfilePage from "./components/Layout/LayoutSubPages/ProfileSection/Profi
 import HomePage from "./components/Layout/LayoutSubPages/HomeSection/HomePage";
 import PortalNotification from "./components/Layout/LayoutSubPages/PortalNotification/PortalNotification";
 import Staff from "./components/Layout/LayoutSubPages/Staff/Staff";
+import StudentApplicationForm from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/StudentApplication/StudentApplicationForm";
 import Examdata from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Exams/Examdata";
+<<<<<<< HEAD
 import Sets from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Sets/Sets";
+=======
+import InternalMarks from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/InternalMarks/InternalMarks";
+import FinalListOfExamination from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/FinalListOfExamination/FinalListOfExamination";
+
+>>>>>>> 6378a275e3fd05d085eb13db2ada91a84c9c10f1
 const Application = () => {
   return (
     <div>
@@ -28,7 +35,13 @@ const Application = () => {
         />
         <Route path="/admin/batches" element={<Batchesmain />} />
         <Route path="/layout" element={<Layout />}>
+<<<<<<< HEAD
         <Route path="Sets" element={<Sets />} />
+=======
+          <Route path="InternalMarks" element={<InternalMarks />} />
+          <Route path="studentexamapplication" element={<StudentApplicationForm />} />
+          <Route path="FinalListOfExamination" element={<FinalListOfExamination />} />
+>>>>>>> 6378a275e3fd05d085eb13db2ada91a84c9c10f1
           <Route path="colleges" element={<CollegePage />} />
           <Route path="examdata" element={<Examdata />} />
           <Route path="profilepage" element={<ProfilePage />} />
