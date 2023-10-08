@@ -14,14 +14,12 @@ import PortalNotification from "./components/Layout/LayoutSubPages/PortalNotific
 import Staff from "./components/Layout/LayoutSubPages/Staff/Staff";
 import StudentApplicationForm from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/StudentApplication/StudentApplicationForm";
 import Examdata from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Exams/Examdata";
-<<<<<<< HEAD
 import CondonationandDetention from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/CondonationandDetention/CondonationandDetention";
-=======
 import Sets from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Sets/Sets";
->>>>>>> 9fa9a40a88b8881f81b16e2ca97b87bd46147f59
 import InternalMarks from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/InternalMarks/InternalMarks";
 import FinalListOfExamination from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/FinalListOfExamination/FinalListOfExamination";
-
+import Condonation from "./components/Layout/LayoutSubPages/Condonation and detain list/Condonation";
+import CondonationandDetention from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/CondonationandDetention/CondonationandDetention";
 
 const Application = () => {
   return (
@@ -37,15 +35,15 @@ const Application = () => {
         />
         <Route path="/admin/batches" element={<Batchesmain />} />
         <Route path="/layout" element={<Layout />}>
-<<<<<<< HEAD
-
-        <Route path="CondonationandDetention" element={<CondonationandDetention />} />
-=======
-          <Route path="Sets" element={<Sets />} />
->>>>>>> 9fa9a40a88b8881f81b16e2ca97b87bd46147f59
+         <Route path="CondonationandDetention" element={<CondonationandDetention />} />
+         <Route path="Sets" element={<Sets />} />
           <Route path="InternalMarks" element={<InternalMarks />} />
           <Route path="studentexamapplication" element={<StudentApplicationForm />} />
           <Route path="FinalListOfExamination" element={<FinalListOfExamination />} />
+          <Route path="InternalMarks" element={<InternalMarks />} />
+          <Route path="studentexamapplication" element={<StudentApplicationForm />} />
+          <Route path="FinalListOfExamination" element={<FinalListOfExamination />} />
+          <Route path="CondonationandDetention" element={<CondonationandDetention />} />
           <Route path="colleges" element={<CollegePage />} />
           <Route path="examdata" element={<Examdata />} />
           <Route path="profilepage" element={<ProfilePage />} />
@@ -53,6 +51,7 @@ const Application = () => {
           <Route path="batches" element={<Batchesmain />} />
           <Route path="notifications" element={<PortalNotification />} />
           <Route path="staff" element={<Staff />} />
+          <Route path="condonation-detain" element={<Condonation />} />
         </Route>
         <Route path="/home" element={<Home />} />
         <Route path="/random" element={<Random />} />
