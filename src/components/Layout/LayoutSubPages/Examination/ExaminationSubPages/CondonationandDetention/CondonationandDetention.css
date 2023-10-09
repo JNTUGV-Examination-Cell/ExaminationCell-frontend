@@ -1,72 +1,19 @@
-/* Style the entire table */
-table {
-    width: 100%; /* Make the table take up 100% of its container's width */
-    border-collapse: collapse; /* Collapse borders to remove spacing between cells */
-    margin-bottom: 20px; /* Add some spacing below the table */
+.table-row {
+  &.even-row {
+    background-color: #f2f2f2; 
   }
-  
-  /* Style table headers (th) */
-  th {
-    background-color: #f2f2f2; /* Background color for header cells */
-    text-align: left; /* Align text to the left within header cells */
-    padding: 10px; /* Add padding to header cells for spacing */
-    border: 1px solid #ddd; /* Add a border around header cells */
+  &.hover-row:hover {
+    background-color: #e0e0e0; 
   }
-  
-  /* Style table rows (tr) */
-  tr {
-    border: 1px solid #ddd; /* Add a border around each row */
-  }
-  
-  /* Style table cells (td) */
-  td {
-    padding: 10px; /* Add padding to data cells for spacing */
-    border: 1px solid #ddd; /* Add a border around data cells */
-  }
-  
-  /* Alternating row colors for better readability */
-  tr:nth-child(even) {
-    background-color: #f2f2f2; /* Alternate row background color */
-  }
-  
-  /* Hover effect on table rows */
-  tr:hover {
-    background-color: #e0e0e0; /* Background color on hover */
-  }
-  
-  .setline1{
-    display: flex;
-    justify-content: space-around;
-    padding: 10px;
-  }
-  .setline1 {
-    text-align: left; /* Align the button to the left within the container */
-    padding-left: 10px; /* Adjust the left padding as needed */
-  }
-
-
-.Detained{
-    background-color:  rgba(0,123,255,.12549019607843137);
-    padding: 5px;
-    text-align: center;
-    text-decoration: none;
-    border: none;
-    width: 680px; /* Set a fixed width for your buttons */
-    height: 350px; /* Set a fixed height for your buttons */
-    align-items: center;
-    /* display: flex; */
-    /* flex-direction: column; */
 }
-.Condonation{
-    background-color:  rgba(0,123,255,.12549019607843137);
-    padding: 5px;
-    text-align: center;
-    text-decoration: none;
-    border: none;
-    width: 680px; /* Set a fixed width for your buttons */
-    height: 150px; /* Set a fixed height for your buttons */
-    align-items: center;
-    /* padding-left: 30px; */
-    margin-left: 40px;
 
+
+.separator-line {
+  border-bottom: 1px solid #ccc; 
+}
+
+
+.table-cell {
+  border-right: 1px solid #ccc; 
+  padding: 8px; 
 }
