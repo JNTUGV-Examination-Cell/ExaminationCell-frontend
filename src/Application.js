@@ -23,7 +23,6 @@ import InternalMarks from "./components/Layout/LayoutSubPages/Examination/Examin
 import FinalListOfExamination from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/FinalListOfExamination/FinalListOfExamination";
 import SetForParticularExam from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Sets/SetForParticularExam/SetForParticularExam";
 import ExaminationSubPage from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/ExaminationSubPage";
-
 import CondonationandDetention from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/CondonationandDetention/CondonationandDetention";
 
 const Application = () => {
@@ -57,14 +56,12 @@ const Application = () => {
             path="FinalListOfExamination"
             element={<FinalListOfExamination />}
           />
-          <Route path="Sets" element={<Sets />} />
           <Route path="colleges" element={<CollegePage />} />
           <Route path="profilepage" element={<ProfilePage />} />
           <Route path="homepage" element={<HomePage />} />
           <Route path="batches" element={<Batchesmain />} />
           <Route path="notifications" element={<PortalNotification />} />
           <Route path="staff" element={<Staff />} />
-          <Route path="condonation-detain" element={<CondonationandDetention />} />
           <Route path="markabsent" element={<MarkAbsents />} />
           <Route path="markmalpractice" element={<MarkMalpractice />} />
           <Route path="examsets" element={<ExamSets />} />
