@@ -3,9 +3,15 @@ import React from "react";
 import jntugv from "../../assests/jntugv.png";
 import "./Home.css";
 import { Link, Link as RouterLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUserRole } from "../../features/roles/roleSlice";
 
 const Home = () => {
   const username = "Bindu Madhuri Ch";
+  const dispatch = useDispatch();
+  const handleRoleChange = (role) => {
+    dispatch(setUserRole(role));
+  };
   return (
     <Box>
       <Box
@@ -37,6 +43,8 @@ const Home = () => {
               }}
               component={RouterLink}
               to="/layout"
+              state={{ role: "Admin" }}
+              onClick={() => handleRoleChange("Admin")}
               variant="h6"
             >
               Admin
@@ -52,8 +60,10 @@ const Home = () => {
                 marginBottom: "10px",
               }}
               component={RouterLink}
-              to="/random"
+              to="/layout"
+              state={{ role: "CBTexpert" }}
               variant="h6"
+              onClick={() => handleRoleChange("CBTexpert")}
             >
               CBT Expert
             </Typography>
@@ -68,8 +78,10 @@ const Home = () => {
                 marginBottom: "10px",
               }}
               component={RouterLink}
-              to="/random"
+              to="/layout"
+              state={{ role: "Examinationadmin" }}
               variant="h6"
+              onClick={() => handleRoleChange("Examinationadmin")}
             >
               Examination Admin
             </Typography>
