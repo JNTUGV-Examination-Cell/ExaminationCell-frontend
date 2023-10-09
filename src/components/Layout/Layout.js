@@ -1,22 +1,15 @@
 import { Box, Typography } from "@mui/material";
 import jntugv from "../../assests/jntugv.png";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./Layout.css";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
+import { selectUserRole } from "../../features/roles/roleSlice";
+import { useSelector } from "react-redux";
 
 const Layout = (props) => {
-  const location = useLocation();
-  const [admin, setAdmin] = useState(false);
-  const [cbtExpert, setCbtExpert] = useState(false);
-  const [examinationAdmin, setExaminationAdmin] = useState(false);
-  // const [role, setRole] = useState("")
-  useEffect(() =>{
-
-  })
-  const role = location.state.role;
-  // setRole(location.state.role);
-  // console.log({ role });
+  const userRole = useSelector(selectUserRole);
+  useEffect(() => {});
   return (
     <Box>
       <Box>
@@ -26,7 +19,7 @@ const Layout = (props) => {
             <Typography>
               JAWAHARLAL NEHRU TECHNOLOGY UNIVERSITY - GURAJADA VIZIANAGRAM
             </Typography>
-            <Typography variant="h6">{role}</Typography>
+            <Typography variant="h6">{userRole}</Typography>
           </Box>
         </Box>
         <Box className="Nav-Content">

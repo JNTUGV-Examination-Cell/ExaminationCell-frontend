@@ -22,6 +22,7 @@ import ManageSubjects from "./components/Layout/LayoutSubPages/Examination/Exami
 import InternalMarks from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/InternalMarks/InternalMarks";
 import FinalListOfExamination from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/FinalListOfExamination/FinalListOfExamination";
 import SetForParticularExam from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Sets/SetForParticularExam/SetForParticularExam";
+import ExaminationSubPage from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/ExaminationSubPage";
 
 const Application = () => {
   return (
@@ -60,6 +61,7 @@ const Application = () => {
           <Route path="managesubject" element={<ManageSubjects />} />
           <Route path="setforparticularexam" element={<SetForParticularExam/>} />
           <Route path="examdata" element={<Examdata />} />
+          <Route path="manageexamination" element={<ExaminationSubPage />} />
         </Route>
         <Route path="/home" element={<Home />} />
         <Route path="/random" element={<Random />} />
