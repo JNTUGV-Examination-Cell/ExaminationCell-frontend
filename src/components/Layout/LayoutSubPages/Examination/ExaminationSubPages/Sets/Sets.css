@@ -1,0 +1,15 @@
+.message-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+}
+
+
+
+.Button{
+    font-size: 20px; 
+  padding: 12px 24px;
+  background: rgb(199, 233, 243);
+  color:white;
+}
