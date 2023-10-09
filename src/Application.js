@@ -24,6 +24,7 @@ import FinalListOfExamination from "./components/Layout/LayoutSubPages/Examinati
 import SetForParticularExam from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Sets/SetForParticularExam/SetForParticularExam";
 
 import CondonationandDetention from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/CondonationandDetention/CondonationandDetention";
+
 const Application = () => {
   return (
     <div>
@@ -38,7 +39,11 @@ const Application = () => {
         />
         <Route path="/admin/batches" element={<Batchesmain />} />
         <Route path="/layout" element={<Layout />}>
-          <Route path="Sets" element={<Sets />} />
+         <Route path="CondonationandDetention" element={<CondonationandDetention />} />
+         <Route path="Sets" element={<Sets />} />
+          <Route path="InternalMarks" element={<InternalMarks />} />
+          <Route path="studentexamapplication" element={<StudentApplicationForm />} />
+          <Route path="FinalListOfExamination" element={<FinalListOfExamination />} />
           <Route path="InternalMarks" element={<InternalMarks />} />
           <Route path="studentexamapplication" element={<StudentApplicationForm />} />
           <Route path="FinalListOfExamination" element={<FinalListOfExamination />} />
