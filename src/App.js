@@ -23,10 +23,11 @@ const App = () => {
   //   fetchip();
   // });
   if (isAllowed) {
-    return <Application />;
+    return < Application/>;
   } else {
     return <NoAccess />;
   }
+  
 };
 
 export default App;

@@ -1,0 +1,19 @@
+.table-row {
+  &.even-row {
+    background-color: #f2f2f2; 
+  }
+  &.hover-row:hover {
+    background-color: #e0e0e0; 
+  }
+}
+
+
+.separator-line {
+  border-bottom: 1px solid #ccc; 
+}
+
+
+.table-cell {
+  border-right: 1px solid #ccc; 
+  padding: 8px; 
+}

@@ -7,6 +7,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Button } from "@mui/material";
 import data from "./Data";
+import { Link } from "react-router-dom";
 
 const jsonData = data;
 const Examdata = () => {
@@ -47,7 +48,9 @@ const Examdata = () => {
               <TableCell>{row.year}</TableCell>
               <TableCell>{row.Type}</TableCell>
               <TableCell>
-                <Button>Manage</Button>
+                <Button component={Link} to={row.path}>
+                  Manage
+                </Button>
               </TableCell>
             </TableRow>
           ))}
