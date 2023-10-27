@@ -26,6 +26,9 @@ const RollData = {
     {
       to: "/home",
       icon: <LogoutIcon className="Nav-icons" />,
+      onclick: () => {
+        sessionStorage.removeItem("userRole");
+      },
     },
   ],
   CBTexpert: [
@@ -38,6 +41,9 @@ const RollData = {
     {
       to: "/home",
       icon: <LogoutIcon className="Nav-icons" />,
+      onclick: () => {
+        sessionStorage.removeItem("userRole");
+      },
     },
   ],
   Examinationadmin: [
@@ -53,6 +59,9 @@ const RollData = {
     {
       to: "/home",
       icon: <LogoutIcon className="Nav-icons" />,
+      onclick: () => {
+        sessionStorage.removeItem("userRole");
+      },
     },
   ],
 };
