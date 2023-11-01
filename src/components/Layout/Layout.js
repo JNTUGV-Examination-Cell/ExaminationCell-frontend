@@ -8,36 +8,6 @@ import { useSelector } from "react-redux";
 import { selectUserRole } from "../../features/roles/roleSlice";
 import { UserCircle2 } from "lucide-react";
 
-// const Layout = (props) => {
-//   const userRole = useSelector(selectUserRole);
-//   return (
-//     <Box sx={{ display: 'flex' }}>
-//       <Sidebar />
-//       <Box component="main" sx={{ flexGrow: 1 }}>
-//         <Box className="Top-nav">
-//           {/* <img className="logo1" src={jntugv} alt="jntugv-logo" /> */}
-//           <Box className="Nav-right-header">
-//             <Typography>
-//               JAWAHARLAL NEHRU TECHNOLOGY UNIVERSITY - GURAJADA VIZIANAGRAM
-//             </Typography>
-//             <Typography variant="h6">{userRole}</Typography>
-//           </Box>
-//         </Box>
-//         <Box className="Nav-Content">
-//           <Box
-//             sx={{
-//               margin: "20px",
-//             }}
-//             className="Content"
-//           >
-//             <Outlet />
-//           </Box>
-//         </Box>
-//       </Box>
-//     </Box>
-//   );
-// };
-
 const Layout = (props) => {
   const userRole = useSelector(selectUserRole);
   return (
