@@ -1,5 +1,4 @@
 import { AppBar, Box, Toolbar, Typography } from "@mui/material";
-// import jntugv from "../../assests/jntugv.png";
 import React from "react";
 import "./Layout.css";
 import { Outlet } from "react-router-dom";

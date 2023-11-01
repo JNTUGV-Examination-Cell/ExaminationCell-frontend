@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import RollData from "./RoleData";
-// import { Typography } from "@mui/material";
 import jntugv from "../../assests/jntugv.png";
 import { useSelector } from "react-redux";
 import { selectUserRole } from "../../features/roles/roleSlice";
@@ -15,19 +14,6 @@ import {
   ListItemText,
 } from "@mui/material";
 
-// const Sidebar = () => {
-//   const userRole = useSelector(selectUserRole);
-//   return (
-//     <div className="Side-nav">
-//       {RollData[userRole].map((link, index) => (
-//         <Link className="Sidebar-link" onClick={link.onclick} key={index} to={link.to}>
-//           {link.icon}
-//           <Typography>{link.text}</Typography>
-//         </Link>
-//       ))}
-//     </div>
-//   );
-// };
 const Sidebar = () => {
   const userRole = useSelector(selectUserRole);
 
