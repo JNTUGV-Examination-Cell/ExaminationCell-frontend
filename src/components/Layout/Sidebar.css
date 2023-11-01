@@ -1,0 +1,16 @@
+.Side-nav {
+    background-color: #f0f0f0; 
+    padding: 20px;
+    width: 200px; 
+  }
+  
+  .Sidebar-link {
+    display: block;
+    color: #333;
+    text-decoration: none;
+    margin-bottom: 10px;
+  }
+  
+  .Sidebar-link:hover {
+    color: #007bff;
+  }
