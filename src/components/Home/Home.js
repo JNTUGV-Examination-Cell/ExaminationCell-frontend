@@ -10,7 +10,7 @@ const Home = () => {
   const username = "Bindu Madhuri Ch";
   const dispatch = useDispatch();
   const handleRoleChange = (role) => {
-    sessionStorage.setItem("userRole", role);
+    // sessionStorage.setItem("userRole", role);
     dispatch(setUserRole(role));
   };
   return (

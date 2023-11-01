@@ -7,11 +7,13 @@ import GradingIcon from "@mui/icons-material/Grading";
 import HubIcon from "@mui/icons-material/Hub";
 import LogoutIcon from "@mui/icons-material/Logout";
 
+
 const RollData = {
   Admin: [
     {
       to: "/layout/homepage",
       icon: <HomeIcon className="Nav-icons" />,
+      text: "home",
     },
     { to: "/layout/batches", icon: <GroupsIcon className="Nav-icons" /> },
     {
@@ -35,6 +37,7 @@ const RollData = {
     {
       to: "/layout/homepage",
       icon: <HomeIcon className="Nav-icons" />,
+      text: "home",
     },
     { to: "/layout/batches", icon: <GroupsIcon className="Nav-icons" /> },
     { to: "/layout/examdata", icon: <HomeIcon className="Nav-icons" /> },
@@ -52,16 +55,17 @@ const RollData = {
       icon: <HomeIcon className="Nav-icons" />,
       text: "home",
     },
-    { to: "/layout/batches", icon: <GroupsIcon className="Nav-icons" /> },
-    { to: "/layout/examdata", icon: <GradingIcon className="Nav-icons" /> },
-    { to: "/layout/InternalMarks", icon: <HubIcon className="Nav-icons" /> },
-    { to: "/layout/staff", icon: <PersonIcon className="Nav-icons" /> },
+    { to: "/layout/batches", icon: <GroupsIcon className="Nav-icons" />,text: "Batches" },
+    { to: "/layout/examdata", icon: <GradingIcon className="Nav-icons" />,text: "Examinations" },
+    { to: "/layout/InternalMarks", icon: <HubIcon className="Nav-icons" />,text: "Internal Marks" },
+    { to: "/layout/staff", icon: <PersonIcon className="Nav-icons" />,text: "Staff"},
     {
       to: "/home",
       icon: <LogoutIcon className="Nav-icons" />,
       onclick: () => {
         sessionStorage.removeItem("userRole");
       },
+      text: "LogOut",
     },
   ],
 };
