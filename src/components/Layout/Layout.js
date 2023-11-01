@@ -4,10 +4,11 @@ import React, { useEffect } from "react";
 import "./Layout.css";
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
-import { selectUserRole } from "../../features/roles/roleSlice";
 import { useSelector } from "react-redux";
+import { selectUserRole } from "../../features/roles/roleSlice";
 
 const Layout = (props) => {
+  // const userRole = sessionStorage.getItem("userRole");
   const userRole = useSelector(selectUserRole);
   useEffect(() => {});
   return (
