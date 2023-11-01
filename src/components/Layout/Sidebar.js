@@ -1,22 +1,57 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import RollData from "./RoleData";
-import { Typography } from "@mui/material";
+import jntugv from "../../assests/jntugv.png";
 import { useSelector } from "react-redux";
 import { selectUserRole } from "../../features/roles/roleSlice";
+import "./Sidebar.css";
+import {
+  Box,
+  Drawer,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
 
 const Sidebar = () => {
-  // const userRole = sessionStorage.getItem("userRole");
   const userRole = useSelector(selectUserRole);
+
   return (
-    <div className="Side-nav">
-      {RollData[userRole].map((link, index) => (
-        <Link onClick={link.onclick} key={index} to={link.to}>
-          {link.icon}
-          <Typography>{link.text}</Typography>
-        </Link>
-      ))}
-    </div>
+    <Drawer
+      variant="permanent"
+      sx={{
+        width: 240,
+        flexShrink: 0,
+        [`& .MuiDrawer-paper`]: {
+          width: 240,
+          boxSizing: "border-box",
+          backgroundColor: "#f5f5f5",
+        },
+      }}
+    >
+      <Box sx={{ display: "flex", justifyContent: "center", padding: "10px" }}>
+        <img
+          style={{ height: "100px", width: "100px" }}
+          src={jntugv}
+          alt="jntugv-logo"
+        />
+      </Box>
+      <List>
+        {RollData[userRole].map((link, index) => (
+          <ListItem
+            button
+            key={index}
+            component={Link}
+            to={link.to}
+            onClick={link.onclick}
+          >
+            <ListItemIcon>{link.icon}</ListItemIcon>
+            <ListItemText primary={link.text} />
+          </ListItem>
+        ))}
+      </List>
+    </Drawer>
   );
 };
 
