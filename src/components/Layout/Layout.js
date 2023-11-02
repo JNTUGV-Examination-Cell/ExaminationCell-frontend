@@ -46,7 +46,7 @@ const Layout = (props) => {
                     to={`/${pathParts.slice(0, index + 1).join("/")}`}
                     style={{ color: "#fff", textDecoration: "none" }}
                   >
-                    {part}-
+                    {part}/
                   </Link>
                 ))}
               </Typography>

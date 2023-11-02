@@ -11,7 +11,7 @@ const data = [
     month: "Data 8",
     year: "Data 9",
     Type: "Data 10",
-    path: "/layout/manageexamination",
+    path: "/layout/examdata/manageexamination",
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const data = [
     month: "Data 18",
     year: "Data 19",
     Type: "Data 20",
-    path: "/layout/manageexamination",
+    path: "/layout/examdata/manageexamination",
   },
   {
     id: 3,
@@ -39,7 +39,7 @@ const data = [
     month: "Data 28",
     year: "Data 29",
     Type: "Data 30",
-    path: "/layout/manageexamination",
+    path: "/layout/examdata/manageexamination",
   },
 ];
 
