@@ -15,7 +15,7 @@ const ExaminationSubPage = () => {
           // justifyContent: "center",
         }}
       >
-        <Button variant="contained" component={Link} to="/layout/studentexamapplication">
+        <Button variant="contained" component={Link} to="/layout/examdata/manageexamination/studentexamapplication">
           Student Application
         </Button>
         <Button variant="contained" component={Link} to="/layout/CondonationandDetention">
