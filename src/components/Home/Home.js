@@ -92,7 +92,7 @@ const Home = () => {
         <Button
           sx={{ alignContent: "center", width: "80px", marginTop: "20px" }}
           LinkComponent={Link}
-          to="/application"
+          to="/"
           variant="contained"
         >
           LOGOUT

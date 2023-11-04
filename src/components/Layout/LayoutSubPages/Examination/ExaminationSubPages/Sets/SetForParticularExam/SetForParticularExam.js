@@ -15,17 +15,17 @@ function SetForParticularExam() {
   const handleFileUpload = (event) => {
     const selectedFile = event.target.files[0];
     if (selectedFile) {
-      // Store the uploaded file information (including the file name)
+      
       setUploadedFile(selectedFile);
     }
   };
 
   const handleDownload = () => {
     if (uploadedFile) {
-      // Create a URL for the uploaded file
+      
       const fileUrl = URL.createObjectURL(uploadedFile);
 
-      // Create a download link and trigger the download
+      
       const downloadLink = document.createElement("a");
       downloadLink.href = fileUrl;
       downloadLink.download = uploadedFile.name;

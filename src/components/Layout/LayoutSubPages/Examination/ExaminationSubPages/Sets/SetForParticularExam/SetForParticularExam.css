@@ -46,7 +46,7 @@
   }
   }
   .setblock{
-    /* display: flex; */
+    
     justify-content: center;
     background-color: lightblue;
     width: 50%;
@@ -55,7 +55,7 @@
     border-radius: 5px;
     margin-top: 50px;
     margin-left: 250px;
-    /* margin-bottom: 440px; */
+    
   }
   .set{
     justify-content: center;

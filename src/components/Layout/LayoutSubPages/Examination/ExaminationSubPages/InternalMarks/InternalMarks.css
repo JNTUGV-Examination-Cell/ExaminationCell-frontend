@@ -23,19 +23,26 @@
 width: 80px;
 }
 
-.sub-heading{
-  align-content: center;
+.main-heading {
+  text-align: center; 
 }
 
-.main-heading{
-  align-content: center;
+.sub-heading {
+  text-align: center; 
 }
+
 
 .table-row{
 align-items: center;
 }
 
-
 .table-header-cell {
   text-align: center;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-start; 
+  padding-top: 10px;
+  padding-bottom: 10px;
 }

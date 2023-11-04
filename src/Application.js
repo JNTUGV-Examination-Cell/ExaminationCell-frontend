@@ -49,7 +49,7 @@ const Application = () => {
           <Route path="FinalListOfExamination" element={<FinalListOfExamination />} />
           <Route path="CondonationandDetention" element={<CondonationandDetention />} />
           <Route
-            path="studentexamapplication"
+            path="examdata/manageexamination/studentexamapplication"
             element={<StudentApplicationForm />}
           />
           <Route
@@ -68,7 +68,7 @@ const Application = () => {
           <Route path="managesubject" element={<ManageSubjects />} />
           <Route path="setforparticularexam" element={<SetForParticularExam/>} />
           <Route path="examdata" element={<Examdata />} />
-          <Route path="manageexamination" element={<ExaminationSubPage />} />
+          <Route path="examdata/manageexamination" element={<ExaminationSubPage />} />
         </Route>
         <Route path="/home" element={<Home />} />
         <Route path="/random" element={<Random />} />

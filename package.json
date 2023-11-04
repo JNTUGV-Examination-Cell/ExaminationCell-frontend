@@ -17,12 +17,17 @@
     "axios": "^1.5.0",
     "emailjs-com": "^3.2.0",
     "exceljs": "^4.3.0",
+<<<<<<< HEAD
     "pdfjs-dist": "^3.11.174",
+=======
+    "lucide-react": "^0.291.0",
+>>>>>>> 448b52afac0ef24f2256c7e5a515f6ed227b036e
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.3",
     "react-router-dom": "^6.16.0",
     "react-scripts": "5.0.1",
+    "redux-persist": "^6.0.0",
     "styled-components": "^5.3.11",
     "web-vitals": "^2.1.4"
   },
@@ -51,3 +56,4 @@
     ]
   }
 }
+
