@@ -11,7 +11,7 @@ const data = [
     month: "March",
     year: "2023",
     Type: "self",
-    path: "/layout/manageexamination",
+    path: "/layout/examdata/manageexamination",
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const data = [
     month: "february",
     year: "2023",
     Type: "self",
-    path: "/layout/manageexamination",
+    path: "/layout/examdata/manageexamination",
   },
   {
     id: 3,
@@ -39,7 +39,7 @@ const data = [
     month: "february",
     year: "2023",
     Type: "self",
-    path: "/layout/manageexamination",
+    path: "/layout/examdata/manageexamination",
   },
   {
     id: 4,
@@ -53,7 +53,7 @@ const data = [
     month: "february",
     year: "2023",
     Type: "2,3",
-    path: "/layout/manageexamination",
+    path: "/layout/examdata/manageexamination",
   },
   {
     id: 5,
@@ -67,7 +67,7 @@ const data = [
     month: "february",
     year: "2023",
     Type: "self",
-    path: "/layout/manageexamination",
+    path: "/layout/examdata/manageexamination",
   }
 ];
 
