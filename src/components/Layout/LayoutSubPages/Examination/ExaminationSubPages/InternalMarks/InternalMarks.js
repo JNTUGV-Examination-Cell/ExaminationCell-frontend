@@ -32,7 +32,7 @@ function InternalMarks() {
   const [selectedBranch, setSelectedBranch] = useState('All');
   const [selectedSubject, setSelectedSubject] = useState('');
   const [filteredData, setFilteredData] = useState([]);
-  const [internalmarks]=useState('R111223-B.Tech Ist Year I Sem R20 Reg February 2023');
+  const [internalmarks] = useState('R111223-B.Tech Ist Year I Sem R20 Reg February 2023');
   const dataKey = 'internalMarksData';
 
   useEffect(() => {
@@ -52,7 +52,7 @@ function InternalMarks() {
     
     let filteredData = jsonData.filter((user) =>
       
-      (user.Hallticket.includes(searchQuery) ||
+      (user.Hallticket.toLowerCase().includes(searchQuery.toLowerCase()) ||
       user.Name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       user.Subject.toLowerCase().includes(searchQuery.toLowerCase())) &&
       (selectedBranch === 'All' || user.Branch === selectedBranch) 
@@ -107,11 +107,11 @@ function InternalMarks() {
         </Typography>
       </div>
 
-      <div className="buttons" style={{ paddingTop: '10px' ,paddingBottom:'10px'}}>
-        <Button // Wrap the button in the Material-UI Button component
+      <div className="buttons">
+        <Button 
           className="download-button"
           onClick={downloadCSV}
-          style={{ backgroundColor: '#c0c0c0', color:'black' }}
+          style={{ backgroundColor: '#B0E0E6', color:'black' }}
           variant="contained"
         >
           Download Final Internal Marks
@@ -137,7 +137,7 @@ function InternalMarks() {
         />
       </div>
       <div className="branch-filter">
-  <FormControl variant="outlined" className="branch-select" style={{ width: '245px' }}>
+  <FormControl variant="outlined" className="branch-select" style={{ width: '265px' }}>
     <InputLabel htmlFor="branch-select" style={{alignItems:'center'}}>Filter</InputLabel>
     <Select
       label="Branch"
@@ -158,11 +158,11 @@ function InternalMarks() {
 </div>
       </div>
       </div>
-      <div className="table-container" style={{ width: '114%' }}>
+      <div className="table-container" style={{ width: '116%' }}>
       <Paper elevation={3}>
-        <Table className="data-table" style={{ minWidth: '800px', maxWidth: '1200px'}}>
+        <Table className="data-table" style={{ minWidth: '800px', maxWidth: '1350px'}}>
           <TableHead>
-            <TableRow>
+            <TableRow className="table-header-cell">
               <TableCell align="center">Sl.no</TableCell>
               <TableCell align="center">Hallticket</TableCell>
               <TableCell align="center">Name</TableCell>
