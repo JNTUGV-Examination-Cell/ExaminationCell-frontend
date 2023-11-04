@@ -6,7 +6,7 @@
 
 .head {
     color: black;
-    padding-bottom:30px ;
+    padding-bottom:5px ;
   }
   
   .set {
@@ -50,11 +50,11 @@
     justify-content: center;
     background-color: lightblue;
     width: 50%;
-    height: 200px;
+    height: 250px;
     align-items: center;
-    border-radius: 10px;
-    margin-top: 150px;
-    margin-left: 500px;
+    border-radius: 5px;
+    margin-top: 50px;
+    margin-left: 250px;
     /* margin-bottom: 440px; */
   }
   .set{
@@ -64,4 +64,10 @@
    display: flex;
    justify-content: center;
    color: red;
+  }
+  .center-buttons {
+    text-align: center;
+    justify-content: center;
+    padding-bottom: 10px;
+    margin-top: 10px;
   }
