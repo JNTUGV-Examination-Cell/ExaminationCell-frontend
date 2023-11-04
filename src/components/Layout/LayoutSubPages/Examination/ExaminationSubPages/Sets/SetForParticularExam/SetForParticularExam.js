@@ -7,25 +7,20 @@ function SetForParticularExam() {
   const setstitle =
     "Sets - R111223 - B.Tech I Year I sem R20 Reg February 2023 - R201102 - COMMUNICATIVE ENGLISH - 20 February 2023 10:00 AM";
   const set = "SET-1";
-  const isUploadDisabled = false;
-
+  
   const [uploadedFile, setUploadedFile] = useState(null);
   const [showDownloadButton, setShowDownloadButton] = useState(false);
 
   const handleFileUpload = (event) => {
     const selectedFile = event.target.files[0];
     if (selectedFile) {
-      
       setUploadedFile(selectedFile);
     }
   };
 
   const handleDownload = () => {
     if (uploadedFile) {
-      
       const fileUrl = URL.createObjectURL(uploadedFile);
-
-      
       const downloadLink = document.createElement("a");
       downloadLink.href = fileUrl;
       downloadLink.download = uploadedFile.name;
