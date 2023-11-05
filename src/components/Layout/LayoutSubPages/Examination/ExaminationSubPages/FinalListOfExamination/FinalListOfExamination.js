@@ -1,5 +1,15 @@
-import React from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button,Typography } from '@mui/material';
+import React, { useState } from 'react';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Button,
+  Typography
+} from '@mui/material';
 import './FinalListOfExamination.css';
 import ExcelJS from 'exceljs';
 
@@ -15,15 +25,35 @@ const jsonData = [
 ];
 
 function FinalListOfExamination() {
+  const [editableData, setEditableData] = useState(null);
+
+  const handleEdit = (index) => {
+    const selectedUser = jsonData[index];
+    setEditableData(selectedUser);
+  };
+
+  const handleInputChange = (field, value) => {
+    setEditableData({
+      ...editableData,
+      [field]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const updatedData = jsonData.map((user) =>
+      user.SIno === editableData.SIno ? { ...user, ...editableData } : user
+    );
+    setEditableData(updatedData); // Corrected from setJsonData to setEditableData
+  };
+
   const handleDownload = async () => {
     const workbook = new ExcelJS.Workbook();
     const worksheet = workbook.addWorksheet('Examination Data');
 
-    
     const headers = ['SIno', 'Hallticket', 'Name', 'Branch', 'Mobile', 'Id'];
     worksheet.addRow(headers);
 
-    
     jsonData.forEach((user) => {
       const row = [];
       headers.forEach((header) => {
@@ -32,7 +62,6 @@ function FinalListOfExamination() {
       worksheet.addRow(row);
     });
 
-    
     const buffer = await workbook.xlsx.writeBuffer();
     const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
     const link = document.createElement('a');
@@ -46,9 +75,23 @@ function FinalListOfExamination() {
       <Typography variant="h5">
         FINAL LIST OF EXAMINATION - R111223 - B.Tech I YEAR I SEM R20 REG FEBRUARY 2023
       </Typography>
-      <Button variant="contained" color="primary" onClick={handleDownload} className='HTBtn' style={{ margin: '50px 0' }}>Download Hall Tickets</Button>
-    
-    
+      <Button variant="contained" color="primary" onClick={handleDownload} className='HTBtn' style={{ margin: '50px 0' }}>
+        Download Hall Tickets
+      </Button>
+
+      {editableData && (
+        <div>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              value={editableData.Hallticket}
+              onChange={(e) => handleInputChange('Hallticket', e.target.value)}
+            />
+            <button type="submit">Save</button>
+          </form>
+        </div>
+      )}
+
       <TableContainer component={Paper}>
         <Table style={{ marginTop: '100px' }}>
           <TableHead>
@@ -59,6 +102,7 @@ function FinalListOfExamination() {
               <TableCell>Branch</TableCell>
               <TableCell>Mobile</TableCell>
               <TableCell>Id</TableCell>
+              <TableCell>Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -70,6 +114,15 @@ function FinalListOfExamination() {
                 <TableCell>{user.Branch}</TableCell>
                 <TableCell>{user.Mobile}</TableCell>
                 <TableCell>{user.Id}</TableCell>
+                <TableCell>
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    onClick={() => handleEdit(index)}
+                  >
+                    Edit
+                  </Button>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
