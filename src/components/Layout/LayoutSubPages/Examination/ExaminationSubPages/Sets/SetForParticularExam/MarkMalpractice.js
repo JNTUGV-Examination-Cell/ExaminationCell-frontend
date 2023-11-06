@@ -1,32 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './MarkMalpractice.css';
-import Button from '@mui/material/Button'; 
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 function MarkMalpractice() {
   const [inputRollNumber, setInputRollNumber] = useState('');
-  const [Malpractice, setAbsentees] = useState([]);
+  const [Malpractice, setMalpractice] = useState([]);
+  const [examData, setexamData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("");
+        const data = await response.json();
+
+        setexamData(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (inputRollNumber.trim() !== '') {
-      setAbsentees([...Malpractice, inputRollNumber]);
+      setMalpractice([...Malpractice, inputRollNumber]);
 
       setInputRollNumber('');
-      window.alert('Roll number marked as absent.');
+      window.alert('Roll number marked as Malpractice.');
     }
   };
 
   return (
     <div>
       <div>
-        <h1>Mark Malpractice - R111223 - B.Tech I Year I Sem R20 Reg February 2023 - R201103 - ENGINEERING PHYSICS - 03 March 2023 10:00 AM</h1>
+        <Typography variant="h4">
+          Mark Malpractice -  R111223 - B.Tech I Year I Sem R20 Reg February 2023 - R201103 - ENGINEERING PHYSICS - 03 March 2023 10:00 AM
+        </Typography>
       </div>
       <br />
       <div className='set' align='center'>
         <div className='set5'>
           <div>
-            <h4>Malpractice for the Slot</h4>
+            <Typography variant='h5'>Malpractice for the slot</Typography>
             <hr />
             <form onSubmit={handleSubmit}>
               <div>
@@ -36,25 +55,29 @@ function MarkMalpractice() {
                   value={inputRollNumber}
                   onChange={(e) => setInputRollNumber(e.target.value)}
                 /><br />
-                {/* Material-UI Button */}
                 <Button type='submit' variant='contained' color='primary'>
-                  Proceed
+                  {examData.length > 0 ? 'Proceed with Dynamic Data' : 'Proceed'}
                 </Button>
               </div>
               <hr />
               <div>
-                <h4>CE - ENGINEERING PHYSICS</h4>
-                <hr />
-                <h4>ME - ENGINEERING PHYSICS</h4>
+                {examData.map((data, index) => (
+                  <Typography key={index} variant="h4">
+                    {data}
+                  </Typography>
+                ))}
+              </div>
+              <div>
+                <Typography variant='h5'>CE - ENGINEERING PHYSICS</Typography><br></br>
+                <hr /><br></br>
+                <Typography variant='h5'>ME - ENGINEERING PHYSICS</Typography>
               </div>
             </form>
           </div>
         </div>
       </div>
-
       <div>
-        
-        <h2>Malpractice:</h2>
+        <Typography variant='h5'>Malpractice :</Typography>
         <ul>
           {Malpractice.map((rollNumber, index) => (
             <li key={index}>{rollNumber}</li>
@@ -64,5 +87,4 @@ function MarkMalpractice() {
     </div>
   );
 }
-
 export default MarkMalpractice;
