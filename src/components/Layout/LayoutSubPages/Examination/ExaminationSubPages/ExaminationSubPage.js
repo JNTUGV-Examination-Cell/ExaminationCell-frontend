@@ -18,16 +18,16 @@ const ExaminationSubPage = () => {
         <Button variant="contained" component={Link} to="/layout/examdata/manageexamination/studentexamapplication">
           Student Application
         </Button>
-        <Button variant="contained" component={Link} to="/layout/CondonationandDetention">
+        <Button variant="contained" component={Link} to="/layout/examdata/manageexamination/CondonationandDetention">
           Condonation and Detention
         </Button>
-        <Button variant="contained" component={Link} to="/layout/FinalListOfExamination">
+        <Button variant="contained" component={Link} to="/layout/examdata/manageexamination/FinalListOfExamination">
           Final List
         </Button>
-        <Button variant="contained" component={Link} to="/layout/Sets">
+        <Button variant="contained" component={Link} to="/layout/examdata/manageexamination/Sets">
           Exam Center Dashboard
         </Button>
-        <Button variant="contained" component={Link} to="/layout/InternalMarks">
+        <Button variant="contained" component={Link} to="/layout/examdata/manageexamination/InternalMarks">
           Internal Marks
         </Button>
         <Button variant="contained" component={Link} to="/layout">

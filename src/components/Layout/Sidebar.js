@@ -16,7 +16,7 @@ import {
 
 const Sidebar = () => {
   const userRole = useSelector(selectUserRole);
-
+  
   return (
     <Drawer
       variant="permanent"

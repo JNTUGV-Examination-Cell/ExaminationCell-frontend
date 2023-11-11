@@ -10,7 +10,7 @@ const CustomComponent = () => {
 
     const handleSettingsClick = () => {
         setCollege("New College Name"); 
-        navigate('/layout/examsets');
+        navigate('/layout/examdata/manageexamination/Sets/examsets');
     }
 
     return (
