@@ -37,7 +37,7 @@ function SetForParticularExam() {
               height: 30,
             }}
             component={Link}
-            to="/layout/markabsent"
+            to="/layout/examdata/manageexamination/Sets/examsets/setforparticularexam/markabsent"
           >
             Mark Absent
           </Button>
@@ -49,7 +49,7 @@ function SetForParticularExam() {
               height: 30,
             }}
             component={Link}
-            to="/layout/markmalpractice"
+            to="/layout/examdata/manageexamination/Sets/examsets/setforparticularexam/markmalpractice"
           >
             Mark MalPractice
           </Button>

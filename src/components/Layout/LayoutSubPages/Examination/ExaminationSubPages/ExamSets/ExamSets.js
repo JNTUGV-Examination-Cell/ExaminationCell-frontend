@@ -27,7 +27,7 @@ const ExamSets = () => {
                     </Typography>
                     <Button
                       component={Link}
-                      to={`/layout/setforparticularexam`}
+                      to={`/layout/examdata/manageexamination/Sets/examsets/setforparticularexam`}
                       variant="contained"
                       className="managebtn"
                       state={{ code: subject.code }}
