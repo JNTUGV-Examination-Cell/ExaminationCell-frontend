@@ -7,7 +7,10 @@
   }
 }
 
-
+.set{
+  display: flex;
+  flex-direction: column;
+}
 .separator-line {
   border-bottom: 1px solid #ccc; 
 }

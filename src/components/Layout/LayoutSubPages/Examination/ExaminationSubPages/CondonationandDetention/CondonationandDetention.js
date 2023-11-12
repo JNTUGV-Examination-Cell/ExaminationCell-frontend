@@ -10,6 +10,8 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import "./CondonationandDetention.css";
+import { useSelector } from "react-redux";
+import { selectCurrentExam } from "../../../../../../features/exams/examSlice";
 
 const jsonData = [
   { Slno: 1, Hallticket: "22NM1A0202" },
@@ -20,19 +22,19 @@ const jsonData = [
 ];
 
 const jsonData1 = [{ Slno: 1, Hallticket: "22NM1A0267", Amount: 500 }];
-
 function CondonationandDetention() {
   const [isPaymentFormVisible, setPaymentFormVisible] = useState(false);
+  const currentExam = useSelector(selectCurrentExam);
   const handleSettingsClick = () => {
     setPaymentFormVisible(!isPaymentFormVisible);
   };
-  const [presentExam] = useState("R111223 - B.Tech I Year I Sem R20 Reg February 2023");
-  // setCurrentExam("");
+
   return (
     <div className="set">
       <div style={{ marginBottom: "20px" }}>
         <Typography variant="h4">
-          Condonation and Detention - {presentExam}
+          Condonation and Detention - {currentExam.currentExam} -{" "}
+          {currentExam.currentExamName}
         </Typography>
       </div>
       <div style={{ marginBottom: "30px" }}>
