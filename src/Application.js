@@ -59,6 +59,7 @@ const Application = () => {
           <Route path="batches" element={<Batchesmain />} />
           <Route path="notifications" element={<PortalNotification />} />
           <Route path="staff" element={<Staff />} />
+          <Route path="InternalMarks" element={<InternalMarks />} />
           <Route path="examdata/manageexamination/Sets/examsets/setforparticularexam/markabsent" element={<MarkAbsents />} />
           <Route path="examdata/manageexamination/Sets/examsets/setforparticularexam/markmalpractice" element={<MarkMalpractice />} />
           <Route path="examdata/manageexamination/Sets/examsets" element={<ExamSets />} />
