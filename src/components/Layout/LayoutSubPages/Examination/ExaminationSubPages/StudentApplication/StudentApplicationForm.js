@@ -15,6 +15,8 @@ import PersonOffIcon from '@mui/icons-material/PersonOff';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
+import { useSelector } from 'react-redux';
+import { selectCurrentExam } from '../../../../../../features/exams/examSlice';
 
 const jsonData = [
   { branch: 'EEE', total_students: '87', registered: '85', not_registered: '2' },
@@ -42,7 +44,7 @@ const StudentApplicationForm = () => {
     const [filteredData, setFilteredData] = useState(Studentslist);
     const [filterStatus, setFilterStatus] = useState("All");
     const [totalAmount, setTotalAmount] = useState(0);
-    
+    console.log({});
   useEffect(() => {
     const amountPerStudent = 560;
     const totalAmount = amountPerStudent * filteredData.length;
@@ -106,12 +108,12 @@ const StudentApplicationForm = () => {
         (student) => student.registration === "Not Registered"
       ).length;
       
-      
+      const currentExam = useSelector(selectCurrentExam);
 
   return (
     <div>
       <div className="header">
-        <h1 className="head">Student Exam Application - R11223 - B.Tech I Year I Sem R20 Reg February 2023</h1>
+        <h1 className="head">Student Exam Application - {currentExam.currentExam} - {currentExam.currentExamName}</h1>
         <Stack spacing={2} direction="row">
           <Button variant="contained">Download Application Form</Button>
           <Button variant="contained">Payment</Button>

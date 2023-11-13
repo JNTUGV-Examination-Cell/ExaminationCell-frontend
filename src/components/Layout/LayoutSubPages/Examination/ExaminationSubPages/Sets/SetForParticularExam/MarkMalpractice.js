@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './MarkMalpractice.css';
 import Button from '@mui/material/Button'; 
+import { useSelector } from 'react-redux';
+import { selectCurrentExam } from '../../../../../../../features/exams/examSlice';
 
 function MarkMalpractice() {
   const [inputRollNumber, setInputRollNumber] = useState('');
@@ -16,11 +18,11 @@ function MarkMalpractice() {
       window.alert('Roll number marked as absent.');
     }
   };
-
+  const currentExam = useSelector(selectCurrentExam);
   return (
     <div>
       <div>
-        <h1>Mark Malpractice - R111223 - B.Tech I Year I Sem R20 Reg February 2023 - R201103 - ENGINEERING PHYSICS - 03 March 2023 10:00 AM</h1>
+        <h1>Mark Malpractice - {currentExam.currentExam} - {currentExam.currentExamName} - R201103 - ENGINEERING PHYSICS - 03 March 2023 10:00 AM</h1>
       </div>
       <br />
       <div className='set' align='center'>

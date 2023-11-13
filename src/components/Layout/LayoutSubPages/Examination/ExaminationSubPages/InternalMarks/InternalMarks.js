@@ -13,6 +13,8 @@ import TableCell from '@mui/material/TableCell';
 import TableBody from '@mui/material/TableBody';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
+import { useSelector } from 'react-redux';
+import { selectCurrentExam } from '../../../../../../features/exams/examSlice';
 
 
 
@@ -32,8 +34,8 @@ function InternalMarks() {
   const [selectedBranch, setSelectedBranch] = useState('All');
   const [selectedSubject, setSelectedSubject] = useState('');
   const [filteredData, setFilteredData] = useState([]);
-  const [internalmarks] = useState('R111223-B.Tech Ist Year I Sem R20 Reg February 2023');
   const dataKey = 'internalMarksData';
+  const currentExam = useSelector(selectCurrentExam);
 
   useEffect(() => {
     const storedData = localStorage.getItem(dataKey);
@@ -103,7 +105,7 @@ function InternalMarks() {
     <div className="page-container">
       <div className="header">
         <Typography variant="h5" className="main-heading">
-        Internal Marks - {internalmarks}
+        Internal Marks - {currentExam.currentExam}- {currentExam.currentExamName}
         </Typography>
       </div>
 
