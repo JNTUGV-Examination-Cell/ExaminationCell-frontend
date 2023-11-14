@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import "./SetForParticularExam.css";
 import { Typography, Button, Grid, Snackbar } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectCurrentExam } from "../../../../../../../features/exams/examSlice";
 
 function SetForParticularExam() {
-  const setstitle =
-    "Sets - R111223 - B.Tech I Year I sem R20 Reg February 2023 - R201102 - COMMUNICATIVE ENGLISH - 20 February 2023 10:00 AM";
   const set = "SET-1";
-
+  const currentExam = useSelector(selectCurrentExam);
   const [uploadedFile, setUploadedFile] = useState(null);
   const [showDownloadButton, setShowDownloadButton] = useState(false);
   const [uploadInProgress, setUploadInProgress] = useState(false); 
@@ -49,7 +49,7 @@ function SetForParticularExam() {
   return (
     <div className="malpractice">
       <Typography variant="h5" className="head">
-        {setstitle}
+        Sets - {currentExam.currentExam} - {currentExam.currentExamName} - R201102 - COMMUNICATIVE ENGLISH - 20 February 2023 10:00 AM
       </Typography>
       <Grid container spacing={2} className="buttons">
         <Grid item>
@@ -71,7 +71,7 @@ function SetForParticularExam() {
               height: 30,
             }}
             component={Link}
-            to="/layout/markabsent"
+            to="/layout/examdata/manageexamination/Sets/examsets/setforparticularexam/markabsent"
           >
             Mark Absent
           </Button>
@@ -83,7 +83,7 @@ function SetForParticularExam() {
               height: 30,
             }}
             component={Link}
-            to="/layout/markmalpractice"
+            to="/layout/examdata/manageexamination/Sets/examsets/setforparticularexam/markmalpractice"
           >
             Mark MalPractice
           </Button>
