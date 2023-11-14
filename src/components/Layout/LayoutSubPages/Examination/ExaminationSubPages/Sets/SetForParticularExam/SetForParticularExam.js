@@ -45,6 +45,10 @@ function SetForParticularExam() {
       console.log("No file uploaded to publish.");
     }
   };
+  const handleUnpublish = () => {
+    setShowDownloadButton(false);
+    setUploadedFile(null);
+  };
 
   return (
     <div className="malpractice">
@@ -137,6 +141,7 @@ function SetForParticularExam() {
           </Grid>
           <Grid item>
             {showDownloadButton ? (
+              <>
               <Button
                 variant="contained"
                 style={{
@@ -146,6 +151,18 @@ function SetForParticularExam() {
               >
                 Download
               </Button>
+              <Button
+                variant="contained"
+                style={{
+                  height: 30,
+                  marginLeft: 10, 
+                }}
+                onClick={handleUnpublish}
+              >
+                Unpublish
+              </Button>
+            </>
+              
             ) : (
               <Button
                 variant="contained"
