@@ -10,20 +10,12 @@
     letter-spacing: -0.52px;
 }
 
-.studentphotosbutton {
-    padding: 10px;
-    margin: 10px;
-    border-radius: 6px;
-    background: var(--Button, #8ebaff);
-    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25), 2px 3px 4px 0px rgba(0, 0, 0, 0.25) inset;
-}
 
 .Batchesblocks {
     display: flex;
-    /* padding: 20px; */
+    justify-content: space-between;
     flex-wrap: wrap;
 }
-
 
 
 .Batch {
@@ -33,15 +25,11 @@
     align-items: center;
     border-radius: 13px;
     background: #D9D9D9;
-    width: 250px;
+    min-width: calc(33.33% - 20px);
     height: 252px;
-    /* display:flex; */
-    flex-wrap: wrap;
-    padding: 20px;
+    padding: 10px;
     margin: 10px;
     text-align: center;
-    /* align-content: center; */
-
 }
 
 .Batchname {
@@ -55,7 +43,6 @@
     font-weight: 400;
     line-height: 22px;
     text-align: center;
-
     letter-spacing: -0.48px;
 }
 
@@ -84,7 +71,6 @@
     font-style: normal;
     font-weight: 400;
     line-height: 22px;
-    /* 91.667% */
     letter-spacing: -0.48px;
 }
 
@@ -97,10 +83,7 @@
     padding: 12px 16px;
     justify-content: center;
     align-items: center;
-    /* gap: 10px; */
-    /* flex-shrink: 0; */
 }
-
 
 .Batchbutton2 {
     border-radius: 6px;
@@ -114,5 +97,76 @@
     align-items: center;
     gap: 10px;
     border: none;
-    /* flex-shrink: 0; */
 }
+.BatchesContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100px;
+    padding: 10px;
+    margin-top: 10px;
+  }
+  
+  .studentphotosbutton {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 6px;
+    background: var(--Button, #8ebaff);
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25), 2px 3px 4px 0px rgba(0, 0, 0, 0.25) inset;
+  }
+  
+  .BatchesContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1000px;
+    padding: 10px;
+    margin-top: 10px;
+  }
+  
+  .studentphotosbutton {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 6px;
+    background: var(--Button, #8ebaff);
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25), 2px 3px 4px 0px rgba(0, 0, 0, 0.25) inset;
+  }
+  
+  .RegFilterContainer {
+    position: absolute;
+    top: 130px;
+    right: 150px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; 
+    width: auto;
+    min-width: 150px;
+    max-width: 350px;
+    max-height: 50px;
+    
+  }
+
+  .RFilterContainer {
+    position: absolute;
+    top: 130px;
+    right: 550px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; 
+    width: auto;
+    min-width: 150px;
+   max-width: 350px;
+   max-height: 30px;
+    
+  }
+
+  .filter {
+    min-width: 200px; 
+    width: auto; 
+}
+  
+  
+  
+  
