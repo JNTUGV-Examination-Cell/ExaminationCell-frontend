@@ -1,0 +1,44 @@
+.studentphotostitle{
+        padding: 10px;
+        margin-top: 10px;
+        color: #4D4D4D;
+        font-family: Roboto","Helvetica","Arial","sans-serif;
+        font-size: 1.5rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 19px;
+        letter-spacing: -0.52px;
+        width: 200px;
+        display: inline-block;
+}
+.studentphotos {
+        padding: 45px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 40px; 
+      }
+      
+      .photos {
+        text-align: center; 
+      }
+      
+      .photos img {
+        max-width: 100%; 
+        height: auto; 
+      }
+      .studentrollnumber{
+        font-family: Roboto","Helvetica","Arial","sans-serif;
+      }
+      
+
+      .photosSearchbar{
+        width: 280px;
+        margin-left: 680px;
+        display: inline-block;
+      }
+      @media (max-width: 768px) {
+        .studentphotos {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      

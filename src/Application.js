@@ -24,6 +24,7 @@ import FinalListOfExamination from "./components/Layout/LayoutSubPages/Examinati
 import SetForParticularExam from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Sets/SetForParticularExam/SetForParticularExam";
 import ExaminationSubPage from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/ExaminationSubPage";
 import CondonationandDetention from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/CondonationandDetention/CondonationandDetention";
+import StudentPhotosButton from "./components/Batches/StudentPhotosButton";
 
 const Application = () => {
   return (
@@ -57,6 +58,7 @@ const Application = () => {
           <Route path="profilepage" element={<ProfilePage />} />
           <Route path="homepage" element={<HomePage />} />
           <Route path="batches" element={<Batchesmain />} />
+          <Route path="batches/studentphotos" element={<StudentPhotosButton/>} />
           <Route path="notifications" element={<PortalNotification />} />
           <Route path="staff" element={<Staff />} />
           <Route path="InternalMarks" element={<InternalMarks />} />
