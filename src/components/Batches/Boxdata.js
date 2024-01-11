@@ -14,7 +14,7 @@ export class Boxdata extends Component {
                 <div className='Batchnumber'>{record.batch}</div>
                 <div className='Batchregulation'>{record.reg}</div>
                 <hr style={{width:"80%",border:'0.3px solid #9BA5B7'}}/>
-                <Link to="/admin/batches/managebatches"><button className='Batchbutton'>Manage</button></Link>
+                <Link to="/layout/batches/managebatches" style={{textDecoration:"none"}}><button className='Batchbutton'>Manage</button></Link>
                 <button className='Batchbutton2'>Years and Terms</button>
               </div>
             )
