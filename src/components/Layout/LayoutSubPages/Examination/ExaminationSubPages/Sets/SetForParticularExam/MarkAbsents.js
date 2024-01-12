@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './MarkAbsents.css';
 import Button from '@mui/material/Button';
 
@@ -6,12 +6,24 @@ function MarkAbsents() {
   const [inputRollNumber, setInputRollNumber] = useState('');
   const [absentees, setAbsentees] = useState([]);
 
+  // Load absentees from localStorage on component mount
+  useEffect(() => {
+    const storedAbsentees = localStorage.getItem('absentees');
+    if (storedAbsentees) {
+      setAbsentees(JSON.parse(storedAbsentees));
+    }
+  }, []);
+
+  // Save absentees to localStorage when it changes
+  useEffect(() => {
+    localStorage.setItem('absentees', JSON.stringify(absentees));
+  }, [absentees]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (inputRollNumber.trim() !== '') {
       setAbsentees([...absentees, inputRollNumber]);
-
       setInputRollNumber('');
       window.alert('Roll number marked as absent.');
     }

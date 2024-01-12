@@ -1,19 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './MarkMalpractice.css';
-import Button from '@mui/material/Button'; 
+import Button from '@mui/material/Button';
 
 function MarkMalpractice() {
   const [inputRollNumber, setInputRollNumber] = useState('');
-  const [Malpractice, setAbsentees] = useState([]);
+  const [malpractice, setMalpractice] = useState([]);
+
+  // Load malpractice from localStorage on component mount
+  useEffect(() => {
+    const storedMalpractice = localStorage.getItem('malpractice');
+    if (storedMalpractice) {
+      setMalpractice(JSON.parse(storedMalpractice));
+    }
+  }, []);
+
+  // Save malpractice to localStorage when it changes
+  useEffect(() => {
+    localStorage.setItem('malpractice', JSON.stringify(malpractice));
+  }, [malpractice]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (inputRollNumber.trim() !== '') {
-      setAbsentees([...Malpractice, inputRollNumber]);
-
+      setMalpractice([...malpractice, inputRollNumber]);
       setInputRollNumber('');
-      window.alert('Roll number marked as absent.');
+      window.alert('Roll number marked as malpractice.');
     }
   };
 
@@ -53,10 +65,9 @@ function MarkMalpractice() {
       </div>
 
       <div>
-        
         <h2>Malpractice:</h2>
         <ul>
-          {Malpractice.map((rollNumber, index) => (
+          {malpractice.map((rollNumber, index) => (
             <li key={index}>{rollNumber}</li>
           ))}
         </ul>
