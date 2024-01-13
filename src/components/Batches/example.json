@@ -5,7 +5,7 @@
   },
   {
     "batch": 2,
-    "reg": "R21 mca"
+    "reg": "R23 btech"
   },
   {
     "batch": 3,
@@ -13,23 +13,23 @@
   },
   {
     "batch": 4,
-    "reg": "R23 mca"
+    "reg": "R13 mtech"
   },
   {
     "batch": 5,
-    "reg": "R24 mca"
+    "reg": "R13 btech"
   },
   {
     "batch": 6,
-    "reg": "R25 mca"
+    "reg": "R19 mca"
   },
   {
     "batch": 7,
-    "reg": "R26 mca"
+    "reg": "R20 mca"
   },
   {
     "batch": 8,
-    "reg": "R27 mca"
+    "reg": "R23 mtech"
   },
   {
     "batch": 9,
@@ -37,11 +37,11 @@
   },
   {
     "batch": 10,
-    "reg": "R29 mca"
+    "reg": "R29 btech"
   },
   {
     "batch": 11,
-    "reg": "R30 mca"
+    "reg": "R23 mca"
   },
   {
     "batch": 12,
@@ -57,6 +57,6 @@
   },
   {
     "batch": 15,
-    "reg": "R34 mca"
+    "reg": "R34 btech"
   }
 ]
