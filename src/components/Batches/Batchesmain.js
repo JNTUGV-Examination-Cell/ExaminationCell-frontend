@@ -1,3 +1,4 @@
+
 import { Link } from 'react-router-dom';
 import { Boxdata } from './Boxdata';
 import './Batchesmain.css'
@@ -22,5 +23,5 @@ const Batchesmain = ()=> {
         );
     }
 
-export default Batchesmain;
 
+export default Batchesmain;
