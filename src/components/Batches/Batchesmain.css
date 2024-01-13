@@ -1,172 +1,166 @@
 .Batchesheading {
-    padding: 10px;
-    margin-top: 10px;
-    color: #4D4D4D;
-    font-family: Tienne;
-    font-size: 26px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 19px;
-    letter-spacing: -0.52px;
+  padding: 10px;
+  margin-top: 10px;
+  color: #4d4d4d;
+  font-family: Tienne;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: -0.52px;
 }
-
 
 .Batchesblocks {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-
 .Batch {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 13px;
-    background: #D9D9D9;
-    min-width: calc(33.33% - 20px);
-    height: 252px;
-    padding: 10px;
-    margin: 10px;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 13px;
+  background: #d9d9d9;
+  min-width: calc(33.33% - 20px);
+  height: 252px;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
 }
 
 .Batchname {
-    width: 60px;
-    height: 39px;
-    flex-shrink: 0;
-    color: var(--Primary, #545F71);
-    font-family: Times New Roman;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 22px;
-    text-align: center;
-    letter-spacing: -0.48px;
+  width: 60px;
+  height: 39px;
+  flex-shrink: 0;
+  color: var(--Primary, #545f71);
+  font-family: Times New Roman;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  text-align: center;
+  letter-spacing: -0.48px;
 }
 
 .Batchnumber {
-    width: 32px;
-    height: 37px;
-    flex-shrink: 0;
-    color: var(--Primary, #545F71);
-    font-family: Times New Roman;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 22px;
-    letter-spacing: -0.48px;
+  width: 32px;
+  height: 37px;
+  flex-shrink: 0;
+  color: var(--Primary, #545f71);
+  font-family: Times New Roman;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: -0.48px;
 }
 
 .Batchregulation {
-    display: flex;
-    width: 252px;
-    height: 58px;
-    flex-direction: column;
-    justify-content: center;
-    color: var(--Primary, #545F71);
-    font-family: Times New Roman;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 22px;
-    letter-spacing: -0.48px;
+  display: flex;
+  width: 252px;
+  height: 58px;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--Primary, #545f71);
+  font-family: Times New Roman;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: -0.48px;
 }
 
 .Batchbutton {
-    border-radius: 6px;
-    background: var(--Button, #8EBAFF);
-    display: flex;
-    width: 71px;
-    height: 17px;
-    padding: 12px 16px;
-    justify-content: center;
-    align-items: center;
+  border-radius: 6px;
+  background: var(--Button, #8ebaff);
+  display: flex;
+  width: 71px;
+  height: 17px;
+  padding: 12px 16px;
+  justify-content: center;
+  align-items: center;
 }
 
 .Batchbutton2 {
-    border-radius: 6px;
-    background: #D9D9D9;
-    color: #28A73C;
-    display: flex;
-    width: 162px;
-    height: 17px;
-    padding: 12px 16px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    border: none;
+  border-radius: 6px;
+  background: #d9d9d9;
+  color: #28a73c;
+  display: flex;
+  width: 162px;
+  height: 17px;
+  padding: 12px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: none;
 }
 .BatchesContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100px;
-    padding: 10px;
-    margin-top: 10px;
-  }
-  
-  .studentphotosbutton {
-    padding: 10px;
-    margin: 10px;
-    border-radius: 6px;
-    background: var(--Button, #8ebaff);
-    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25), 2px 3px 4px 0px rgba(0, 0, 0, 0.25) inset;
-  }
-  
-  .BatchesContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 1000px;
-    padding: 10px;
-    margin-top: 10px;
-  }
-  
-  .studentphotosbutton {
-    padding: 10px;
-    margin: 10px;
-    border-radius: 6px;
-    background: var(--Button, #8ebaff);
-    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25), 2px 3px 4px 0px rgba(0, 0, 0, 0.25) inset;
-  }
-  
-  .RegFilterContainer {
-    position: absolute;
-    top: 130px;
-    right: 150px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end; 
-    width: auto;
-    min-width: 150px;
-    max-width: 350px;
-    max-height: 50px;
-    
-  }
-
-  .RFilterContainer {
-    position: absolute;
-    top: 130px;
-    right: 550px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end; 
-    width: auto;
-    min-width: 150px;
-   max-width: 350px;
-   max-height: 30px;
-    
-  }
-
-  .filter {
-    min-width: 200px; 
-    width: auto; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100px;
+  padding: 10px;
+  margin-top: 10px;
 }
-  
-  
-  
-  
+
+.studentphotosbutton {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 6px;
+  background: var(--Button, #8ebaff);
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25),
+    2px 3px 4px 0px rgba(0, 0, 0, 0.25) inset;
+}
+
+.BatchesContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1000px;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.studentphotosbutton {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 6px;
+  background: var(--Button, #8ebaff);
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25),
+    2px 3px 4px 0px rgba(0, 0, 0, 0.25) inset;
+}
+
+.RegFilterContainer {
+  position: absolute;
+  top: 130px;
+  right: 150px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: auto;
+  min-width: 150px;
+  max-width: 350px;
+  max-height: 50px;
+}
+
+.RFilterContainer {
+  position: absolute;
+  top: 130px;
+  right: 550px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: auto;
+  min-width: 150px;
+  max-width: 350px;
+  max-height: 30px;
+}
+
+.filter {
+  min-width: 200px;
+  width: auto;
+}
