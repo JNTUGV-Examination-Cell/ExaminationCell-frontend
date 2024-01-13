@@ -8,9 +8,15 @@ import Paper from "@mui/material/Paper";
 import { Button } from "@mui/material";
 import data from "./Data";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {
+  setExam,
+  setExamName,
+} from "../../../../../../features/exams/examSlice";
 
 const jsonData = data;
 const Examdata = () => {
+  const dispatch = useDispatch();
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -48,7 +54,14 @@ const Examdata = () => {
               <TableCell>{row.year}</TableCell>
               <TableCell>{row.Type}</TableCell>
               <TableCell>
-                <Button component={Link} to={row.path}>
+                <Button
+                  component={Link}
+                  to={row.path}
+                  onClick={() => {
+                    dispatch(setExam(row.code));
+                    dispatch(setExamName(row.exam));
+                  }}
+                >
                   Manage
                 </Button>
               </TableCell>

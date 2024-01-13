@@ -4,15 +4,16 @@ import "./ExamSets.css";
 import ExamSetsData from "./ExamSetsData.json";
 import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
+import { useSelector } from "react-redux";
+import { selectCurrentExam } from "../../../../../../features/exams/examSlice";
 const ExamSets = () => {
-  const title =
-    "Exam Sets - R111223 - B.Tech I Year I Sem R20 Reg February 2023";
+  const currentExam = useSelector(selectCurrentExam);
 
   return (
     <>
       <div className="examsets">
         <Typography variant="h5" className="examsetstitle">
-          {title}
+          Exam Sets - {currentExam.currentExam} - {currentExam.currentExamName}
         </Typography>
         <div className="setsblocks">
           {ExamSetsData.map((examSet, index) => (
@@ -27,7 +28,7 @@ const ExamSets = () => {
                     </Typography>
                     <Button
                       component={Link}
-                      to={`/layout/setforparticularexam`}
+                      to={`/layout/examdata/manageexamination/Sets/examsets/setforparticularexam`}
                       variant="contained"
                       className="managebtn"
                       state={{ code: subject.code }}

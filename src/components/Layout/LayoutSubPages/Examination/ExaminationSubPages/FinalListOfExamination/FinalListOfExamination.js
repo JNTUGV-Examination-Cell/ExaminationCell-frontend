@@ -2,6 +2,8 @@ import React from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button,Typography } from '@mui/material';
 import './FinalListOfExamination.css';
 import ExcelJS from 'exceljs';
+import { useSelector } from 'react-redux';
+import { selectCurrentExam } from '../../../../../../features/exams/examSlice';
 
 const jsonData = [
   { SIno: 1 , Hallticket: '22NM1A0201', Name:'AGARPU YASASWINI',Branch:'Electrical and Electronics Engineering',Mobile:'8121504788',Id:'8621010564'},
@@ -15,6 +17,7 @@ const jsonData = [
 ];
 
 function FinalListOfExamination() {
+  const currentExam = useSelector(selectCurrentExam);
   const handleDownload = async () => {
     const workbook = new ExcelJS.Workbook();
     const worksheet = workbook.addWorksheet('Examination Data');
@@ -44,7 +47,7 @@ function FinalListOfExamination() {
   return (
     <div style={{ margin: '50px' }}>
       <Typography variant="h5">
-        FINAL LIST OF EXAMINATION - R111223 - B.Tech I YEAR I SEM R20 REG FEBRUARY 2023
+        FINAL LIST OF EXAMINATION - {currentExam.currentExam} - {currentExam.currentExamName}
       </Typography>
       <Button variant="contained" color="primary" onClick={handleDownload} className='HTBtn' style={{ margin: '50px 0' }}>Download Hall Tickets</Button>
     
