@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Boxdata } from './Boxdata';
+import  Boxdata  from './Boxdata';
 import './Batchesmain.css'
 import Button from "@mui/material/Button";
 
@@ -23,4 +23,3 @@ const Batchesmain = ()=> {
     }
 
 export default Batchesmain;
-
