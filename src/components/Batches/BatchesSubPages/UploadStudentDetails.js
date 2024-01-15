@@ -19,7 +19,7 @@ export default function UploadStudentDetails(){
   return (
   <div>
     <div>
-      <h1>Upload Student basic details -step one - MCA R16 [2018-2021]</h1>
+      <h1>Upload Student basic details</h1>
       <div className="bulkadmissionsupload">
         <h1 className="head">upload Student Basic Details File - .txt format</h1>
         <Button component="label" variant="contained" startIcon={<CloudUploadIcon />}>
