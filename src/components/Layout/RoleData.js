@@ -6,6 +6,7 @@ import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import GradingIcon from "@mui/icons-material/Grading";
 import HubIcon from "@mui/icons-material/Hub";
 import LogoutIcon from "@mui/icons-material/Logout";
+import {MdApartment}  from "react-icons/md";
 
 const RollData = {
   Admin: [
@@ -78,6 +79,12 @@ const RollData = {
       icon: <GradingIcon className="Nav-icons" />,
       text: "Examinations",
     },
+    {
+      to: "/layout/Colleges",
+      icon: <MdApartment className="Nav-icons" />,
+      text: "Colleges",
+    },
+
     {
       to: "/layout/InternalMarks",
       icon: <HubIcon className="Nav-icons" />,

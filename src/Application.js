@@ -24,7 +24,8 @@ import FinalListOfExamination from "./components/Layout/LayoutSubPages/Examinati
 import SetForParticularExam from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Sets/SetForParticularExam/SetForParticularExam";
 import ExaminationSubPage from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/ExaminationSubPage";
 import CondonationandDetention from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/CondonationandDetention/CondonationandDetention";
-
+import AnotherCollegePage from "./components/Layout/LayoutSubPages/CollegeSubPages/CollegeDetails";
+import FileUploader from "./components/Layout/LayoutSubPages/CollegeSubPages/FileUploader";
 const Application = () => {
   return (
     <div>
@@ -67,6 +68,8 @@ const Application = () => {
           <Route path="examdata/manageexamination/Sets/examsets/setforparticularexam" element={<SetForParticularExam/>} />
           <Route path="examdata" element={<Examdata />} />
           <Route path="examdata/manageexamination" element={<ExaminationSubPage />} />
+          <Route path="/layout/layoutSubPages/CollegeSubPages/CollegeDetails/AnotherCollegePage" element={<AnotherCollegePage />} />
+          <Route path="/layout/layoutSubPages/CollegeSubPages/FileUploader" element={<FileUploader/>} />
         </Route>
         <Route path="/home" element={<Home />} />
         <Route path="/random" element={<Random />} />

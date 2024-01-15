@@ -1,0 +1,17 @@
+.bulkadmissionsupload{
+    text-align: center;
+    align-items: center;
+}
+.head{
+    color: rgb(88, 88, 230);
+}
+.buttonproceed{
+    padding-top: 5%;
+    padding-left : 30% ;
+}
+.textchoose{
+    padding: 0.5% 10%;
+}
+.textfill{
+    padding: 12% 12%;
+}
