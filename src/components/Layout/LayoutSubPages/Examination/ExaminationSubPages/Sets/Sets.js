@@ -3,20 +3,22 @@ import React, { useState } from 'react';
 import { Typography, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import './Sets.css'; 
+import { useSelector } from 'react-redux';
+import { selectCurrentExam } from '../../../../../../features/exams/examSlice';
 
 const CustomComponent = () => {
     const [college, setCollege] = useState("NM-Vignans Institute of Engineering for women");
     const navigate = useNavigate();
-
+    const currentExam = useSelector(selectCurrentExam);
     const handleSettingsClick = () => {
         setCollege("New College Name"); 
-        navigate('/layout/examsets');
+        navigate('/layout/examdata/manageexamination/Sets/examsets');
     }
 
     return (
         <div>
             <Typography variant="h5" style={{ marginBottom: '20px' }}>
-                Exam Center Dashboard - R111223 - B.Tech I Year I sem R20 Reg February 2023
+                Exam Center Dashboard - {currentExam.currentExam} - {currentExam.currentExamName}
             </Typography>
             <Button variant="contained" onClick={handleSettingsClick}>Sets</Button>
             <div className="message-container">

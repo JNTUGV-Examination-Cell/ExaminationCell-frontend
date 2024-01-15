@@ -1,21 +1,55 @@
-// import React, { useState } from "react";
+import React, { useState } from "react";
 import "./SetForParticularExam.css";
-import { Typography, Button, Grid } from "@mui/material";
+import { Typography, Button, Grid, Snackbar } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectCurrentExam } from "../../../../../../../features/exams/examSlice";
 
 function SetForParticularExam() {
-  // const [redirectToPage, setRedirectToPage] = useState(null);
-  const setstitle =
-    "Sets - R111223 - B.Tech I Year I sem R20 Reg February 2023 - R201102 - COMMUNICATIVE ENGLISH - 20 February 2023 10:00 AM";
   const set = "SET-1";
-  const ntable = "Not Available";
-  // if (redirectToPage) {
-  //   window.location.href = redirectToPage;
-  // }
+  const currentExam = useSelector(selectCurrentExam);
+  const [uploadedFile, setUploadedFile] = useState(null);
+  const [showDownloadButton, setShowDownloadButton] = useState(false);
+  const [uploadInProgress, setUploadInProgress] = useState(false); 
+
+  const handleFileUpload = (event) => {
+    const selectedFile = event.target.files[0];
+    if (selectedFile) {
+      setUploadInProgress(true); 
+      setUploadedFile(selectedFile);
+      setTimeout(() => {
+        setUploadInProgress(false); 
+      }, 3000); 
+    }
+  };
+
+  const handleDownload = () => {
+    if (uploadedFile) {
+      const fileUrl = URL.createObjectURL(uploadedFile);
+      const downloadLink = document.createElement("a");
+      downloadLink.href = fileUrl;
+      downloadLink.download = uploadedFile.name;
+      downloadLink.style.display = "none";
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+    } else {
+      console.log("No file uploaded to download.");
+    }
+  };
+
+  const handlePublish = () => {
+    if (uploadedFile) {
+      setShowDownloadButton(true);
+    } else {
+      console.log("No file uploaded to publish.");
+    }
+  };
+
   return (
     <div className="malpractice">
       <Typography variant="h5" className="head">
-        {setstitle}
+        Sets - {currentExam.currentExam} - {currentExam.currentExamName} - R201102 - COMMUNICATIVE ENGLISH - 20 February 2023 10:00 AM
       </Typography>
       <Grid container spacing={2} className="buttons">
         <Grid item>
@@ -37,7 +71,7 @@ function SetForParticularExam() {
               height: 30,
             }}
             component={Link}
-            to="/layout/markabsent"
+            to="/layout/examdata/manageexamination/Sets/examsets/setforparticularexam/markabsent"
           >
             Mark Absent
           </Button>
@@ -49,7 +83,7 @@ function SetForParticularExam() {
               height: 30,
             }}
             component={Link}
-            to="/layout/markmalpractice"
+            to="/layout/examdata/manageexamination/Sets/examsets/setforparticularexam/markmalpractice"
           >
             Mark MalPractice
           </Button>
@@ -73,10 +107,64 @@ function SetForParticularExam() {
         </Typography>
         <hr style={{ width: "50%" }}></hr>
         <Typography variant="h6" className="ntable">
-          {ntable}
+          {showDownloadButton ? (
+            <span style={{ color: "green" }}>Available</span>
+          ) : (
+            "Not Available"
+          )}
         </Typography>
         <hr style={{ width: "50%" }}></hr>
+        <Grid container spacing={2} className="center-buttons">
+          <Grid item>
+            <label htmlFor="file-upload" style={{ display: "block" }}>
+              <Button
+                variant="contained"
+                style={{
+                  height: 30,
+                }}
+                component="span"
+              >
+                Upload
+              </Button>
+            </label>
+            <input
+              type="file"
+              id="file-upload"
+              style={{ display: "none" }}
+              accept=".pdf"
+              onChange={handleFileUpload}
+            />
+          </Grid>
+          <Grid item>
+            {showDownloadButton ? (
+              <Button
+                variant="contained"
+                style={{
+                  height: 30,
+                }}
+                onClick={handleDownload}
+              >
+                Download
+              </Button>
+            ) : (
+              <Button
+                variant="contained"
+                style={{
+                  height: 30,
+                }}
+                onClick={handlePublish}
+              >
+                Publish
+              </Button>
+            )}
+          </Grid>
+        </Grid>
       </div>
+      <Snackbar
+        open={uploadInProgress} 
+        autoHideDuration={3000}
+        message="File upload in progress..."
+      />
     </div>
   );
 }
