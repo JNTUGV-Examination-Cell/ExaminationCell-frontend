@@ -1,31 +1,27 @@
-import React, { useState, useEffect } from 'react';
+// MarkAbsents.js
+import React, { useState } from 'react';
 import './MarkAbsents.css';
 import Button from '@mui/material/Button';
 
-function MarkAbsents() {
+function MarkAbsents({ handleMarkAbsent, absentees }) {
+
+  console.log("Rendering MarkAbsents", absentees);
+
+  
   const [inputRollNumber, setInputRollNumber] = useState('');
-  const [absentees, setAbsentees] = useState([]);
-
-  // Load absentees from localStorage on component mount
-  useEffect(() => {
-    const storedAbsentees = localStorage.getItem('absentees');
-    if (storedAbsentees) {
-      setAbsentees(JSON.parse(storedAbsentees));
-    }
-  }, []);
-
-  // Save absentees to localStorage when it changes
-  useEffect(() => {
-    localStorage.setItem('absentees', JSON.stringify(absentees));
-  }, [absentees]);
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (inputRollNumber.trim() !== '') {
-      setAbsentees([...absentees, inputRollNumber]);
+      if (typeof handleMarkAbsent === 'function') {
+
+      
+      handleMarkAbsent(inputRollNumber);
       setInputRollNumber('');
       window.alert('Roll number marked as absent.');
+      } 
     }
   };
 
@@ -35,20 +31,23 @@ function MarkAbsents() {
         <h1>Mark Absent - R111223 - B.Tech I Year I Sem R20 Reg February 2023 - R201103 - ENGINEERING PHYSICS - 03 March 2023 10:00 AM</h1>
       </div>
       <br />
-      <div className='set' align='center'>
-        <div className='set5'>
+      <div className="set" align="center">
+        <div className="set5">
           <div>
             <h4>Absentees for the Slot</h4>
             <hr />
             <form onSubmit={handleSubmit}>
               <div>
-                <label>Roll Numbers for marking Absent </label><br />
+                <label htmlFor="rollNumberInput">Roll Numbers for marking Absent </label>
+                <br />
                 <input
-                  type='text'
+                  type="text"
+                  id="rollNumberInput"
                   value={inputRollNumber}
                   onChange={(e) => setInputRollNumber(e.target.value)}
-                /><br />
-                <Button type='submit' variant='contained' color='primary'>
+                />
+                <br />
+                <Button type="submit" variant="contained" color="primary" >
                   Proceed
                 </Button>
               </div>
@@ -62,16 +61,16 @@ function MarkAbsents() {
           </div>
         </div>
       </div>
-      <div>
-        <h2>Absentees:</h2>
-        
-        <ul>
-          {absentees.map((rollNumber, index) => (
-            <li key={index}>{rollNumber}</li>
-          ))}
-        </ul>
-      </div>
-    </div>
+    
+<div>
+<h2>Absentees:</h2>
+<ul>
+  {absentees && absentees.map((rollNumber, index) => (
+    <li key={index}>{rollNumber}</li>
+  ))}
+</ul>
+</div>
+</div>
   );
 }
 

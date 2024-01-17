@@ -28,6 +28,7 @@ import CondonationandDetention from "./components/Layout/LayoutSubPages/Examinat
 const Application = () => {
   return (
     <div>
+      
       <Routes>
         <Route
           path="/admin/batches/managebatches/uploadstudents"
