@@ -55,7 +55,7 @@ function MarkMalpractice({ handleMarkMalpractice, malpractice }) {
     
 <div>
 <h2>Malpractice:</h2>
-<ul>
+<ul align="left">
   {malpractice && malpractice.map((rollNumber, index) => (
     <li key={index}>{rollNumber}</li>
   ))}

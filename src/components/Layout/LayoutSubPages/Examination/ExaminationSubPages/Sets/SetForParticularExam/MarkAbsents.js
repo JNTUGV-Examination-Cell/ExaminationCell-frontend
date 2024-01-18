@@ -31,7 +31,7 @@ function MarkAbsents({ handleMarkAbsent, absentees }) {
         <h1>Mark Absent - R111223 - B.Tech I Year I Sem R20 Reg February 2023 - R201103 - ENGINEERING PHYSICS - 03 March 2023 10:00 AM</h1>
       </div>
       <br />
-      <div className="set" align="center">
+      <div className="set">
         <div className="set5">
           <div>
             <h4>Absentees for the Slot</h4>
@@ -64,7 +64,7 @@ function MarkAbsents({ handleMarkAbsent, absentees }) {
     
 <div>
 <h2>Absentees:</h2>
-<ul>
+<ul align="left">
   {absentees && absentees.map((rollNumber, index) => (
     <li key={index}>{rollNumber}</li>
   ))}
