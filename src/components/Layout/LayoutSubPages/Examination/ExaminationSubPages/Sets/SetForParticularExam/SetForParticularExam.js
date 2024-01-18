@@ -5,10 +5,10 @@ import { Typography, Button, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 // Corrected import paths
 // import DownloadDForm from './DownloadDForm';
+import DownloadDForm from './DownloadDForm';
 import MarkAbsents from './MarkAbsents';
 import MarkMalpractice from './MarkMalpractice';
 import * as XLSX from 'xlsx';
-
 
 
 function SetForParticularExam() {
@@ -30,19 +30,18 @@ function SetForParticularExam() {
   const handleDownloadDForm = () => {
     const wb = XLSX.utils.book_new();
 
-    // Create a worksheet for absentees
     const absenteeWS = XLSX.utils.json_to_sheet(
       absentees.map((rollNumber, index) => ({ 'Absentees RollNumber': rollNumber }))
     );
     XLSX.utils.book_append_sheet(wb, absenteeWS, 'Absentees');
 
-    // Create a worksheet for malpractice
+
     const malpracticeWS = XLSX.utils.json_to_sheet(
       malpractice.map((rollNumber, index) => ({ 'Malpractice Students RollNumber': rollNumber }))
     );
     XLSX.utils.book_append_sheet(wb, malpracticeWS, 'Malpractice');
 
-    // Save the workbook as an Excel file
+
     XLSX.writeFile(wb, 'Download_D_Form.xlsx');
   };
 
@@ -107,7 +106,6 @@ function SetForParticularExam() {
               height: 30,
             }}
             component={Link}
-            to="/layout/examdata/manageexamination/Sets/examsets/setforparticularexam/markmalpractice"
             onClick={() => handleProceed("markMalpractice")}
           >
 
