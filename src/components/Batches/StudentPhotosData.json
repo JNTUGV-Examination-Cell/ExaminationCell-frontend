@@ -1,0 +1,57 @@
+[
+    {
+       "id":"1",
+       "rollNumber":"20VV1A1201",
+       "image":"/images/20VV1A1201.png"
+
+    },
+    {
+        "id":"2",
+        "rollNumber":"21VV1A1202",
+        "image":"/images/21VV1A1202.png"
+    },
+    {
+        "id":"3",
+        "rollNumber":"22VV1A1203",
+        "image":"/images/22VV1A1203.png"
+    },
+    {
+        "id":"4",
+        "rollNumber":"23VV1A1204",
+        "image":"/images/23VV1A1204.png"
+ 
+     },
+     {
+         "id":"5",
+         "rollNumber":"24VV1A1205",
+         "image":"/images/24VV1A1205.png"
+     },
+     {
+         "id":"6",
+         "rollNumber":"25VV1A1206",
+         "image":"/images/25VV1A1206.png"
+     },
+     {
+        "id":"7",
+        "rollNumber":"26VV1A1207",
+        "image":"/images/26VV1A1207.png"
+ 
+     },
+     {
+         "id":"8",
+         "rollNumber":"27VV1A1208",
+         "image":"/images/27VV1A1208.png"
+     },
+     {
+         "id":"9",
+         "rollNumber":"28VV1A1209",
+         "image":"/images/28VV1A1209.png"
+     },
+     {
+        "id":"10",
+        "rollNumber":"29VV1A1210",
+        "image":"/images/29VV1A1210.png"
+    }
+   
+    
+]

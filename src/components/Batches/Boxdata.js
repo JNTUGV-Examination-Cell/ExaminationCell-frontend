@@ -70,6 +70,9 @@ class Boxdata extends Component {
               <hr style={{ width: "80%", border: "0.3px solid #9BA5B7" }} />
               <Link to="/layout/batches/managebatches" style={{textDecoration:"none"}}><button className='Batchbutton'>Manage</button></Link>
 
+              <Link to="/admin/batches/managebatches">
+                <button className="Batchbutton">Manage</button>
+              </Link>
               <br></br>
               <button className="Batchbutton2">Years and Terms</button>
             </div>
