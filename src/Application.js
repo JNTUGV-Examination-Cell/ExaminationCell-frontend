@@ -15,6 +15,7 @@ import Staff from "./components/Layout/LayoutSubPages/Staff/Staff";
 import Sets from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Sets/Sets";
 import MarkAbsents from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Sets/SetForParticularExam/MarkAbsents";
 import MarkMalpractice from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Sets/SetForParticularExam/MarkMalpractice";
+import DownloadDForm from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Sets/SetForParticularExam/DownloadDForm";
 import StudentApplicationForm from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/StudentApplication/StudentApplicationForm";
 import Examdata from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Exams/Examdata";
 import ExamSets from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/ExamSets/ExamSets";
@@ -62,6 +63,7 @@ const Application = () => {
           <Route path="InternalMarks" element={<InternalMarks />} />
           <Route path="examdata/manageexamination/Sets/examsets/setforparticularexam/markabsent" element={<MarkAbsents />} />
           <Route path="examdata/manageexamination/Sets/examsets/setforparticularexam/markmalpractice" element={<MarkMalpractice />} />
+          <Route path="examdata/manageexamination/Sets/examsets/setforparticularexam/downloaddform" element={<DownloadDForm />} />
           <Route path="examdata/manageexamination/Sets/examsets" element={<ExamSets />} />
           <Route path="managesubject" element={<ManageSubjects />} />
           <Route path="examdata/manageexamination/Sets/examsets/setforparticularexam" element={<SetForParticularExam/>} />
