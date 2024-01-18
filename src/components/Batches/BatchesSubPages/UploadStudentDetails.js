@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import './bulkadmissions.css';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
@@ -18,8 +18,9 @@ const VisuallyHiddenInput = styled('input')({
 });
 
 export default function UploadStudentDetails() {
-  const [selectedFile, setSelectedFile] = React.useState(null);
-  const [sheetData, setSheetData] = React.useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [sheetData, setSheetData] = useState(null);
+  const [error, setError] = useState(null);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -32,9 +33,36 @@ export default function UploadStudentDetails() {
       const firstSheetName = workbook.SheetNames[0];
       const sheet = workbook.Sheets[firstSheetName];
       const sheetData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
-      setSheetData(sheetData);
+      const isValidData = validateData(sheetData);
+      if (isValidData) {
+        setSheetData(sheetData);
+        setError(null);
+      } else {
+        setSheetData(null);
+        setError('Invalid or duplicate values found in the file.');
+      }
     };
     reader.readAsBinaryString(file);
+  };
+
+  const validateData = (data) => {
+    const columnIndexToCheck = 0;
+
+    const valuesSet = new Set();
+
+    for (let i = 1; i < data.length; i++) {
+      const value = data[i][columnIndexToCheck];
+      if (valuesSet.has(value)) {
+        return false;
+      }
+      valuesSet.add(value);
+    }
+
+    return true;
+  };
+
+  const handleProceedClick = () => {
+    console.log('Proceeding with the data:', sheetData);
   };
 
   return (
@@ -44,34 +72,26 @@ export default function UploadStudentDetails() {
         <br />
         <div className="bulkadmissionsupload">
           <h2 className="head">Upload Student Basic Details File - .xls, .xlsx format</h2>
-          <Button
-            component="label"
-            variant="contained"
-            startIcon={<CloudUploadIcon />}
-          >
+          <Button component="label" variant="contained" startIcon={<CloudUploadIcon />}>
             Upload file
-            <VisuallyHiddenInput
-              type="file"
-              onChange={handleFileChange}
-              accept=".xls, .xlsx"
-              aria-label="Upload file"
-            />
+            <VisuallyHiddenInput type="file" onChange={handleFileChange} accept=".xls, .xlsx" aria-label="Upload file" />
           </Button>
           <input
             type="text"
-            id="filled-basic"
             placeholder={selectedFile ? selectedFile.name : 'No file chosen'}
             variant="outlined"
             className="textchoose"
             readOnly
           />
           <div className="buttonproceed">
-            <Button variant="contained">Proceed</Button>
+            <Button variant="contained" onClick={handleProceedClick} disabled={!sheetData}>
+              Proceed
+            </Button>
           </div>
           <br />
+          {error && <div className="error-message">{error}</div>}
           <div className="textshow">
             <textarea
-              id="filled-choosen"
               placeholder="Shows the data of the file"
               className="textfill"
               readOnly

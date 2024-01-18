@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Boxdata } from './Boxdata';
+import  Boxdata  from '../Batches/Boxdata';
 import './Batchesmain.css'
 
 
@@ -15,4 +15,3 @@ const Batchesmain = ()=> {
     }
 
 export default Batchesmain;
-
