@@ -5,11 +5,11 @@ import send from "./assests/send.svg";
 import "./loginPage.css";
 import emailjs from "emailjs-com";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const LoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
-  const [otp, setOTP] = useState("");
   const [verifyOtp, setVerifyOtp] = useState("");
   const [verificationStatus, setVerificationStatus] = useState(false);
 
@@ -30,14 +30,24 @@ const LoginPage = () => {
     e.preventDefault();
 
     const generatedOTP = generateOTP();
-    setOTP(generatedOTP);
-
+    const otpNumber = parseInt(generatedOTP, 10);
+    try {
+      const response = await axios.post(
+        "http://localhost:9000/api/staff/user/sendOtp",
+        {
+          email: email,
+          otpValue: otpNumber,
+        }
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
     const templateParams = {
       to_name: email,
       from_name: "Vamshi",
       message: `Your OTP is: ${generatedOTP}`,
     };
-    console.log(templateParams);
 
     emailjs
       .send(
@@ -47,15 +57,34 @@ const LoginPage = () => {
         "mLU5ET7GwMJqFXPD2"
       )
       .then((response) => {
-        console.log("Email sent successfully:", response);
+        console.log("Email sent successfully:");
       })
       .catch((error) => {
         console.log("Error sending email:", error);
       });
   };
 
-  const verifyOTP = () => {
-    if (otp === verifyOtp) {
+  const verifyOTP = async () => {
+    let userDetails;
+    const otpNumber = parseInt(verifyOtp, 10);
+    console.log({
+      email: email,
+      otpValue: otpNumber,
+    })
+    try {
+      const response = await axios.post(
+        "http://localhost:9000/api/staff/user/verifyOtp",
+        {
+          email: email, 
+          otpValue: verifyOtp, 
+        }
+      );
+      userDetails = response.data;
+    } catch (error) {
+      console.error("Error:", error);
+    }
+    console.log(userDetails);
+    if (userDetails) {
       setVerificationStatus(true);
       navigate("/home");
     } else {
@@ -96,7 +125,11 @@ const LoginPage = () => {
           </Box>
           <Box>
             <TextField
-              sx={{ marginRight: "10px", width: "55%",'@media (max-width: 600px)':{} }}
+              sx={{
+                marginRight: "10px",
+                width: "55%",
+                "@media (max-width: 600px)": {},
+              }}
               onChange={(e) => setVerifyOtp(e.target.value)}
               value={verifyOtp}
               className="textinput"
@@ -106,9 +139,11 @@ const LoginPage = () => {
             <Button
               className="otp-button"
               onClick={verifyOTP}
-              sx={
-                { height: "54px",width: "35%", '@media (max-width: 600px)':{}}
-              }
+              sx={{
+                height: "54px",
+                width: "35%",
+                "@media (max-width: 600px)": {},
+              }}
               variant="contained"
             >
               Validate OTP
