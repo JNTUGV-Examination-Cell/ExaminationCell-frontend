@@ -5,9 +5,13 @@ import "./Home.css";
 import { Link, Link as RouterLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUserRole } from "../../features/roles/roleSlice";
+import { USER_LEVELS } from "../../constants/AllConstants";
 
 const Home = () => {
-  const username = "Bindu Madhuri Ch";
+  const loginUserDetails = JSON.parse(localStorage.getItem("userDetails"));
+  const username = loginUserDetails.username;
+  const userLevel = USER_LEVELS[loginUserDetails.role];
+  console.log({ userLevel });
   const dispatch = useDispatch();
   const handleRoleChange = (role) => {
     dispatch(setUserRole(role));
@@ -34,42 +38,47 @@ const Home = () => {
           Hello, {username}
         </Typography>
         <Box className="role-main-box">
-          <Box className="role-box">
-            <Typography
-              sx={{
-                textDecoration: "none",
-                color: "#007bff",
-                marginBottom: "10px",
-              }}
-              component={RouterLink}
-              to="/layout"
-              state={{ role: "Admin" }}
-              onClick={() => handleRoleChange("Admin")}
-              variant="h6"
-            >
-              Admin
-            </Typography>
-            <Typography className="role-function">Administration</Typography>
-            <Typography>Access: Enabled</Typography>
-          </Box>
-          <Box className="role-box">
-            <Typography
-              sx={{
-                textDecoration: "none",
-                color: "#007bff",
-                marginBottom: "10px",
-              }}
-              component={RouterLink}
-              to="/layout"
-              state={{ role: "CBTexpert" }}
-              variant="h6"
-              onClick={() => handleRoleChange("CBTexpert")}
-            >
-              CBT Expert
-            </Typography>
-            <Typography className="role-function">Examinations</Typography>
-            <Typography>Access: Enabled</Typography>
-          </Box>
+          {userLevel === 1 && (
+            <Box className="role-box">
+              <Typography
+                sx={{
+                  textDecoration: "none",
+                  color: "#007bff",
+                  marginBottom: "10px",
+                }}
+                component={RouterLink}
+                to="/layout"
+                state={{ role: "Admin" }}
+                onClick={() => handleRoleChange("Admin")}
+                variant="h6"
+              >
+                Admin
+              </Typography>
+              <Typography className="role-function">Administration</Typography>
+              <Typography>Access: Enabled</Typography>
+            </Box>
+          )}
+          {userLevel === 1 ||
+            (userLevel === 2 && (
+              <Box className="role-box">
+                <Typography
+                  sx={{
+                    textDecoration: "none",
+                    color: "#007bff",
+                    marginBottom: "10px",
+                  }}
+                  component={RouterLink}
+                  to="/layout"
+                  state={{ role: "CBTexpert" }}
+                  variant="h6"
+                  onClick={() => handleRoleChange("CBTexpert")}
+                >
+                  CBT Expert
+                </Typography>
+                <Typography className="role-function">Examinations</Typography>
+                <Typography>Access: Enabled</Typography>
+              </Box>
+           ))} 
           <Box className="role-box">
             <Typography
               sx={{

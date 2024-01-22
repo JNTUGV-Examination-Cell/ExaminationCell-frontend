@@ -13,10 +13,32 @@ import {
   setExam,
   setExamName,
 } from "../../../../../../features/exams/examSlice";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const jsonData = data;
+const loginUserDetails = JSON.parse(localStorage.getItem("userDetails"));
+
 const Examdata = () => {
   const dispatch = useDispatch();
+  const [examData, setExamData] = useState(null);
+
+  const fetchExamData = async () => {
+    let collegeCode = loginUserDetails.collegeCode;
+    try {
+      const response = await axios.get(
+        `http://localhost:9000/api/examination/fetchExamData/${collegeCode}`
+      );
+      setExamData(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchExamData();
+  }, []);
+console.log({examData});
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
