@@ -84,8 +84,9 @@ const LoginPage = () => {
       console.error("Error:", error);
     }
     console.log(userDetails);
-    if (userDetails) {
+    if (userDetails.isLogin) {
       setVerificationStatus(true);
+      localStorage.setItem("userDetails", JSON.stringify(userDetails));
       navigate("/home");
     } else {
       setVerificationStatus(false);
