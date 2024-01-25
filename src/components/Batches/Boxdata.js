@@ -12,7 +12,7 @@ const Boxdata = ({ batchesData }) => {
             {record.regulation_course_title}
           </div>
           <hr style={{ width: "80%", border: "0.3px solid #9BA5B7" }} />
-          <Link to="/admin/batches/managebatches">
+          <Link to="managebatches">
             <button className="Batchbutton">Manage</button>
           </Link>
           <br></br>

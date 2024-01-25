@@ -51,10 +51,10 @@ const LoginPage = () => {
 
     emailjs
       .send(
-        "service_qdgv0cu",
-        "template_s9akhn9",
+        "service_lqagpuf",
+        "template_7kvsokj",
         templateParams,
-        "mLU5ET7GwMJqFXPD2"
+        "PGHEqinfstuz8ljJD"
       )
       .then((response) => {
         console.log("Email sent successfully:");
