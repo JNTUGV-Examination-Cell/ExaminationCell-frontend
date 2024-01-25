@@ -4,7 +4,7 @@ import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import * as XLSX from "xlsx";
-import axios from "axios";
+import api from "../../apiReference";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -21,7 +21,7 @@ const VisuallyHiddenInput = styled("input")({
 export default function UploadStudentDetails() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [sheetData, setSheetData] = useState(null);
-  const [uploadStatus, setUploadStatus] = useState(null);
+  const [uploadStatus, setUploadStatus] = useState(false);
   const [error, setError] = useState(null);
 
   const handleFileChange = (event) => {
@@ -64,17 +64,20 @@ export default function UploadStudentDetails() {
 
   const addStudents = async () => {
     try {
-      const response = await axios.post(
-        "http://localhost:9000/api/Students/addStudent",
+      const response = await api.post(
+        "/api/Students/addStudent",
         formattedData
       );
-      setUploadStatus(response.data);
-      console.log({ uploadStatus });
+      console.log({ response });
+      if (response.data.success) {
+        setUploadStatus(true)
+      }
     } catch (error) {
       console.log(error);
+      setUploadStatus(error.response.data);
     }
   };
-
+  console.log({ uploadStatus });
   const validateData = (data) => {
     const columnIndexToCheck = 0;
 
@@ -92,7 +95,6 @@ export default function UploadStudentDetails() {
   };
 
   const handleProceedClick = () => {
-    console.log("Proceeding with the data:", sheetData);
     addStudents();
   };
 
@@ -145,6 +147,7 @@ export default function UploadStudentDetails() {
             />
           </div>
         </div>
+        {}
       </div>
     </div>
   );
