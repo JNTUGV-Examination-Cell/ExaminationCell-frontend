@@ -42,15 +42,17 @@ const collegeExamDataColumns = [
   {
     field: "Type",
     headerName: "Type",
+    sortable: false,
   },
   {
     field: "action",
     headerName: "Action",
-    valueFormatter: (params) => {
-      <>
-        <Button to={params.path}>Manage</Button>
-      </>;
-    },
+    sortable: false,
+    renderCell: (params) => (
+      <div style={{display: "flex",width: "100%", justifyContent: "center"}}>
+        <Button to={params.row.path}>Manage</Button>
+      </div>
+    ),
   },
 ];
 
