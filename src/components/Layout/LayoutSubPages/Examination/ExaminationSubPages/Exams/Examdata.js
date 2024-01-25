@@ -6,6 +6,7 @@ import {
 } from "./ExamDataMaintainance";
 import { USER_LEVELS } from "../../../../../../constants/AllConstants";
 import api from "../../../../../apiReference";
+import { Typography } from "@mui/material";
 // Corrected import path
 
 const Examdata = () => {
@@ -26,7 +27,7 @@ const Examdata = () => {
 
   useEffect(() => {
     fetchExamData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const universityExaminationsData = [
     {
@@ -75,6 +76,9 @@ const Examdata = () => {
 
   return (
     <>
+      <Typography sx={{ textAlign: "center", margin: "20px" }} variant="h5">
+        Examination Maintainance
+      </Typography>
       {userLevel === 2 || userLevel === 3 ? (
         <DataGrid
           rows={transformedData}
