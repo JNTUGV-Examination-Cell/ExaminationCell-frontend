@@ -58,27 +58,26 @@ const Home = () => {
               <Typography>Access: Enabled</Typography>
             </Box>
           )}
-          {userLevel === 1 ||
-            (userLevel === 2 && (
-              <Box className="role-box">
-                <Typography
-                  sx={{
-                    textDecoration: "none",
-                    color: "#007bff",
-                    marginBottom: "10px",
-                  }}
-                  component={RouterLink}
-                  to="/layout"
-                  state={{ role: "CBTexpert" }}
-                  variant="h6"
-                  onClick={() => handleRoleChange("CBTexpert")}
-                >
-                  CBT Expert
-                </Typography>
-                <Typography className="role-function">Examinations</Typography>
-                <Typography>Access: Enabled</Typography>
-              </Box>
-           ))} 
+          {(userLevel === 1 || userLevel === 2) && (
+            <Box className="role-box">
+              <Typography
+                sx={{
+                  textDecoration: "none",
+                  color: "#007bff",
+                  marginBottom: "10px",
+                }}
+                component={RouterLink}
+                to="/layout"
+                state={{ role: "CBTexpert" }}
+                variant="h6"
+                onClick={() => handleRoleChange("CBTexpert")}
+              >
+                CBT Expert
+              </Typography>
+              <Typography className="role-function">Examinations</Typography>
+              <Typography>Access: Enabled</Typography>
+            </Box>
+          )}
           <Box className="role-box">
             <Typography
               sx={{
