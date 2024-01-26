@@ -1,75 +1,102 @@
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import { Button } from "@mui/material";
-import data from "./Data";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { DataGrid } from "@mui/x-data-grid";
 import {
-  setExam,
-  setExamName,
-} from "../../../../../../features/exams/examSlice";
+  collegeExamDataColumns,
+  universityExaminationsDataColumns,
+} from "./ExamDataMaintainance";
+import { USER_LEVELS } from "../../../../../../constants/AllConstants";
+import api from "../../../../../apiReference";
+import { Typography } from "@mui/material";
+// Corrected import path
 
-const jsonData = data;
 const Examdata = () => {
-  const dispatch = useDispatch();
+  const [examDataOfCollege, setExamDataOfCollege] = useState([]);
+  const loginUserDetails = JSON.parse(localStorage.getItem("userDetails"));
+  const userLevel = USER_LEVELS[loginUserDetails.role];
+  const fetchExamData = async () => {
+    let collegeCode = loginUserDetails.collegeCode;
+    try {
+      const response = await api.get(
+        `/api/examination/fetchExamData/${collegeCode}`
+      );
+      setExamDataOfCollege(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchExamData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const universityExaminationsData = [
+    {
+      id: 1,
+      college_name: "University College of Engineering",
+      college_code: "UCE",
+      exam_name: "End Semester Examination",
+      exam_code: "ESE202301",
+      total_students_applied: 500,
+      amount: 1500.0,
+    },
+    {
+      id: 2,
+      college_name: "School of Business",
+      college_code: "SB",
+      exam_name: "Midterm Exam",
+      exam_code: "MTE202302",
+      total_students_applied: 300,
+      amount: 1200.5,
+    },
+    {
+      id: 3,
+      college_name: "College of Arts and Sciences",
+      college_code: "CAS",
+      exam_name: "Final Year Project Evaluation",
+      exam_code: "FPE202303",
+      total_students_applied: 150,
+      amount: 800.0,
+    },
+  ];
+
+  const transformedData = examDataOfCollege.map((item) => ({
+    id: item.id,
+    examWithYear: `${item.regulation_course} ${item.regulation_course_set} ${item.month} ${item.year}`,
+    exam: `${item.regulation_course} ${item.regulation_course_set}`,
+    exam_code: item.exam_code,
+    batch: `${item.regulation_course}`,
+    semester: `${item.regulation_course_set}`,
+    examtype: item.type,
+    any: "common",
+    month: item.month,
+    year: item.year.toString(),
+    Type: "self",
+    path: "/layout/examdata/manageexamination",
+  }));
+
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Exam with Year</TableCell>
-            <TableCell>Exam</TableCell>
-            <TableCell>Code</TableCell>
-            <TableCell>Batch</TableCell>
-            <TableCell>Semester</TableCell>
-            <TableCell>ExamType</TableCell>
-            <TableCell>Any</TableCell>
-            <TableCell>Month</TableCell>
-            <TableCell>Year</TableCell>
-            <TableCell>Type</TableCell>
-            <TableCell>Action</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {jsonData.map((row) => (
-            <TableRow
-              key={row.id}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.exam_with_year}
-              </TableCell>
-              <TableCell>{row.exam}</TableCell>
-              <TableCell>{row.code}</TableCell>
-              <TableCell>{row.batch}</TableCell>
-              <TableCell>{row.semester}</TableCell>
-              <TableCell>{row.examtype}</TableCell>
-              <TableCell>{row.any}</TableCell>
-              <TableCell>{row.month}</TableCell>
-              <TableCell>{row.year}</TableCell>
-              <TableCell>{row.Type}</TableCell>
-              <TableCell>
-                <Button
-                  component={Link}
-                  to={row.path}
-                  onClick={() => {
-                    dispatch(setExam(row.code));
-                    dispatch(setExamName(row.exam));
-                  }}
-                >
-                  Manage
-                </Button>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <>
+      <Typography sx={{ textAlign: "center", margin: "20px" }} variant="h5">
+        Examination Maintainance
+      </Typography>
+      {userLevel === 2 || userLevel === 3 ? (
+        <DataGrid
+          rows={transformedData}
+          columns={collegeExamDataColumns}
+          pageSize={5}
+          checkboxSelection
+          disableSelectionOnClick
+        />
+      ) : (
+        <DataGrid
+          rows={universityExaminationsData}
+          columns={universityExaminationsDataColumns}
+          pageSize={5}
+          checkboxSelection
+          disableSelectionOnClick
+        />
+      )}
+    </>
   );
 };
 

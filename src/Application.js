@@ -42,8 +42,8 @@ const Application = () => {
           <Route path="CondonationandDetention" element={<CondonationandDetention />} />
           <Route path="examdata/manageexamination/studentexamapplication" element={<StudentApplicationForm />}/>
           <Route path="FinalListOfExamination" element={<FinalListOfExamination />}/>
-         <Route path="examdata/manageexamination/CondonationandDetention" element={<CondonationandDetention />} />
-         <Route path="examdata/manageexamination/Sets" element={<Sets />} />
+          <Route path="examdata/manageexamination/CondonationandDetention" element={<CondonationandDetention />} />
+          <Route path="examdata/manageexamination/Sets" element={<Sets />} />
           <Route path="examdata/manageexamination/FinalListOfExamination" element={<FinalListOfExamination />} />
           <Route path="examdata/manageexamination/InternalMarks" element={<InternalMarks />} />
           <Route path="examdata/manageexamination/FinalListOfExamination" element={<FinalListOfExamination />} />
