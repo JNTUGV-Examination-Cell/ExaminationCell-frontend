@@ -24,23 +24,26 @@ import FinalListOfExamination from "./components/Layout/LayoutSubPages/Examinati
 import SetForParticularExam from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Sets/SetForParticularExam/SetForParticularExam";
 import ExaminationSubPage from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/ExaminationSubPage";
 import CondonationandDetention from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/CondonationandDetention/CondonationandDetention";
+import StudentPhotosButton from "./components/Batches/StudentPhotosButton";
 
 const Application = () => {
   return (
     <div>
       <Routes>
-        <Route
-          path="/admin/batches/managebatches/uploadstudents"
-          element={<UploadStudentDetails />}
-        />
-        <Route
-          path="/admin/batches/managebatches"
-          element={<ManageBatches />}
-        />
-        <Route path="/admin/batches" element={<Batchesmain />} />
         <Route path="/layout" element={<Layout />}>
-         <Route path="examdata/manageexamination/CondonationandDetention" element={<CondonationandDetention />} />
-         <Route path="examdata/manageexamination/Sets" element={<Sets />} />
+         <Route path="CondonationandDetention" element={<CondonationandDetention />} />
+         <Route path="Sets" element={<Sets />} />
+          <Route path="InternalMarks" element={<InternalMarks />} />
+          <Route path="studentexamapplication" element={<StudentApplicationForm />} />
+          <Route path="FinalListOfExamination" element={<FinalListOfExamination />} />
+          <Route path="InternalMarks" element={<InternalMarks />} />
+          <Route path="studentexamapplication" element={<StudentApplicationForm />} />
+          <Route path="FinalListOfExamination" element={<FinalListOfExamination />} />
+          <Route path="CondonationandDetention" element={<CondonationandDetention />} />
+          <Route path="examdata/manageexamination/studentexamapplication" element={<StudentApplicationForm />}/>
+          <Route path="FinalListOfExamination" element={<FinalListOfExamination />}/>
+          <Route path="examdata/manageexamination/CondonationandDetention" element={<CondonationandDetention />} />
+          <Route path="examdata/manageexamination/Sets" element={<Sets />} />
           <Route path="examdata/manageexamination/FinalListOfExamination" element={<FinalListOfExamination />} />
           <Route path="examdata/manageexamination/InternalMarks" element={<InternalMarks />} />
           <Route path="examdata/manageexamination/FinalListOfExamination" element={<FinalListOfExamination />} />
@@ -57,6 +60,9 @@ const Application = () => {
           <Route path="profilepage" element={<ProfilePage />} />
           <Route path="homepage" element={<HomePage />} />
           <Route path="batches" element={<Batchesmain />} />
+          <Route path="batches/managebatches" element={<ManageBatches />} />
+          <Route path="batches/managebatches/uploadstudents" element={<UploadStudentDetails />} />
+          <Route path="batches/studentphotos" element={<StudentPhotosButton/>} />
           <Route path="notifications" element={<PortalNotification />} />
           <Route path="staff" element={<Staff />} />
           <Route path="InternalMarks" element={<InternalMarks />} />
