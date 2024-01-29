@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import jntugv from "./assests/jntugv.png";
 import send from "./assests/send.svg";
 import "./loginPage.css";
-import emailjs from "emailjs-com";
+// import emailjs from "emailjs-com";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import api from "../apiReference";
@@ -44,25 +44,27 @@ const LoginPage = () => {
     } catch (error) {
       console.error("Error:", error);
     }
-    const templateParams = {
-      to_name: email,
-      from_name: "JNTUGV",
-      message: `Your OTP is: ${generatedOTP}`,
-    };
+    console.log({otpValue: otpNumber})
+    /// don't change this code
+    // const templateParams = {
+    //   to_name: email,
+    //   from_name: "JNTUGV",
+    //   message: `Your OTP is: ${generatedOTP}`,
+    // };
 
-    emailjs
-      .send(
-        "service_lqagpuf",
-        "template_7kvsokj",
-        templateParams,
-        "PGHEqinfstuz8ljJD"
-      )
-      .then((response) => {
-        console.log("Email sent successfully:");
-      })
-      .catch((error) => {
-        console.log("Error sending email:", error);
-      });
+    // emailjs
+    //   .send(
+    //     "service_lqagpuf",
+    //     "template_7kvsokj",
+    //     templateParams,
+    //     "PGHEqinfstuz8ljJD"
+    //   )
+    //   .then((response) => {
+    //     console.log("Email sent successfully:");
+    //   })
+    //   .catch((error) => {
+    //     console.log("Error sending email:", error);
+    //   });
   };
 
   const verifyOTP = async () => {
