@@ -3,6 +3,7 @@ import "./bulkadmissions.css";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import ClearIcon from "@mui/icons-material/Clear";
 import * as XLSX from "xlsx";
 import api from "../../apiReference";
 
@@ -20,34 +21,36 @@ const VisuallyHiddenInput = styled("input")({
 
 export default function UploadStudentDetails() {
   const [selectedFile, setSelectedFile] = useState(null);
-  const [sheetData, setSheetData] = useState(null);
+  const [sheetData, setSheetData] = useState([]);
   const [uploadStatus, setUploadStatus] = useState(false);
   const [error, setError] = useState(null);
 
   const handleFileChange = (event) => {
-    const file = event.target.files[0];
+    const file = event?.target?.files[0];
     setSelectedFile(file);
 
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const data = e.target.result;
-      const workbook = XLSX.read(data, { type: "binary" });
-      const firstSheetName = workbook.SheetNames[0];
-      const sheet = workbook.Sheets[firstSheetName];
-      const sheetData = XLSX.utils.sheet_to_json(sheet, {
-        header: 1,
-        defval: "",
-      });
-      const isValidData = validateData(sheetData);
-      if (isValidData) {
-        setSheetData(sheetData);
-        setError(null);
-      } else {
-        setSheetData(null);
-        setError("Invalid or duplicate values found in the file.");
-      }
-    };
-    reader.readAsBinaryString(file);
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const data = e.target.result;
+        const workbook = XLSX.read(data, { type: "binary" });
+        const firstSheetName = workbook.SheetNames[0];
+        const sheet = workbook.Sheets[firstSheetName];
+        const sheetData = XLSX.utils.sheet_to_json(sheet, {
+          header: 1,
+          defval: "",
+        });
+        const isValidData = validateData(sheetData);
+        if (isValidData) {
+          setSheetData(sheetData);
+          setError(null);
+        } else {
+          setSheetData(null);
+          setError("Invalid or duplicate values found in the file.");
+        }
+      };
+      reader.readAsBinaryString(file);
+    }
   };
   const formattedData = sheetData?.slice(1).map((row) => {
     return {
@@ -70,7 +73,7 @@ export default function UploadStudentDetails() {
       );
       console.log({ response });
       if (response.data.success) {
-        setUploadStatus(true)
+        setUploadStatus(true);
       }
     } catch (error) {
       console.log(error);
@@ -98,6 +101,11 @@ export default function UploadStudentDetails() {
     addStudents();
   };
 
+  const handleClearData = () => {
+    setSelectedFile(null);
+    setSheetData([]);
+  };
+
   return (
     <div>
       <div>
@@ -107,19 +115,6 @@ export default function UploadStudentDetails() {
           <h2 className="head">
             Upload Student Basic Details File - .xls, .xlsx format
           </h2>
-          <Button
-            component="label"
-            variant="contained"
-            startIcon={<CloudUploadIcon />}
-          >
-            Upload file
-            <VisuallyHiddenInput
-              type="file"
-              onChange={handleFileChange}
-              accept=".xls, .xlsx"
-              aria-label="Upload file"
-            />
-          </Button>
           <input
             type="text"
             placeholder={selectedFile ? selectedFile.name : "No file chosen"}
@@ -127,6 +122,23 @@ export default function UploadStudentDetails() {
             className="textchoose"
             readOnly
           />
+          <Button
+            component="label"
+            variant="contained"
+            color={sheetData.length > 0 ? "error" : "primary"}
+            startIcon={sheetData.length > 0 ? "" : <CloudUploadIcon />}
+            onClick={handleClearData}
+            endIcon={sheetData.length > 0 ? <ClearIcon /> : ""}
+          >
+            {sheetData.length > 0 ? "Clear Data" : "Upload file"}
+            <VisuallyHiddenInput
+              type="file"
+              onChange={handleFileChange}
+              accept=".xls, .xlsx"
+              aria-label="Upload file"
+              visibility={sheetData.length > 0 ? "true" : "false"}
+            />
+          </Button>
           <div className="buttonproceed">
             <Button
               variant="contained"

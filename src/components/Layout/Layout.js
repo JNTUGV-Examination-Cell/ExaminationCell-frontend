@@ -49,6 +49,14 @@ const Layout = (props) => {
                     {part}/
                   </Link>
                 ))}
+                {/* {userLevel === 1 &&(
+                  <Link
+                    to="/layout/examdata/manageexamination"
+                    style={{ color: "#fff", textDecoration: "none" }}
+                  >
+                    Manage University
+                  </Link>
+                )} */}
               </Typography>
             </Box>
             <Box sx={{ display: "flex", alignItems: "center" }}>
