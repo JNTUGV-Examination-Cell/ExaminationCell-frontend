@@ -6,6 +6,7 @@ import "./loginPage.css";
 import emailjs from "emailjs-com";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import api from "../apiReference";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -45,7 +46,7 @@ const LoginPage = () => {
     }
     const templateParams = {
       to_name: email,
-      from_name: "Vamshi",
+      from_name: "JNTUGV",
       message: `Your OTP is: ${generatedOTP}`,
     };
 
@@ -72,8 +73,8 @@ const LoginPage = () => {
       otpValue: otpNumber,
     })
     try {
-      const response = await axios.post(
-        "http://localhost:9000/api/staff/user/verifyOtp",
+      const response = await api.post(
+        "/api/staff/user/verifyOtp",
         {
           email: email, 
           otpValue: verifyOtp, 
