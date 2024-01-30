@@ -1,3 +1,4 @@
+import axios from "axios";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -10,6 +11,7 @@ import CollegeData from "./CollegeData";
 
 const jsonData = CollegeData;
 const CollegePage = () => {
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">

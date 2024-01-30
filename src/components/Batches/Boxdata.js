@@ -61,21 +61,7 @@ class Boxdata extends Component {
 
     return (
       <div className="BatchesContainer">
-        <div className="BatchesBlocks">
-          {filteredRecords.map((record) => (
-            <div className="Batch" key={record.batch}>
-              <div className="Batchname"> Batch</div>
-              <div className="Batchnumber">{record.batch}</div>
-              <div className="Batchregulation">{record.reg}</div>
-              <hr style={{ width: "80%", border: "0.3px solid #9BA5B7" }} />
-              <Link to="/layout/batches/managebatches" style={{textDecoration:"none"}}><button className='Batchbutton'>Manage</button></Link>
-
-              <br></br>
-              <button className="Batchbutton2">Years and Terms</button>
-            </div>
-          ))}
-        </div>
-
+        <div className="FilterContainersWrapper">
         <div className="RegFilterContainer">
           <Autocomplete
             multiple
@@ -107,6 +93,23 @@ class Boxdata extends Component {
               <TextField {...params} label="Select Regulation" />
             )}
           />
+        </div>
+        </div>
+        <br></br>
+        <div className="BatchsContainer">
+        <div className="BatchesBlocks">
+          {filteredRecords.map((record) => (
+            <div className="Batch" key={record.batch}>
+              <div className="Batchname"> Batch</div>
+              <div className="Batchnumber">{record.batch}</div>
+              <div className="Batchregulation">{record.reg}</div>
+              <hr style={{ width: "80%", border: "0.3px solid #9BA5B7" }} />
+              <Link to="/layout/batches/managebatches" style={{textDecoration:"none"}}><button className='Batchbutton'>Manage</button></Link>
+              <br></br>
+              <button className="Batchbutton2">Years and Terms</button>
+            </div>
+          ))}
+        </div>
         </div>
       </div>
     );

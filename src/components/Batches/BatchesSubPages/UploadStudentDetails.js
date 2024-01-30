@@ -21,6 +21,7 @@ export default function UploadStudentDetails() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [sheetData, setSheetData] = useState(null);
   const [error, setError] = useState(null);
+  const [proceedClicked, setProceedClicked] = useState(false);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -63,6 +64,7 @@ export default function UploadStudentDetails() {
 
   const handleProceedClick = () => {
     console.log('Proceeding with the data:', sheetData);
+    setProceedClicked(true);
   };
 
   return (
@@ -89,15 +91,19 @@ export default function UploadStudentDetails() {
             </Button>
           </div>
           <br />
-          {error && <div className="error-message">{error}</div>}
-          <div className="textshow">
-            <textarea
-              placeholder="Shows the data of the file"
-              className="textfill"
-              readOnly
-              value={JSON.stringify(sheetData, null, 2)}
-            />
-          </div>
+          {proceedClicked && (
+            <>
+              {error && <div className="error-message">{error}</div>}
+              <div className="textshow">
+                <textarea
+                  placeholder="Shows the data of the file"
+                  className="textfill"
+                  readOnly
+                  value={JSON.stringify(sheetData, null, 2)}
+                />
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>

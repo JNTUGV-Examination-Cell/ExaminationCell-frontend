@@ -1,67 +1,81 @@
 .Paper, 
-  .Grid {
-    margin: 0;
-    padding: 0;
-  }
+.Grid {
+  margin: 0;
+  padding: 0;
+}
 
 .head {
-    color: black;
-    padding-bottom:30px ;
-  }
-  
-  .set {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding-top: 60px;
-  }
-  
-  .set1{
-    color: rgba(0, 123, 255, 0.12549019607843137);
-.head{
-    color:black;
+  color: black;
+  padding-bottom: 5px;
 }
-.setline1{
-    display: flex;
-    justify-content: space-around;
-    padding: 10px;
-  }
 
-  .buttons {
-    padding-bottom: 100px;
-    margin-top: 150px;
-  }
-  
-  .button-contained {
-    background-color: blue;
-    color: white;
-    height: 30px;
-    margin-top: 150px;
-  }
-  
-  .button-contained.active {
-    background-color: lightblue;
-    color: blueviolet;
-    margin-top: 150px;
-  }
-  }
-  .setblock{
-    /* display: flex; */
-    justify-content: center;
-    background-color: lightblue;
-    width: 50%;
-    height: 200px;
-    align-items: center;
-    border-radius: 10px;
-    margin-top: 150px;
-    margin-left: 500px;
-    /* margin-bottom: 440px; */
-  }
-  .set{
-    justify-content: center;
-  }
-  .ntable{
-   display: flex;
-   justify-content: center;
-   color: red;
-  }
+.set {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center; /* Added to vertically center the title */
+  padding-top: 60px;
+}
+
+.set1 {
+  color: rgba(0, 123, 255, 0.12549019607843137);
+}
+
+.head {
+  color: black;
+}
+
+.setline1 {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.buttons {
+  padding-bottom: 100px;
+  margin-top: 150px;
+}
+
+.button-contained {
+  background-color: blue;
+  color: white;
+  height: 30px;
+  margin-top: 150px;
+}
+
+.button-contained.active {
+  background-color: lightblue;
+  color: blueviolet;
+  margin-top: 150px;
+}
+
+.setblock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: lightblue;
+  width: 50%;
+  height: 250px;
+  border-radius: 5px;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.set {
+  justify-content: center;
+}
+
+.ntable {
+  display: flex;
+  justify-content: center;
+  color: red;
+}
+
+.center-buttons {
+  text-align: center;
+  justify-content: center;
+  padding-bottom: 10px;
+  margin-top: 10px;
+}

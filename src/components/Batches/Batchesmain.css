@@ -17,15 +17,15 @@
     background: var(--Button, #8ebaff);
     box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25), 2px 3px 4px 0px rgba(0, 0, 0, 0.25) inset;
 }
-
-.Batchesblocks {
+.BatchsContainer{
     display: flex;
-    /* padding: 20px; */
-    flex-wrap: wrap;
 }
-
-
-
+.BatchesBlocks.Batch {
+    width: 100px;
+    margin-right: 10px;
+    /* padding: 20px; */
+    /* flex-wrap: wrap; */
+}
 .Batch {
     display: flex;
     flex-direction: column;
@@ -55,7 +55,6 @@
     font-weight: 400;
     line-height: 22px;
     text-align: center;
-
     letter-spacing: -0.48px;
 }
 
@@ -114,5 +113,17 @@
     align-items: center;
     gap: 10px;
     border: none;
-    /* flex-shrink: 0; */
+}
+
+.RegFilterContainer,
+.RFilterContainer {
+  margin-right: 100px;
+}
+.FilterContainersWrapper {
+  display: flex;
+}
+.FilterContainersWrapper .RegFilterContainer,
+.FilterContainersWrapper .RFilterContainer {
+  width: 300px;
+  margin-right: 10px;
 }

@@ -112,10 +112,10 @@ const StudentApplicationForm = () => {
     <div>
       <div className="header">
         <h1 className="head">Student Exam Application - R11223 - B.Tech I Year I Sem R20 Reg February 2023</h1>
-        <Stack spacing={2} direction="row">
+        {/* <Stack spacing={2} direction="row">
           <Button variant="contained">Download Application Form</Button>
           <Button variant="contained">Payment</Button>
-        </Stack>
+        </Stack> */}
       </div>
       <div className="ApplicationDetails">
         <h1>Application Details</h1>
