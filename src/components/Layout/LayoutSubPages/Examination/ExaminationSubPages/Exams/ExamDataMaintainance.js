@@ -125,11 +125,11 @@ const universityExaminationsDataColumns = [
     headerName: "College Code",
     width: 120,
   },
-  {
-    field: "exam_name",
-    headerName: "Exam Name",
-    width: 100,
-  },
+  // {
+  //   field: "exam_name",
+  //   headerName: "Exam Name",
+  //   width: 100,
+  // },
   {
     field: "exam_code",
     headerName: "Exam Code",
