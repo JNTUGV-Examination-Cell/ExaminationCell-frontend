@@ -43,23 +43,23 @@ const Branches = () => {
   }, [filterBranches]);
 
   const columns = [
-    { field: "branch_id", headerName: "Branch Id", width: 100 },
-    { field: "course", headerName: "Course" },
-    { field: "branch", headerName: "Branch" },
-    { field: "branch_full_name", headerName: "Branch Full Name", width: 200 },
+    { field: "branch_id", headerName: "Branch Id", width: 110 },
+    { field: "course", headerName: "Course",width: 150  },
+    { field: "branch", headerName: "Branch",width: 200  },
+    { field: "branch_full_name", headerName: "Branch Full Name", width: 250 },
     {
       field: "branch_specialization",
       headerName: "Branch Specialization",
-      width: 200,
+      width: 250,
     },
-    { field: "branch_code", headerName: "Branch Code" },
+    { field: "branch_code", headerName: "Branch Code",width: 150  },
     {
       field: "edit",
       headerName: "Edit",
       renderCell: () => (
         <Button
           component={Link}
-          to="/layout/branches/edit"
+          to="#"
           variant="contained"
           color="primary"
         >
@@ -80,7 +80,7 @@ const Branches = () => {
         <div className="addbutton">
           <Button
             component={Link}
-            to="/layout/branches/add"
+            to="#"
             variant="contained"
             color="primary"
           >
@@ -105,12 +105,12 @@ const Branches = () => {
       </div>
       <div
         className="container"
-        style={{ minWidth: "5px", marginLeft: "10px" }}
+        style={{  marginLeft: "10px" }}
       >
         <DataGrid
           rows={filteredBranchesData}
           columns={columns}
-          // getRowId={(row) => row.branch_id}
+          getRowId={(row) => row.branch_id}
         />
       </div>
     </>
