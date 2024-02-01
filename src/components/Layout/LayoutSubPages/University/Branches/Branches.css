@@ -1,6 +1,5 @@
 .container{
- padding-top: 30px;
- /* padding-left: 5px; */
+  padding-top: 30px;
  
 }
 .BranchTitle{
@@ -8,22 +7,21 @@
   }
   
   .AddButton-SearchBar{
-    /* display: inline-block; */
-    display: flex;
+   
+   display: flex;
     align-items: center;
-
     
-  }
+ 
+   }
 .BranchessearchBar{
   width: 250px;
   margin-left: 900px;
   display: inline-block;
-  /* padding-top: 20px; */
+
 }
+
 .addbutton{
    padding-left: 20px;
    padding-top: 30px;
-   /* margin-bottom: 50px; */
-   /* margin-left: auto; Move the Add button to the right */
-   /* margin-right: 10px; */
+
 }
