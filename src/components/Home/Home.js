@@ -39,6 +39,7 @@ const Home = () => {
         </Typography>
         <Box className="role-main-box">
           {userLevel === 1 && (
+            <>
             <Box className="role-box">
               <Typography
                 sx={{
@@ -57,6 +58,25 @@ const Home = () => {
               <Typography className="role-function">Administration</Typography>
               <Typography>Access: Enabled</Typography>
             </Box>
+            <Box className="role-box">
+      <Typography
+        sx={{
+          textDecoration: "none",
+          color: "#007bff",
+          marginBottom: "10px",
+        }}
+        component={RouterLink}
+        to="/layout"
+        state={{ role: "ManageUniversities" }}
+        variant="h6"
+        onClick={() => handleRoleChange("ManageUniversities")}
+      >
+        Manage University
+      </Typography>
+      <Typography className="role-function">Universities</Typography>
+      <Typography>Access: Enabled</Typography>
+    </Box>
+            </>
           )}
           {(userLevel === 1 || userLevel === 2) && (
             <Box className="role-box">
