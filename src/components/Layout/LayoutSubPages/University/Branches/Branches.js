@@ -10,7 +10,7 @@ const Branches = () => {
   const [branchesData, setBranchesData] = useState([]);
   const [filteredBranchesData, setFilteredBranchesData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-
+  
   useEffect(() => {
     const fetchBranchesData = async () => {
       try {
@@ -41,6 +41,7 @@ const Branches = () => {
   useEffect(() => {
     filterBranches();
   }, [filterBranches]);
+  
 
   const columns = [
     { field: "branch_id", headerName: "Branch Id", width: 110 },
@@ -69,6 +70,15 @@ const Branches = () => {
       width: 100,
     },
   ];
+
+  const filteredBranchesDataWithPlaceholder = filteredBranchesData.map((row) =>
+  Object.fromEntries(
+    Object.entries(row).map(([key, value]) => [
+      key,
+      value === "" || value === null ? "Not Uploaded" : value,
+    ])
+  )
+);
 
   return (
     <>
@@ -108,7 +118,7 @@ const Branches = () => {
         style={{  marginLeft: "10px" }}
       >
         <DataGrid
-          rows={filteredBranchesData}
+          rows={filteredBranchesDataWithPlaceholder}
           columns={columns}
           getRowId={(row) => row.branch_id}
         />
