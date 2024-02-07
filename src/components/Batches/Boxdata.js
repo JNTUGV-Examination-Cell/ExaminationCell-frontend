@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Boxdata = ({ batchesData }) => {
   return (
-    <div style={{display: "flex", flexWrap: "wrap"}}>
+    <div style={{ display: "flex", flexWrap: "wrap" }}>
       {batchesData?.map((record) => (
         <div className="Batch" key={record.batch_id}>
           <div className="Batchname"> Batch</div>
