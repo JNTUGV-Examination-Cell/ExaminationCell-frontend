@@ -31,23 +31,62 @@ const Application = () => {
     <div>
       <Routes>
         <Route path="/layout" element={<Layout />}>
-         <Route path="CondonationandDetention" element={<CondonationandDetention />} />
-         <Route path="Sets" element={<Sets />} />
+          <Route
+            path="CondonationandDetention"
+            element={<CondonationandDetention />}
+          />
+          <Route path="Sets" element={<Sets />} />
           <Route path="InternalMarks" element={<InternalMarks />} />
-          <Route path="studentexamapplication" element={<StudentApplicationForm />} />
-          <Route path="FinalListOfExamination" element={<FinalListOfExamination />} />
+          <Route
+            path="studentexamapplication"
+            element={<StudentApplicationForm />}
+          />
+          <Route
+            path="FinalListOfExamination"
+            element={<FinalListOfExamination />}
+          />
           <Route path="InternalMarks" element={<InternalMarks />} />
-          <Route path="studentexamapplication" element={<StudentApplicationForm />} />
-          <Route path="FinalListOfExamination" element={<FinalListOfExamination />} />
-          <Route path="CondonationandDetention" element={<CondonationandDetention />} />
-          <Route path="examdata/manageexamination/studentexamapplication" element={<StudentApplicationForm />}/>
-          <Route path="FinalListOfExamination" element={<FinalListOfExamination />}/>
-          <Route path="examdata/manageexamination/CondonationandDetention" element={<CondonationandDetention />} />
+          <Route
+            path="studentexamapplication"
+            element={<StudentApplicationForm />}
+          />
+          <Route
+            path="FinalListOfExamination"
+            element={<FinalListOfExamination />}
+          />
+          <Route
+            path="CondonationandDetention"
+            element={<CondonationandDetention />}
+          />
+          <Route
+            path="examdata/manageexamination/studentexamapplication"
+            element={<StudentApplicationForm />}
+          />
+          <Route
+            path="FinalListOfExamination"
+            element={<FinalListOfExamination />}
+          />
+          <Route
+            path="examdata/manageexamination/CondonationandDetention"
+            element={<CondonationandDetention />}
+          />
           <Route path="examdata/manageexamination/Sets" element={<Sets />} />
-          <Route path="examdata/manageexamination/FinalListOfExamination" element={<FinalListOfExamination />} />
-          <Route path="examdata/manageexamination/InternalMarks" element={<InternalMarks />} />
-          <Route path="examdata/manageexamination/FinalListOfExamination" element={<FinalListOfExamination />} />
-          <Route path="examdata/manageexamination/CondonationandDetention" element={<CondonationandDetention />} />
+          <Route
+            path="examdata/manageexamination/FinalListOfExamination"
+            element={<FinalListOfExamination />}
+          />
+          <Route
+            path="examdata/manageexamination/InternalMarks"
+            element={<InternalMarks />}
+          />
+          <Route
+            path="examdata/manageexamination/FinalListOfExamination"
+            element={<FinalListOfExamination />}
+          />
+          <Route
+            path="examdata/manageexamination/CondonationandDetention"
+            element={<CondonationandDetention />}
+          />
           <Route
             path="examdata/manageexamination/studentexamapplication"
             element={<StudentApplicationForm />}
@@ -61,18 +100,39 @@ const Application = () => {
           <Route path="homepage" element={<HomePage />} />
           <Route path="batches" element={<Batchesmain />} />
           <Route path="batches/managebatches" element={<ManageBatches />} />
-          <Route path="batches/managebatches/uploadstudents" element={<UploadStudentDetails />} />
-          <Route path="batches/studentphotos" element={<StudentPhotosButton/>} />
+          <Route
+            path="batches/managebatches/uploadstudents"
+            element={<UploadStudentDetails />}
+          />
+          <Route
+            path="batches/studentphotos"
+            element={<StudentPhotosButton />}
+          />
           <Route path="notifications" element={<PortalNotification />} />
           <Route path="staff" element={<Staff />} />
           <Route path="InternalMarks" element={<InternalMarks />} />
-          <Route path="examdata/manageexamination/Sets/examsets/setforparticularexam/markabsent" element={<MarkAbsents />} />
-          <Route path="examdata/manageexamination/Sets/examsets/setforparticularexam/markmalpractice" element={<MarkMalpractice />} />
-          <Route path="examdata/manageexamination/Sets/examsets" element={<ExamSets />} />
+          <Route
+            path="examdata/manageexamination/Sets/examsets/setforparticularexam/markabsent"
+            element={<MarkAbsents />}
+          />
+          <Route
+            path="examdata/manageexamination/Sets/examsets/setforparticularexam/markmalpractice"
+            element={<MarkMalpractice />}
+          />
+          <Route
+            path="examdata/manageexamination/Sets/examsets"
+            element={<ExamSets />}
+          />
           <Route path="managesubject" element={<ManageSubjects />} />
-          <Route path="examdata/manageexamination/Sets/examsets/setforparticularexam" element={<SetForParticularExam/>} />
+          <Route
+            path="examdata/manageexamination/Sets/examsets/setforparticularexam"
+            element={<SetForParticularExam />}
+          />
           <Route path="examdata" element={<Examdata />} />
-          <Route path="examdata/manageexamination" element={<ExaminationSubPage />} />
+          <Route
+            path="examdata/manageexamination"
+            element={<ExaminationSubPage />}
+          />
         </Route>
         <Route path="/home" element={<Home />} />
         <Route path="/random" element={<Random />} />
