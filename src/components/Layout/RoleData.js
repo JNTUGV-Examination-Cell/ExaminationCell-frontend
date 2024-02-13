@@ -84,6 +84,11 @@ const RollData = {
       text: "Internal Marks",
     },
     {
+      to: "/layout/Regulations",
+      icon: <PersonIcon className="Nav-icons" />,
+      text: "Regulations",
+    },
+    {
       to: "/layout/staff",
       icon: <PersonIcon className="Nav-icons" />,
       text: "Staff",
