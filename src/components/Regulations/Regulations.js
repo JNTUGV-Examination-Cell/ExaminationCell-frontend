@@ -1,4 +1,3 @@
-import React from 'react';
 import {useState, useCallback, useEffect} from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
@@ -27,13 +26,13 @@ const Regulations = () => {
   }, []);
 
   const filterRegulations = useCallback(() => {
-    const filteredData = regulationsData.filter((regulation) =>
-      Object.values(regulation).some(
+    const filteredData = regulationsData.filter((regulations) =>
+      Object.values(regulations).some(
         (value) =>
           typeof value === "string" &&
           value.toLowerCase().includes(searchQuery.toLowerCase())
       )
-      || regulation.regulation_id.toString().includes(searchQuery) || regulation.regulation.toString().includes(searchQuery)
+      || regulations.regulation_id.toString().includes(searchQuery) || regulations.regulation.toString().includes(searchQuery)
     );
     setfilteredRegulationsData(filteredData);
   }, [searchQuery, regulationsData]);
@@ -53,7 +52,7 @@ const Regulations = () => {
       field: "edit",
       headerName: "Edit",
       flex:1,
-      renderCell: (params) => (
+      renderCell: () => (
         <Button 
         component={Link}
         to="/layout/regulations/edit"
@@ -63,8 +62,18 @@ const Regulations = () => {
           Edit
         </Button>
       ),
+      width: 100,
     },
   ];
+
+  const filteredRegulationsDataWithPlaceholder = filteredRegulationsData.map((row) =>
+  Object.fromEntries(
+    Object.entries(row).map(([key, value]) => [
+      key,
+      value === "" || value === null ? "Not Uploaded" : value,
+    ])
+  )
+);
 
     return (
             <>
@@ -76,7 +85,7 @@ const Regulations = () => {
       <div className="addbutton">
         <Button
         component={Link}
-        to="/layout/regulations/add"  
+        to="/layout/regulations/addregulation"  
           variant="contained" 
           color="primary" 
         >
@@ -102,7 +111,7 @@ const Regulations = () => {
       </div>
       <div className="container data-table">
       <DataGrid
-        rows={filteredRegulationsData} 
+        rows={filteredRegulationsDataWithPlaceholder} 
         columns={columns}
         getRowId={(row) => row.regulation_id}
       />
