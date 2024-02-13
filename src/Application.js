@@ -25,6 +25,8 @@ import SetForParticularExam from "./components/Layout/LayoutSubPages/Examination
 import ExaminationSubPage from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/ExaminationSubPage";
 import CondonationandDetention from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/CondonationandDetention/CondonationandDetention";
 import StudentPhotosButton from "./components/Batches/StudentPhotosButton";
+import Regulations from "./components/Regulations/Regulations";
+import RegulationsAdd from "./components/Regulations/RegulationsSubPages/RegulationsAdd";
 
 const Application = () => {
   return (
@@ -56,6 +58,8 @@ const Application = () => {
             path="examdata/manageexamination/FinalListOfExamination"
             element={<FinalListOfExamination />}
           />
+          <Route path="regulations" element={<Regulations />} />
+          <Route path="regulations/addregulation" element={<RegulationsAdd />} />
           <Route path="colleges" element={<CollegePage />} />
           <Route path="profilepage" element={<ProfilePage />} />
           <Route path="homepage" element={<HomePage />} />
