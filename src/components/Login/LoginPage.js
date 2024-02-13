@@ -123,7 +123,6 @@ const LoginPageContent = () => {
       localStorage.setItem("userDetails", JSON.stringify(userDetails));
       handleValidationSuccess();
       navigate("/home");
-      // handleValidationSuccess();
     } else {
       setVerificationStatus(false);
       handleValidationFailure();

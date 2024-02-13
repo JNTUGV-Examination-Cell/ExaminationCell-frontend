@@ -25,6 +25,7 @@ import SetForParticularExam from "./components/Layout/LayoutSubPages/Examination
 import ExaminationSubPage from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/ExaminationSubPage";
 import CondonationandDetention from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/CondonationandDetention/CondonationandDetention";
 import StudentPhotosButton from "./components/Batches/StudentPhotosButton";
+import Examnotification from "./components/Layout/LayoutSubPages/ExamNotification/Examnotification";
 
 const Application = () => {
   return (
@@ -110,6 +111,7 @@ const Application = () => {
           />
           <Route path="notifications" element={<PortalNotification />} />
           <Route path="staff" element={<Staff />} />
+          <Route path="examnotifications" element={<Examnotification />} />
           <Route path="InternalMarks" element={<InternalMarks />} />
           <Route
             path="examdata/manageexamination/Sets/examsets/setforparticularexam/markabsent"
