@@ -1,0 +1,23 @@
+.container {
+  padding-top: 30px;
+  
+}
+.BranchTitle {
+  text-align: left;
+}
+
+.AddButton-SearchBar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: 40px;
+ 
+}
+.BranchessearchBar {
+  width: 250px;
+}
+
+.addbutton {
+  padding-left: 20px;
+
+}

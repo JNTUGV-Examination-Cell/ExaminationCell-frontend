@@ -1,6 +1,6 @@
 const USER_LEVELS = {
   UNIVERSITY_HEAD_LEVEL: 1,
-  COLLEGE_HEAD_LEVEL: 2,
+  COLLEGE_HEAD_LEVEL:1 ,
   PROFESSOR_LEVEL: 3,
   Professor: 3,
 };
@@ -8,7 +8,7 @@ const USER_LEVELS = {
 const COURSE_OPTIONS = [
   { label: "B.Tech", value: "B.Tech" },
   { label: "M.Tech", value: "M.Tech" },
-  { label: "Pharm.D", value: "Pharm.D" },
+  { label: "Pharm.D", value: "Pharm.D" }, 
   { label: "M.Pharmacy", value: "M.Pharmacy" },
   { label: "MBA", value: "MBA" },
   { label: "MCA", value: "MCA" },
