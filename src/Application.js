@@ -27,6 +27,7 @@ import CondonationandDetention from "./components/Layout/LayoutSubPages/Examinat
 import StudentPhotosButton from "./components/Batches/StudentPhotosButton";
 import RegulationPage from "./components/Layout/LayoutSubPages/Regulations/Regulations";
 import AddRegulationPage from "./components/Layout/LayoutSubPages/Regulations/RegulationsSubPages/AddRegulations";
+import Branches from "./components/Layout/LayoutSubPages/University/Branches/Branches";
 
 const Application = () => {
   return (
@@ -60,6 +61,7 @@ const Application = () => {
           />
           <Route path="regulations/addregulation" element={<AddRegulationPage />} />
           <Route path="regulations" element={<RegulationPage />} />
+          <Route path="branches" element={<Branches/>}/>
           <Route path="colleges" element={<CollegePage />} />
           <Route path="profilepage" element={<ProfilePage />} />
           <Route path="homepage" element={<HomePage />} />

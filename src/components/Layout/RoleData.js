@@ -99,6 +99,44 @@ const RollData = {
       text: "LogOut",
     },
   ],
+  ManageUniversities :[
+    {
+      to: "/layout/homepage",
+      icon: <HomeIcon className="Nav-icons" />,
+      text: "Home",
+    },
+    {
+      icon:<CorporateFareIcon className="Nav-icons" />,
+      text:"University",
+      childrens:[
+      {
+      to:"/layout/branches",
+      icon: <HubIcon className="Nav-icons" />,
+      text:"Branches",
+      }
+      ]
+    },
+    {
+      to: "/layout/batches",
+      icon: <GroupsIcon className="Nav-icons" />,
+      text: "Batches",
+    },
+    {
+      to: "/layout/examdata",
+      icon: <GradingIcon className="Nav-icons" />,
+      text: "Examinations",
+    },
+    {
+      to: "/layout/staff",
+      icon: <PersonIcon className="Nav-icons" />,
+      text: "Staff",
+    },
+    {
+      to: "/home",
+      icon: <LogoutIcon className="Nav-icons" />,
+      text: "LogOut",
+    },
+  ]
 };
 
 export default RollData;

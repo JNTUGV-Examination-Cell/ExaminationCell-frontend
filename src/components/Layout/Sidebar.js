@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{useState}from "react";
 import { Link } from "react-router-dom";
 import RollData from "./RoleData";
 import jntugv from "../../assests/jntugv.png";
@@ -12,11 +12,18 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  Collapse,
 } from "@mui/material";
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
 
 const Sidebar = () => {
   const userRole = useSelector(selectUserRole);
-  
+  const [open, setOpen] = useState(false); 
+
+  const handleClick = () => {
+    setOpen(!open);
+  };
   return (
     <Drawer
       variant="permanent"
@@ -39,6 +46,41 @@ const Sidebar = () => {
       </Box>
       <List>
         {RollData[userRole].map((link, index) => (
+          <div key={index}>
+            {link.childrens ? (
+              <>
+                <ListItem button onClick={handleClick}>
+                  <ListItemIcon>{link.icon}</ListItemIcon>
+                  <ListItemText primary={link.text} />
+                  {open ? <ExpandLess /> : <ExpandMore />} 
+                </ListItem>
+                <Collapse in={open} timeout="auto" unmountOnExit>
+                  {link.childrens.map((child, idx) => (
+                    <ListItem
+                      button
+                      key={idx}
+                      component={Link}
+                      to={child.to}
+                      onClick={() => setOpen(false)} 
+                      style={{ paddingLeft: "40px" }}
+                    >
+                      <ListItemIcon>{child.icon}</ListItemIcon>
+                      <ListItemText primary={child.text} />
+                    </ListItem>
+                  ))}
+                </Collapse>
+              </>
+            ) : (
+              <ListItem button component={Link} to={link.to}>
+                <ListItemIcon>{link.icon}</ListItemIcon>
+                <ListItemText primary={link.text} />
+              </ListItem>
+            )}
+          </div>
+        ))}
+      </List>
+      {/* <List>
+        {RollData[userRole].map((link, index) => (
           <ListItem
             button
             key={index}
@@ -50,7 +92,7 @@ const Sidebar = () => {
             <ListItemText primary={link.text} />
           </ListItem>
         ))}
-      </List>
+      </List> */}
     </Drawer>
   );
 };
