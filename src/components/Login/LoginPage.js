@@ -21,18 +21,22 @@ const LoginPage = () => {
 const LoginPageContent = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
+  const [isOtpSent, setIsOtpSent] = useState(false);
   const [verifyOtp, setVerifyOtp] = useState("");
   const [verificationStatus, setVerificationStatus] = useState(false);
   const { enqueueSnackbar } = useSnackbar();
   const [state, setState] = React.useState({
     open: false,
-    vertical: "top",
-    horizontal: "center",
+    vertical: "bottom",
+    horizontal: "right",
   });
   const { vertical, horizontal, open } = state;
 
-  const handleOtpClick = (newState) => {
-    setState({ ...newState, open: true });
+  const handleOtpClick = () => {
+    enqueueSnackbar("OTP Sent", {
+      variant: "success",
+      anchorOrigin: { vertical: "bottom", horizontal: "right" },
+    });
   };
 
   const handleOtpClose = () => {
@@ -66,11 +70,12 @@ const LoginPageContent = () => {
         }
       );
       console.log(response.data);
+      setIsOtpSent(true);
     } catch (error) {
       console.error("Error:", error);
     }
     console.log({ otpValue: otpNumber });
-    handleOtpClick({ vertical: "top", horizontal: "center" });
+    handleOtpClick({ vertical: "bottom", horizontal: "right" });
     /// don't change this code
     // const templateParams = {
     //   to_name: email,
@@ -94,11 +99,27 @@ const LoginPageContent = () => {
   };
 
   const handleValidationSuccess = () => {
-    enqueueSnackbar("Verification Successful", { variant: "success" });
+    enqueueSnackbar("Verification Successful", {
+      variant: "success",
+      autoHideDuration: 3000,
+    });
   };
 
-  const handleValidationFailure = () => {
-    enqueueSnackbar("Verification Failed", { variant: "error" });
+  const handleValidationFailure = (response) => {
+    let errorMessage = "Verification Failed: Unknown reason";
+
+    if (response) {
+      if (response.isLogin === false) {
+        errorMessage = `Verification Failed: ${
+          response.message || "Unknown reason"
+        }`;
+      }
+    }
+    enqueueSnackbar(errorMessage, {
+      variant: "error",
+      anchorOrigin: { vertical: "bottom", horizontal: "right" },
+      autoHideDuration: 3000,
+    });
   };
 
   const verifyOTP = async () => {
@@ -125,7 +146,7 @@ const LoginPageContent = () => {
       navigate("/home");
     } else {
       setVerificationStatus(false);
-      handleValidationFailure();
+      handleValidationFailure(userDetails);
     }
   };
 
@@ -192,6 +213,7 @@ const LoginPageContent = () => {
               }}
               variant="contained"
               handleValidationClick
+              disabled={!isOtpSent}
             >
               Validate OTP
             </Button>
