@@ -63,7 +63,7 @@ const Regulations = () => {
   );
   useEffect(() =>{
     setfilteredRegulationsData(filteredRegulationsDataWithPlaceholder);
-  }, [regulationsData]);
+  }, [filteredRegulationsDataWithPlaceholder, regulationsData]);
 
   return (
     <>
