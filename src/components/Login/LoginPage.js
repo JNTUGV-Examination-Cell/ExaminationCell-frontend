@@ -2,6 +2,9 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import jntugv from "./assests/jntugv.png";
 import send from "./assests/send.svg";
+import Snackbar from '@mui/material/Snackbar';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 import "./loginPage.css";
 // import emailjs from "emailjs-com";
 import { useNavigate } from "react-router-dom";
@@ -13,6 +16,36 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [verifyOtp, setVerifyOtp] = useState("");
   const [verificationStatus, setVerificationStatus] = useState(false);
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  const action = (
+    <React.Fragment>
+      <Button color="secondary" size="small" onClick={handleClose}>
+        UNDO
+      </Button>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </React.Fragment>
+  );
 
   function generateOTP() {
     const length = 6;
@@ -152,6 +185,13 @@ const LoginPage = () => {
             >
               Validate OTP
             </Button>
+            <Snackbar
+             open={open}
+             autoHideDuration={6000}
+             onClose={handleClose}
+             message="Verification Done"
+             action={action}
+            />
           </Box>
         </Box>
       </Box>

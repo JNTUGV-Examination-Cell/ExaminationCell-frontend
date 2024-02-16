@@ -1,6 +1,8 @@
 import React, { useState,useEffect } from "react";
 import './StudentApplicationForm.css'
 import Stack from '@mui/material/Stack';
+import api from "../../../../../apiReference";
+import { collegeData } from "../../../../../../constants/collegesData";
 import Button from '@mui/material/Button';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -17,6 +19,7 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import { useSelector } from 'react-redux';
 import { selectCurrentExam } from '../../../../../../features/exams/examSlice';
+import { Exam_students_list } from "./Examstudentslist";
 
 const jsonData = [
   { branch: 'EEE', total_students: '87', registered: '85', not_registered: '2' },
@@ -40,11 +43,60 @@ Studentslist.forEach((item, index) => {
 });
 
 const StudentApplicationForm = () => {
+    const [registeredstudents,setRegisteredstudents] = useState([]);
+    const loginUserDetails = JSON.parse(localStorage.getItem("userDetails"));
+    const [studentsdata,setStudentsdata] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [filteredData, setFilteredData] = useState(Studentslist);
     const [filterStatus, setFilterStatus] = useState("All");
     const [totalAmount, setTotalAmount] = useState(0);
     console.log({});
+    
+    useEffect(() => {
+      const registeredstudents = async () => {
+        let examcode = loginUserDetails.examcode;
+        try {
+          const response = await api.get(
+            `/fetchexamregisteredStudentData/${examcode}`
+          );
+          setRegisteredstudents(response.data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      registeredstudents();
+    }, [loginUserDetails.collegeCode],[loginUserDetails.examcode]);
+  
+    const fetchstudents = async (req, res) => {
+      try {
+        const response = await api.get("/fetchexamregisteredStudentData");
+        setStudentsdata(response.data.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+  console.log({ studentsdata });
+  const sstudentsdata = Array.isArray(studentsdata)
+    ? studentsdata.map((exam) => {
+        // const college = collegeData.find(
+        //   (college) => college.college_code === exam.college_code
+        // );
+        const examc = Exam_students_list.find(
+          (examc) => examc.exam_code === exam.exam_code
+        );
+        
+        return {
+          hallticket: exam.hallticket,
+          name: exam.name,
+          branch: exam.branch,
+          mobile: exam.mobile,
+          id: exam.id,
+          registration: exam.registration,
+          path: "/layout/examdata/manageexamination/studentexamapplication",
+        };
+      })
+    : [];
   useEffect(() => {
     const amountPerStudent = 560;
     const totalAmount = amountPerStudent * filteredData.length;
@@ -55,7 +107,7 @@ const StudentApplicationForm = () => {
       const newSearchTerm = event.target.value;
       setSearchTerm(newSearchTerm);
 
-      const filtered = Studentslist.filter((item) =>
+      const filtered = sstudentsdata.filter((item) =>
         (filterStatus === "All" || item.registration === filterStatus) &&
         (item.name.toLowerCase().includes(newSearchTerm.toLowerCase()) ||
           item.hallticket.toLowerCase().includes(newSearchTerm.toLowerCase()) ||
@@ -69,7 +121,7 @@ const StudentApplicationForm = () => {
     const handleFilter = (status) => {
       setFilterStatus(status);
       
-      const filtered = Studentslist.filter((item) =>
+      const filtered = sstudentsdata.filter((item) =>
         (status === "All" || item.registration === status) &&
         (item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
           item.hallticket.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -100,11 +152,11 @@ const StudentApplicationForm = () => {
           document.body.removeChild(link);
         }
       };
-      const registeredStudentsCount = Studentslist.filter(
+      const registeredStudentsCount = sstudentsdata.filter(
         (student) => student.registration === "Registered"
       ).length;
       
-      const notRegisteredStudentsCount = Studentslist.filter(
+      const notRegisteredStudentsCount = sstudentsdata.filter(
         (student) => student.registration === "Not Registered"
       ).length;
       
@@ -114,10 +166,10 @@ const StudentApplicationForm = () => {
     <div>
       <div className="header">
         <h1 className="head">Student Exam Application - {currentExam.currentExam} - {currentExam.currentExamName}</h1>
-        <Stack spacing={2} direction="row">
+        {/* <Stack spacing={2} direction="row">
           <Button variant="contained">Download Application Form</Button>
           <Button variant="contained">Payment</Button>
-        </Stack>
+        </Stack> */}
       </div>
       <div className="ApplicationDetails">
         <h1>Application Details</h1>
