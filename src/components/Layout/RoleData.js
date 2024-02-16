@@ -88,12 +88,6 @@ const RollData = {
       icon: <GradingIcon className="Nav-icons" />,
       text: "Examinations",
     },
-    // {
-    //   to: "/layout/InternalMarks",
-    //   icon: <HubIcon className="Nav-icons" />,
-    //   text: "Internal Marks",
-    // },
-
     {
       to: "/layout/staff",
       icon: <PersonIcon className="Nav-icons" />,
@@ -124,7 +118,12 @@ const RollData = {
       to:"/layout/branches",
       icon: <HubIcon className="Nav-icons" />,
       text:"Branches",
-      }
+      },
+      {
+        to:"/layout/regulations",
+        icon: <HubIcon className="Nav-icons" />,
+        text:"Regulations",
+        },
       ]
     },
     {

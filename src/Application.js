@@ -25,6 +25,8 @@ import SetForParticularExam from "./components/Layout/LayoutSubPages/Examination
 import ExaminationSubPage from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/ExaminationSubPage";
 import CondonationandDetention from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/CondonationandDetention/CondonationandDetention";
 import StudentPhotosButton from "./components/Batches/StudentPhotosButton";
+import RegulationPage from "./components/Layout/LayoutSubPages/Regulations/Regulations";
+import AddRegulationPage from "./components/Layout/LayoutSubPages/Regulations/RegulationsSubPages/AddRegulations";
 import Examnotification from "./components/Layout/LayoutSubPages/ExamNotification/Examnotification";
 import Branches from "./components/Layout/LayoutSubPages/University/Branches/Branches";
 
@@ -97,6 +99,8 @@ const Application = () => {
             path="examdata/manageexamination/FinalListOfExamination"
             element={<FinalListOfExamination />}
           />
+          <Route path="regulations/addregulation" element={<AddRegulationPage />} />
+          <Route path="regulations" element={<RegulationPage />} />
           <Route path="branches" element={<Branches/>}/>
           <Route path="colleges" element={<CollegePage />} />
           <Route path="profilepage" element={<ProfilePage />} />
