@@ -22,7 +22,7 @@ const Regulations = () => {
       }
     };
     fetchRegulationsData();
-  }, []);
+  });
 
   const filterRegulations = useCallback(() => {
     const filteredData = regulationsData.filter(
@@ -43,7 +43,6 @@ const Regulations = () => {
   }, [filterRegulations]);
 
   const columns = [
-    // { field: "id", headerName: "S.No", width: 100},
     { field: "regulation_id", headerName: "Regulation Id", width:400},
     { field: "regulation", headerName: "Regulation",  width:400 },
     {
