@@ -113,7 +113,12 @@ const RollData = {
       to:"/layout/branches",
       icon: <HubIcon className="Nav-icons" />,
       text:"Branches",
-      }
+      },
+      {
+        to:"/layout/regulations",
+        icon: <HubIcon className="Nav-icons" />,
+        text:"Regulations",
+        },
       ]
     },
     {

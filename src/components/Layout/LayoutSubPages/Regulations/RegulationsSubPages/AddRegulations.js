@@ -1,34 +1,79 @@
-import React from 'react';
-import { Typography } from "@mui/material";
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import Button from "@mui/material/Button";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import api from "../../../../apiReference";
+import "./AddRegulations.css";
 const AddRegulations = () => {
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // Add your form submission logic here
-    };
+  const [formData, setFormData] = useState({
+    regulation_id: "",
+    regulation: "",
+    regulation_start_year: "",
+  });
 
-    return (
-        <div className="form-container">
-            <form onSubmit={handleSubmit} className="form">
-                <Typography variant="h5">Add New Regulations</Typography>
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
-                <input
-                    type="text"
-                    placeholder='Regulation'
-                    className="textchoose"
-                />
-                <input
-                    type="text"
-                    placeholder='Start Year'
-                    className="textchoose"
-                />
-                <div className='AddRegulation'>
-                    <Button type="submit" variant="contained" startIcon={<CloudUploadIcon />}>Add Regulation</Button>
-                </div>
-            </form>
-        </div>
-    );
+  const handleFormSubmit = async () => {
+    console.log(formData);
+    try {
+      const response = await api.post("/api/course/addRegulation", formData);
+      if (response.status === 200) {
+        console.log("Regulation added successfully");
+      } else {
+        console.error("Failed to add regulation");
+      }
+    } catch (error) {
+      console.error("Error adding/ updating regulation:", error);
+    }
+  };
+
+  return (
+    <>
+      <div className="container">
+        <h2 className="page-heading">Add Regulation</h2>
+        <form className="form-section">
+          <div className="form">
+            <label htmlFor="regulations">Regulation:</label>
+            <div className="underline-dropdown">
+              <input
+                type="text"
+                id="regulation"
+                name="regulation"
+                value={formData.regulation}
+                onChange={handleInputChange}
+              />
+            </div>
+          </div>
+          <div className="form">
+            <label htmlFor="regulation_start_year">Regulation Start Year</label>
+            <div className="underline">
+              <input
+                type="text"
+                id="regulation_start_year"
+                name="regulation_start_year"
+                value={formData.regulation_start_year}
+                onChange={handleInputChange}
+              />
+            </div>
+          </div>
+          <div className="update-button">
+            <Button
+              variant="contained"
+              style={{ height: 30 }}
+              onClick={handleFormSubmit}
+              component={Link}
+              to="/layout/regulations"
+              className="button"
+            >
+              Add <span>&#8594;</span>
+            </Button>
+          </div>
+        </form>
+      </div>
+    </>
+  );
 };
 
 export default AddRegulations;
