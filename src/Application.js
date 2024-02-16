@@ -26,6 +26,7 @@ import ExaminationSubPage from "./components/Layout/LayoutSubPages/Examination/E
 import CondonationandDetention from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/CondonationandDetention/CondonationandDetention";
 import StudentPhotosButton from "./components/Batches/StudentPhotosButton";
 import Examnotification from "./components/Layout/LayoutSubPages/ExamNotification/Examnotification";
+import Branches from "./components/Layout/LayoutSubPages/University/Branches/Branches";
 
 const Application = () => {
   return (
@@ -96,6 +97,7 @@ const Application = () => {
             path="examdata/manageexamination/FinalListOfExamination"
             element={<FinalListOfExamination />}
           />
+          <Route path="branches" element={<Branches/>}/>
           <Route path="colleges" element={<CollegePage />} />
           <Route path="profilepage" element={<ProfilePage />} />
           <Route path="homepage" element={<HomePage />} />

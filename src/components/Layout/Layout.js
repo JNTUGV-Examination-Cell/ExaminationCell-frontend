@@ -49,6 +49,7 @@ const Layout = (props) => {
                     {part}/
                   </Link>
                 ))}
+               
               </Typography>
             </Box>
             <Box sx={{ display: "flex", alignItems: "center" }}>
