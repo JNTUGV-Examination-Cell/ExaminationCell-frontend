@@ -26,6 +26,7 @@ import ExaminationSubPage from "./components/Layout/LayoutSubPages/Examination/E
 import CondonationandDetention from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/CondonationandDetention/CondonationandDetention";
 import StudentPhotosButton from "./components/Batches/StudentPhotosButton";
 import Branches from "./components/Layout/LayoutSubPages/University/Branches/Branches";
+import BranchesAddEdit from "./components/Layout/LayoutSubPages/University/BranchesAddEdit/BranchesAddEdit";
 
 const Application = () => {
   return (
@@ -75,6 +76,7 @@ const Application = () => {
           <Route path="examdata/manageexamination/Sets/examsets/setforparticularexam" element={<SetForParticularExam/>} />
           <Route path="examdata" element={<Examdata />} />
           <Route path="examdata/manageexamination" element={<ExaminationSubPage />} />
+          <Route path="branches/branchesAdd" element={<BranchesAddEdit/>} />
         </Route>
         <Route path="/home" element={<Home />} />
         <Route path="/random" element={<Random />} />

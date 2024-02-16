@@ -1,5 +1,6 @@
-.container {
+.branch-container {
   padding-top: 30px;
+  
 }
 .BranchTitle {
   text-align: left;
@@ -7,15 +8,16 @@
 
 .AddButton-SearchBar {
   display: flex;
-  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: 40px;
+ 
 }
 .BranchessearchBar {
   width: 250px;
-  margin-left: 900px;
-  display: inline-block;
 }
 
 .addbutton {
   padding-left: 20px;
-  padding-top: 30px;
+
 }
