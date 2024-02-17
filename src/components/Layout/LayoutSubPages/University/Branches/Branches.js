@@ -4,6 +4,8 @@ import { Typography, Button, TextField, InputAdornment } from "@mui/material";
 import api from "../../../../apiReference";
 import "./Branches.css";
 import { SearchIcon } from "lucide-react";
+import { v4 as uuid } from 'uuid';
+
 
 const Branches = () => {
   const [branchesData, setBranchesData] = useState([]);
@@ -51,10 +53,11 @@ const Branches = () => {
 
   const handleSaveClick = async (id, row) => {
     try {
-      
+      let dataToSend = [];
       // Send a request to update or add the data in the backend
       if (isNewRow) {
-        const response = await api.post("/api/branch/addBranches", row);
+        dataToSend.push(row);
+        const response = await api.post("/api/branch/addBranches", dataToSend);
         console.log("New row added successfully:", response.data);
         setFilteredBranchesData((prevData) => [...prevData, response.data]);
       } else {
@@ -134,18 +137,12 @@ const Branches = () => {
     },
   ];
 
-  // const filteredBranchesDataWithPlaceholder = filteredBranchesData.map((row) =>
-  //   Object.fromEntries(
-  //     Object.entries(row).map(([key, value]) => [
-  //       key,
-  //       value === "" || value === null ? "Not Uploaded" : value,
-  //     ])
-  //   )
-  // );
+
   const filteredBranchesDataWithPlaceholder = filteredBranchesData.map((row) => {
     if (row.isNew) {
+      const newRowId = uuid();
       // For new rows, return the row as is since we want to display empty fields
-      return row;
+      return { ...row, id: newRowId };
     } else {
       // For existing rows, map over the row's entries and replace empty values with "Not Uploaded"
       const updatedRow = Object.fromEntries(
@@ -154,7 +151,8 @@ const Branches = () => {
           value === "" || value === null ? "Not Uploaded" : value,
         ])
       );
-      return updatedRow;
+      return { ...row, id: row.branch_id };
+
     }
   });
 
@@ -203,6 +201,6 @@ const Branches = () => {
       </div>
     </>
   );
-};
+};  
 
 export default Branches;
