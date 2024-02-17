@@ -138,10 +138,8 @@ const Application = () => {
             element={<SetForParticularExam />}
           />
           <Route path="examdata" element={<Examdata />} />
-          <Route
-            path="examdata/manageexamination"
-            element={<ExaminationSubPage />}
-          />
+          <Route path="examdata/manageexamination" element={<ExaminationSubPage />} />
+          <Route path="branches/branchesAdd" element={<BranchesAddEdit/>} />
         </Route>
         <Route path="/home" element={<Home />} />
         <Route path="/random" element={<Random />} />
