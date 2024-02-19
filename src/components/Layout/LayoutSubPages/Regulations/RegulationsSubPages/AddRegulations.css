@@ -1,0 +1,55 @@
+.container {
+  width: 400px;
+  margin: 50px 10px 10px 500px; 
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #efecec;
+  box-shadow: 0 16px 32px rgba(37, 37, 37, 0.3);
+  height: 300px;
+}
+.page-heading {
+  font-size: 30px;
+  text-align: center;
+  margin: 10px;
+  margin-bottom: 20px;
+}
+.form-section {
+  margin-bottom: 20px;
+}
+
+.form {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 20px;
+
+}
+.form input{
+  font-size: 20px;
+}
+.form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.underline-dropdown,
+.underline {
+  border-bottom: 1px solid #0d0d0d; /* Add underline effect to inputs */
+}
+
+.underline-dropdown input,
+.underline input {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  outline: none;
+  background: transparent; /* Make inputs transparent */
+}
+
+.update-button {
+  text-align: center;
+}
+
+.button {
+  margin-top: 25px;
+  font-size: 16px;
+}

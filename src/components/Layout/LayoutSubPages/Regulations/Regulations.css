@@ -1,0 +1,28 @@
+/* Regulations.css */
+
+.container{
+    width: auto;
+    padding-top: 30px;
+  
+  }
+  .RegulationTitle{
+    text-align: left;
+  }
+  .AddButton-SearchBar{
+    display: flex;
+      align-items: center;
+  }
+  .RegulationssearchBar{
+      width: 250px;
+      margin-left: 900px;
+      display: inline-block;
+  }
+  
+  .addbutton{
+    padding-left: 20px;
+    padding-top: 30px;
+  }
+  .data-table{
+    width: 1250px;
+  }
+  

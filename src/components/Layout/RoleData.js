@@ -32,7 +32,12 @@ const RollData = {
     {
       to: "/layout/notifications",
       icon: <NotificationsActiveIcon className="Nav-icons" />,
-      text: "Notification",
+      text: "Portal Notification",
+    },
+    {
+      to: "/layout/examnotifications",
+      icon: <NotificationsActiveIcon className="Nav-icons" />,
+      text: "Exam Notification",
     },
     {
       to: "/home",
@@ -57,6 +62,11 @@ const RollData = {
       text: "Examinations",
     },
     {
+      to: "/layout/examnotifications",
+      icon: <NotificationsActiveIcon className="Nav-icons" />,
+      text: "Notification",
+    },
+    {
       to: "/home",
       icon: <LogoutIcon className="Nav-icons" />,
       text: "LogOut",
@@ -79,14 +89,14 @@ const RollData = {
       text: "Examinations",
     },
     {
-      to: "/layout/InternalMarks",
-      icon: <HubIcon className="Nav-icons" />,
-      text: "Internal Marks",
-    },
-    {
       to: "/layout/staff",
       icon: <PersonIcon className="Nav-icons" />,
       text: "Staff",
+    },
+    {
+      to: "/layout/examnotifications",
+      icon: <NotificationsActiveIcon className="Nav-icons" />,
+      text: "Notification",
     },
     {
       to: "/home",
@@ -108,7 +118,12 @@ const RollData = {
       to:"/layout/branches",
       icon: <HubIcon className="Nav-icons" />,
       text:"Branches",
-      }
+      },
+      {
+        to:"/layout/regulations",
+        icon: <HubIcon className="Nav-icons" />,
+        text:"Regulations",
+        },
       ]
     },
     {
