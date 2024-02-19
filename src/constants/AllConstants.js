@@ -2,7 +2,6 @@ const USER_LEVELS = {
   UNIVERSITY_HEAD_LEVEL: 1,
   COLLEGE_HEAD_LEVEL:1 ,
   PROFESSOR_LEVEL: 3,
-  Professor: 3,
 };
 
 const COURSE_OPTIONS = [
