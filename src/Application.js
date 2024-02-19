@@ -25,7 +25,8 @@ import SetForParticularExam from "./components/Layout/LayoutSubPages/Examination
 import ExaminationSubPage from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/ExaminationSubPage";
 import CondonationandDetention from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/CondonationandDetention/CondonationandDetention";
 import AnotherCollegePage from "./components/Layout/LayoutSubPages/CollegeSubPages/CollegeDetails";
-import FileUploader from "./components/Layout/LayoutSubPages/CollegeSubPages/FileUploader";
+import AddCollegePage from './components/Layout/LayoutSubPages/CollegeSubPages/AddCollegePage';
+
 import StudentPhotosButton from "./components/Batches/StudentPhotosButton";
 
 const Application = () => {
@@ -50,6 +51,7 @@ const Application = () => {
           <Route path="examdata/manageexamination/InternalMarks" element={<InternalMarks />} />
           <Route path="examdata/manageexamination/FinalListOfExamination" element={<FinalListOfExamination />} />
           <Route path="examdata/manageexamination/CondonationandDetention" element={<CondonationandDetention />} />
+
           <Route
             path="examdata/manageexamination/studentexamapplication"
             element={<StudentApplicationForm />}
@@ -75,8 +77,11 @@ const Application = () => {
           <Route path="examdata/manageexamination/Sets/examsets/setforparticularexam" element={<SetForParticularExam/>} />
           <Route path="examdata" element={<Examdata />} />
           <Route path="examdata/manageexamination" element={<ExaminationSubPage />} />
-          <Route path="/layout/layoutSubPages/CollegeSubPages/CollegeDetails/AnotherCollegePage" element={<AnotherCollegePage />} />
-          <Route path="/layout/layoutSubPages/CollegeSubPages/FileUploader" element={<FileUploader/>} />
+          <Route path="/layout/layoutSubPages/CollegeSubPages/CollegeDetails" element={<AnotherCollegePage />} />
+          <Route path="/layout/layoutSubPages/CollegeSubPages/AddCollegePage" element={<AddCollegePage />} />
+
+
+          
         </Route>
         <Route path="/home" element={<Home />} />
         <Route path="/random" element={<Random />} />

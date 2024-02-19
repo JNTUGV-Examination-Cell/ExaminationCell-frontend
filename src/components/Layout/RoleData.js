@@ -80,7 +80,7 @@ const RollData = {
       text: "Examinations",
     },
     {
-      to: "/layout/Colleges",
+      to: "/Layout/LayoutSubPages/CollegeSubPages/CollegeDetails",
       icon: <MdApartment className="Nav-icons" />,
       text: "Colleges",
     },
