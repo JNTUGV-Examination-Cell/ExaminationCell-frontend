@@ -4,7 +4,6 @@ import { Typography, Button, TextField, InputAdornment } from "@mui/material";
 import api from "../../../../apiReference";
 import "./Branches.css";
 import { SearchIcon } from "lucide-react";
-import { v4 as uuid } from 'uuid';
 
 
 const Branches = () => {
@@ -18,9 +17,9 @@ const Branches = () => {
     const fetchBranchesData = async () => {
       try {
         const response = await api.get("/api/branch/getCompleteBranches");
-        setBranchesData(response.data);
-        setFilteredBranchesData(response.data);
-        // console.log("Fetched branches data:", response.data);
+        const sortedData = response.data.sort((a, b) => a.branch_id - b.branch_id);
+        setBranchesData(sortedData);
+        setFilteredBranchesData(sortedData);
       } catch (error) {
         console.log(error);
       }
@@ -50,28 +49,38 @@ const Branches = () => {
     setEditRowId(id);
     setIsNewRow(false);
   };
-
   const handleSaveClick = async (id, row) => {
     try {
-      let dataToSend = [];
-      // Send a request to update or add the data in the backend
       if (isNewRow) {
-        dataToSend.push(row);
-        const response = await api.post("/api/branch/addBranches", dataToSend);
+        const dataToSend = [row];
+        console.log({ dataToSend });
+        const response = await api.post('/api/branch/addBranches', dataToSend);
         console.log("New row added successfully:", response.data);
-        setFilteredBranchesData((prevData) => [...prevData, response.data]);
+        row.isNew = false;
+        console.log({ row });
+        if (!filteredBranchesData.some(existingRow => existingRow.branch_id === row.branch_id)) {
+          setFilteredBranchesData(prevData => [...prevData, row]);
+        }
       } else {
         await api.put(`/api/branch/updateBranch/${id}`, row);
         console.log("Row updated successfully");
         console.log(row);
       }
-      setFilteredBranchesData((prevData) =>
-        prevData.map((oldRow) => (oldRow.branch_id === id ? { ...oldRow, ...row } : oldRow)))
+      setFilteredBranchesData(prevData => {
+        const updatedData = prevData
+          .map(oldRow => (oldRow.branch_id === id ? { ...oldRow, ...row } : oldRow))
+          .sort((a, b) => a.branch_id - b.branch_id);
+        const editedRowIndex = updatedData.findIndex(item => item.branch_id === id);
+        if (editedRowIndex > 0) {
+          const editedRow = updatedData[editedRowIndex];
+          updatedData.splice(editedRowIndex, 1);
+          updatedData.unshift(editedRow);
+        }
+        return updatedData;
+      });
     } catch (error) {
       console.error("Error saving data:", error);
-      // Display an error message or handle any other error scenarios as needed
     } finally {
-      // Reset editRowId to null to exit the edit mode
       setEditRowId(null);
       setIsNewRow(false);
     }
@@ -82,9 +91,12 @@ const Branches = () => {
     setIsNewRow(false);
   };
 
-  const handleAddRow = async() => {
+
+  const handleAddRow = async () => {
+  const maxId = Math.max(...branchesData.map(row => row.branch_id));
+  const newRowId = maxId + 1;
     const newRow = {
-      branch_id: "", // Set default values for the new row
+      branch_id: newRowId,
       course: "",
       branch: "",
       branch_full_name: "",
@@ -93,9 +105,10 @@ const Branches = () => {
       isNew: true,
     };
     setFilteredBranchesData([newRow, ...filteredBranchesData]);
-    setEditRowId(newRow.branch_id);
+    setEditRowId(newRowId);
     setIsNewRow(true);
   };
+
 
   const columns = [
     { field: "branch_id", headerName: "Branch Id", width: 100, editable: true },
@@ -139,22 +152,15 @@ const Branches = () => {
 
 
   const filteredBranchesDataWithPlaceholder = filteredBranchesData.map((row) => {
-    if (row.isNew) {
-      const newRowId = uuid();
-      // For new rows, return the row as is since we want to display empty fields
-      return { ...row, id: newRowId };
-    } else {
-      // For existing rows, map over the row's entries and replace empty values with "Not Uploaded"
-      const updatedRow = Object.fromEntries(
-        Object.entries(row).map(([key, value]) => [
-          key,
-          value === "" || value === null ? "Not Uploaded" : value,
-        ])
-      );
-      return { ...row, id: row.branch_id };
-
+    const updatedRow = { ...row };
+    for (const key in updatedRow) {
+      if (updatedRow.hasOwnProperty(key) && (updatedRow[key] === "" || updatedRow[key] === null)) {
+        updatedRow[key] = "Not Uploaded";
+      }
     }
+    return updatedRow;
   });
+  
 
   return (
     <>
@@ -201,6 +207,6 @@ const Branches = () => {
       </div>
     </>
   );
-};  
+};
 
 export default Branches;
