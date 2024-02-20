@@ -32,7 +32,12 @@ const RollData = {
     {
       to: "/layout/notifications",
       icon: <NotificationsActiveIcon className="Nav-icons" />,
-      text: "Notification",
+      text: "Portal Notification",
+    },
+    {
+      to: "/layout/examnotifications",
+      icon: <NotificationsActiveIcon className="Nav-icons" />,
+      text: "Exam Notification",
     },
     {
       to: "/home",
@@ -57,6 +62,11 @@ const RollData = {
       text: "Examinations",
     },
     {
+      to: "/layout/examnotifications",
+      icon: <NotificationsActiveIcon className="Nav-icons" />,
+      text: "Notification",
+    },
+    {
       to: "/home",
       icon: <LogoutIcon className="Nav-icons" />,
       text: "LogOut",
@@ -79,6 +89,57 @@ const RollData = {
       text: "Examinations",
     },
     {
+
+
+      to: "/layout/staff",
+      icon: <PersonIcon className="Nav-icons" />,
+      text: "Staff",
+    },
+    {
+      to: "/layout/examnotifications",
+      icon: <NotificationsActiveIcon className="Nav-icons" />,
+      text: "Notification",
+    },
+    {
+      to: "/home",
+      icon: <LogoutIcon className="Nav-icons" />,
+      text: "LogOut",
+    },
+  ],
+  ManageUniversities :[
+    {
+      to: "/layout/homepage",
+      icon: <HomeIcon className="Nav-icons" />,
+      text: "Home",
+    },
+    {
+      icon:<CorporateFareIcon className="Nav-icons" />,
+      text:"University",
+      childrens:[
+      {
+      to:"/layout/branches",
+      icon: <HubIcon className="Nav-icons" />,
+      text:"Branches",
+      },
+      {
+        to:"/layout/regulations",
+        icon: <HubIcon className="Nav-icons" />,
+        text:"Regulations",
+        },
+      ]
+    },
+    {
+      to: "/layout/batches",
+      icon: <GroupsIcon className="Nav-icons" />,
+      text: "Batches",
+    },
+    {
+      to: "/layout/examdata",
+      icon: <GradingIcon className="Nav-icons" />,
+      text: "Examinations",
+    },
+    {
+
       to: "/layout/staff",
       icon: <PersonIcon className="Nav-icons" />,
       text: "Staff",
@@ -93,7 +154,7 @@ const RollData = {
       icon: <LogoutIcon className="Nav-icons" />,
       text: "LogOut",
     },
-  ],
+  ]
 };
 
 export default RollData;

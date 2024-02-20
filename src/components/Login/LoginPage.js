@@ -7,12 +7,41 @@ import "./loginPage.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import api from "../apiReference";
+import Snackbar from "@mui/material/Snackbar";
+import { SnackbarProvider, useSnackbar } from "notistack";
 
 const LoginPage = () => {
+  return (
+    <SnackbarProvider maxSnack={3}>
+      <LoginPageContent />
+    </SnackbarProvider>
+  );
+};
+
+const LoginPageContent = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
+  const [isOtpSent, setIsOtpSent] = useState(false);
   const [verifyOtp, setVerifyOtp] = useState("");
   const [verificationStatus, setVerificationStatus] = useState(false);
+  const { enqueueSnackbar } = useSnackbar();
+  const [state, setState] = React.useState({
+    open: false,
+    vertical: "bottom",
+    horizontal: "right",
+  });
+  const { vertical, horizontal, open } = state;
+
+  const handleOtpClick = () => {
+    enqueueSnackbar("OTP Sent", {
+      variant: "success",
+      anchorOrigin: { vertical: "bottom", horizontal: "right" },
+    });
+  };
+
+  const handleOtpClose = () => {
+    setState({ ...state, open: false });
+  };
 
   function generateOTP() {
     const length = 6;
@@ -41,10 +70,12 @@ const LoginPage = () => {
         }
       );
       console.log(response.data);
+      setIsOtpSent(true);
     } catch (error) {
       console.error("Error:", error);
     }
-    console.log({otpValue: otpNumber})
+    console.log({ otpValue: otpNumber });
+    handleOtpClick({ vertical: "bottom", horizontal: "right" });
     /// don't change this code
     // const templateParams = {
     //   to_name: email,
@@ -67,21 +98,42 @@ const LoginPage = () => {
     //   });
   };
 
+  const handleValidationSuccess = () => {
+    enqueueSnackbar("Verification Successful", {
+      variant: "success",
+      autoHideDuration: 3000,
+    });
+  };
+
+  const handleValidationFailure = (response) => {
+    let errorMessage = "Verification Failed: Unknown reason";
+
+    if (response) {
+      if (response.isLogin === false) {
+        errorMessage = `Verification Failed: ${
+          response.message || "Unknown reason"
+        }`;
+      }
+    }
+    enqueueSnackbar(errorMessage, {
+      variant: "error",
+      anchorOrigin: { vertical: "bottom", horizontal: "right" },
+      autoHideDuration: 3000,
+    });
+  };
+
   const verifyOTP = async () => {
     let userDetails;
     const otpNumber = parseInt(verifyOtp, 10);
     console.log({
       email: email,
       otpValue: otpNumber,
-    })
+    });
     try {
-      const response = await api.post(
-        "/api/staff/user/verifyOtp",
-        {
-          email: email, 
-          otpValue: verifyOtp, 
-        }
-      );
+      const response = await api.post("/api/staff/user/verifyOtp", {
+        email: email,
+        otpValue: verifyOtp,
+      });
       userDetails = response.data;
     } catch (error) {
       console.error("Error:", error);
@@ -90,9 +142,11 @@ const LoginPage = () => {
     if (userDetails.isLogin) {
       setVerificationStatus(true);
       localStorage.setItem("userDetails", JSON.stringify(userDetails));
+      handleValidationSuccess();
       navigate("/home");
     } else {
       setVerificationStatus(false);
+      handleValidationFailure(userDetails);
     }
   };
 
@@ -127,6 +181,15 @@ const LoginPage = () => {
               src={send}
               alt="send otp"
             />
+            <Snackbar
+              className="snackbar"
+              anchorOrigin={{ vertical, horizontal }}
+              autoHideDuration={3000}
+              open={open}
+              onClose={handleOtpClose}
+              message="OTP Sent"
+              key={vertical + horizontal}
+            />
           </Box>
           <Box>
             <TextField
@@ -150,6 +213,8 @@ const LoginPage = () => {
                 "@media (max-width: 600px)": {},
               }}
               variant="contained"
+              handleValidationClick
+              disabled={!isOtpSent}
             >
               Validate OTP
             </Button>
