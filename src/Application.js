@@ -15,6 +15,7 @@ import Staff from "./components/Layout/LayoutSubPages/Staff/Staff";
 import Sets from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Sets/Sets";
 import MarkAbsents from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Sets/SetForParticularExam/MarkAbsents";
 import MarkMalpractice from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Sets/SetForParticularExam/MarkMalpractice";
+import DataForm from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Sets/SetForParticularExam/DataForm";
 import StudentApplicationForm from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/StudentApplication/StudentApplicationForm";
 import Examdata from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Exams/Examdata";
 import ExamSets from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/ExamSets/ExamSets";
@@ -25,6 +26,7 @@ import SetForParticularExam from "./components/Layout/LayoutSubPages/Examination
 import ExaminationSubPage from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/ExaminationSubPage";
 import CondonationandDetention from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/CondonationandDetention/CondonationandDetention";
 import StudentPhotosButton from "./components/Batches/StudentPhotosButton";
+import ExamNotification from "./components/Layout/LayoutSubPages/ExamNotification/examNotification";
 
 const Application = () => {
   return (
@@ -65,9 +67,11 @@ const Application = () => {
           <Route path="batches/studentphotos" element={<StudentPhotosButton/>} />
           <Route path="notifications" element={<PortalNotification />} />
           <Route path="staff" element={<Staff />} />
+          <Route path="examnotification" element={<ExamNotification />} />
           <Route path="InternalMarks" element={<InternalMarks />} />
           <Route path="examdata/manageexamination/Sets/examsets/setforparticularexam/markabsent" element={<MarkAbsents />} />
           <Route path="examdata/manageexamination/Sets/examsets/setforparticularexam/markmalpractice" element={<MarkMalpractice />} />
+          <Route path="examdata/manageexamination/Sets/examsets/setforparticularexam/dform" element={<DataForm />} />
           <Route path="examdata/manageexamination/Sets/examsets" element={<ExamSets />} />
           <Route path="managesubject" element={<ManageSubjects />} />
           <Route path="examdata/manageexamination/Sets/examsets/setforparticularexam" element={<SetForParticularExam/>} />

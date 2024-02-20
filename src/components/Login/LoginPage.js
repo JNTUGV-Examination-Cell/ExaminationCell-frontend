@@ -106,6 +106,7 @@ const LoginPage = () => {
           <Typography variant="h6">
             Jawaharlal Nehru Technological University - Gurajada, Vizianagaram
           </Typography>
+          {console.log("check")}
           <Box sx={{ height: "100px" }}>
             <TextField
               sx={{

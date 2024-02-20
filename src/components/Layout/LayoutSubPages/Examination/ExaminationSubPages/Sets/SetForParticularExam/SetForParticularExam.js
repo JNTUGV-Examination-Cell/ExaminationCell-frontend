@@ -2,24 +2,43 @@ import React, { useState } from "react";
 import "./SetForParticularExam.css";
 import { Typography, Button, Grid, Snackbar } from "@mui/material";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import MarkAbsents from './MarkAbsents';
+import MarkMalpractice from './MarkMalpractice';
+import DataForm from "./DataForm";
+import { useSelector } from 'react-redux';
 import { selectCurrentExam } from "../../../../../../../features/exams/examSlice";
+import * as XLSX from 'xlsx';
+
 
 function SetForParticularExam() {
   const set = "SET-1";
   const currentExam = useSelector(selectCurrentExam);
   const [uploadedFile, setUploadedFile] = useState(null);
   const [showDownloadButton, setShowDownloadButton] = useState(false);
-  const [uploadInProgress, setUploadInProgress] = useState(false); 
+  const [uploadInProgress, setUploadInProgress] = useState(false);
+  const [absentees, setAbsentees] = useState([]); 
+  const [malpractice, setMalpractice] = useState([]); 
+
+
+  const handleMarkAbsent = (rollNumber) => {
+    console.log("Handling Mark Absent", rollNumber);
+    setAbsentees([...absentees, rollNumber]);
+  };
+
+  const handleMarkMalpractice = (rollNumber) => {
+    console.log("Handling Mark Malpractice", rollNumber);
+    setMalpractice([...malpractice, rollNumber]);
+  };
+
 
   const handleFileUpload = (event) => {
     const selectedFile = event.target.files[0];
     if (selectedFile) {
-      setUploadInProgress(true); 
+      setUploadInProgress(true);
       setUploadedFile(selectedFile);
       setTimeout(() => {
-        setUploadInProgress(false); 
-      }, 3000); 
+        setUploadInProgress(false);
+      }, 3000);
     }
   };
 
@@ -38,6 +57,8 @@ function SetForParticularExam() {
     }
   };
 
+  
+
   const handlePublish = () => {
     if (uploadedFile) {
       setShowDownloadButton(true);
@@ -46,10 +67,14 @@ function SetForParticularExam() {
     }
   };
 
+ 
+
+
   return (
     <div className="malpractice">
       <Typography variant="h5" className="head">
-        Sets - {currentExam.currentExam} - {currentExam.currentExamName} - R201102 - COMMUNICATIVE ENGLISH - 20 February 2023 10:00 AM
+        Sets - {currentExam.currentExam} - {currentExam.currentExamName} -
+        R201102 - COMMUNICATIVE ENGLISH - 20 February 2023 10:00 AM
       </Typography>
       <Grid container spacing={2} className="buttons">
         <Grid item>
@@ -88,6 +113,7 @@ function SetForParticularExam() {
             Mark MalPractice
           </Button>
         </Grid>
+
         <Grid item>
           <Button
             variant="contained"
@@ -95,19 +121,21 @@ function SetForParticularExam() {
               height: 30,
             }}
             component={Link}
-            to="/layout"
+            to="/layout/examdata/manageexamination/Sets/examsets/setforparticularexam/dform"
           >
-            Download D Form
+            D Form
           </Button>
         </Grid>
+
+
+       
       </Grid>
       <div className="setblock">
-        <Typography variant="h6" className="set">
+        <Typography variant="h6" className="set" align="center">
           {set}
         </Typography>
         <hr style={{ width: "50%" }}></hr>
-        <Typography variant="h6" className="ntable">
-          {showDownloadButton ? (
+        <Typography variant="h6" className="ntable">          {showDownloadButton ? (
             <span style={{ color: "green" }}>Available</span>
           ) : (
             "Not Available"
@@ -161,11 +189,13 @@ function SetForParticularExam() {
         </Grid>
       </div>
       <Snackbar
-        open={uploadInProgress} 
+        open={uploadInProgress}
         autoHideDuration={3000}
         message="File upload in progress..."
       />
+
     </div>
+    
   );
 }
 

@@ -79,14 +79,14 @@ const RollData = {
       text: "Examinations",
     },
     {
-      to: "/layout/InternalMarks",
-      icon: <HubIcon className="Nav-icons" />,
-      text: "Internal Marks",
-    },
-    {
       to: "/layout/staff",
       icon: <PersonIcon className="Nav-icons" />,
       text: "Staff",
+    },
+    {
+      to: "/layout/examnotification",
+      icon: <NotificationsActiveIcon className="Nav-icons" />,
+      text: "Notification"
     },
     {
       to: "/home",
