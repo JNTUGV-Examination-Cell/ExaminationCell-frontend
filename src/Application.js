@@ -30,7 +30,6 @@ import AddRegulationPage from "./components/Layout/LayoutSubPages/Regulations/Re
 import Examnotification from "./components/Layout/LayoutSubPages/ExamNotification/Examnotification";
 import Branches from "./components/Layout/LayoutSubPages/University/Branches/Branches";
 import Subjects from "./components/Layout/LayoutSubPages/University/Subjects/Subjects";
-import UploadSubjects from "./components/Layout/LayoutSubPages/University/Subjects/UploadSubjects";
 
 const Application = () => {
   return (
@@ -105,7 +104,6 @@ const Application = () => {
           <Route path="regulations" element={<RegulationPage />} />
           <Route path="branches" element={<Branches/>}/>
           <Route path="subjects" element={<Subjects />} />
-          <Route path="subjects/uploadsubjects" element={<UploadSubjects />} />
           <Route path="colleges" element={<CollegePage />} />
           <Route path="profilepage" element={<ProfilePage />} />
           <Route path="homepage" element={<HomePage />} />

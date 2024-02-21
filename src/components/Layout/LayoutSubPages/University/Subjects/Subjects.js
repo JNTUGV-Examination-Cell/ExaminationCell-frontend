@@ -5,8 +5,6 @@ import { Typography, Button, TextField, InputAdornment } from "@mui/material";
 import api from "../../../../apiReference";
 import "./Subjects.css";
 import { SearchIcon } from "lucide-react";
-import { Link } from 'react-router-dom';
-
 
 const Subjects = () => {
   const [subjectsData, setSubjectsData] = useState([]);
@@ -196,7 +194,7 @@ const columns = [
           <Button variant="contained" color="primary" onClick={handleAddRow}>
             Add
           </Button>
-       <span style={{ marginRight: '8px' }}></span>
+       {/* <span style={{ marginRight: '8px' }}></span>
           <Button
             component={Link}
             to="/layout/subjects/uploadsubjects"
@@ -204,7 +202,7 @@ const columns = [
             color="primary"
           >
             Upload Subjects File
-          </Button>
+          </Button> */}
         </div>
         <div className="SubjectssearchBar">
           <TextField
