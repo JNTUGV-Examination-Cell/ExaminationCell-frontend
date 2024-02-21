@@ -6,7 +6,6 @@ import "./Branches.css";
 import { SearchIcon } from "lucide-react";
 import { v4 as uuid } from 'uuid';
 
-
 const Branches = () => {
   const [branchesData, setBranchesData] = useState([]);
   const [filteredBranchesData, setFilteredBranchesData] = useState([]);
@@ -20,9 +19,8 @@ const Branches = () => {
         const response = await api.get("/api/branch/getCompleteBranches");
         setBranchesData(response.data);
         setFilteredBranchesData(response.data);
-        // console.log("Fetched branches data:", response.data);
       } catch (error) {
-        console.log(error);
+        console.error("Error fetching branches data:", error);
       }
     };
     fetchBranchesData();
@@ -54,7 +52,6 @@ const Branches = () => {
   const handleSaveClick = async (id, row) => {
     try {
       let dataToSend = [];
-      // Send a request to update or add the data in the backend
       if (isNewRow) {
         dataToSend.push(row);
         const response = await api.post("/api/branch/addBranches", dataToSend);
@@ -63,15 +60,15 @@ const Branches = () => {
       } else {
         await api.put(`/api/branch/updateBranch/${id}`, row);
         console.log("Row updated successfully");
-        console.log(row);
       }
       setFilteredBranchesData((prevData) =>
-        prevData.map((oldRow) => (oldRow.branch_id === id ? { ...oldRow, ...row } : oldRow)))
+        prevData.map((oldRow) => (oldRow.branch_id === id ? { ...oldRow, ...row } : oldRow))
+      );
     } catch (error) {
       console.error("Error saving data:", error);
+      console.error("Axios error details:", error.response); // Log Axios error details
       // Display an error message or handle any other error scenarios as needed
     } finally {
-      // Reset editRowId to null to exit the edit mode
       setEditRowId(null);
       setIsNewRow(false);
     }
@@ -82,9 +79,9 @@ const Branches = () => {
     setIsNewRow(false);
   };
 
-  const handleAddRow = async() => {
+  const handleAddRow = async () => {
     const newRow = {
-      branch_id: "", // Set default values for the new row
+      branch_id: "",
       course: "",
       branch: "",
       branch_full_name: "",
@@ -137,14 +134,11 @@ const Branches = () => {
     },
   ];
 
-
   const filteredBranchesDataWithPlaceholder = filteredBranchesData.map((row) => {
     if (row.isNew) {
       const newRowId = uuid();
-      // For new rows, return the row as is since we want to display empty fields
       return { ...row, id: newRowId };
     } else {
-      // For existing rows, map over the row's entries and replace empty values with "Not Uploaded"
       const updatedRow = Object.fromEntries(
         Object.entries(row).map(([key, value]) => [
           key,
@@ -152,7 +146,6 @@ const Branches = () => {
         ])
       );
       return { ...row, id: row.branch_id };
-
     }
   });
 
@@ -201,6 +194,6 @@ const Branches = () => {
       </div>
     </>
   );
-};  
+};
 
 export default Branches;

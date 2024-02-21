@@ -1,0 +1,35 @@
+.upload-sub {
+    max-width: 500px;
+    width: 100%;
+    padding: 20px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    margin: auto;
+    align-items: center;
+    padding-left: 50%;
+    padding-right: 200px;
+    padding-top: 100px;
+  }
+
+  .upload-subject-header {
+text-align: left;
+padding-top: 20px;
+  }  
+
+  .form-section {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form {
+    margin-bottom: 15px;
+  }
+  
+  .update-button {
+    text-align: right;
+    padding-top: 20px;
+  }
+  
+  .proceed-button {
+    text-align-last: right;
+  }

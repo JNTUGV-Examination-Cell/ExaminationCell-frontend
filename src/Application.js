@@ -29,7 +29,8 @@ import RegulationPage from "./components/Layout/LayoutSubPages/Regulations/Regul
 import AddRegulationPage from "./components/Layout/LayoutSubPages/Regulations/RegulationsSubPages/AddRegulations";
 import Examnotification from "./components/Layout/LayoutSubPages/ExamNotification/Examnotification";
 import Branches from "./components/Layout/LayoutSubPages/University/Branches/Branches";
-import BranchesAddEdit from "./components/Layout/LayoutSubPages/University/BranchesAddEdit/BranchesAddEdit";
+import Subjects from "./components/Layout/LayoutSubPages/University/Subjects/Subjects";
+import UploadSubjects from "./components/Layout/LayoutSubPages/University/Subjects/UploadSubjects";
 
 const Application = () => {
   return (
@@ -103,6 +104,8 @@ const Application = () => {
           <Route path="regulations/addregulation" element={<AddRegulationPage />} />
           <Route path="regulations" element={<RegulationPage />} />
           <Route path="branches" element={<Branches/>}/>
+          <Route path="subjects" element={<Subjects />} />
+          <Route path="subjects/uploadsubjects" element={<UploadSubjects />} />
           <Route path="colleges" element={<CollegePage />} />
           <Route path="profilepage" element={<ProfilePage />} />
           <Route path="homepage" element={<HomePage />} />
@@ -139,7 +142,7 @@ const Application = () => {
           />
           <Route path="examdata" element={<Examdata />} />
           <Route path="examdata/manageexamination" element={<ExaminationSubPage />} />
-          <Route path="branches/branchesAdd" element={<BranchesAddEdit/>} />
+          {/* <Route path="Subjects" element={<Subjects />} /> */}
         </Route>
         <Route path="/home" element={<Home />} />
         <Route path="/random" element={<Random />} />
