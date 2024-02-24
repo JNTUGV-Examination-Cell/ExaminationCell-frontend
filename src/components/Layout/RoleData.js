@@ -104,32 +104,52 @@ const RollData = {
       text: "LogOut",
     },
   ],
-  ManageUniversities :[
+  ManageUniversities: [
     {
       to: "/layout/homepage",
       icon: <HomeIcon className="Nav-icons" />,
       text: "Home",
     },
     {
-      icon:<CorporateFareIcon className="Nav-icons" />,
-      text:"University",
-      childrens:[
-      {
-      to:"/layout/branches",
-      icon: <HubIcon className="Nav-icons" />,
-      text:"Branches",
-      },
-      {
-        to:"/layout/regulations",
-        icon: <HubIcon className="Nav-icons" />,
-        text:"Regulations",
+      icon: <CorporateFareIcon className="Nav-icons" />,
+      text: "University",
+      childrens: [
+        {
+          to: "/layout/districts",
+          icon: <HubIcon className="Nav-icons" />,
+          text: "Districts",
         },
-      ]
-    },
-    {
-      to: "/layout/batches",
-      icon: <GroupsIcon className="Nav-icons" />,
-      text: "Batches",
+        {
+          to: "/layout/branches",
+          icon: <HubIcon className="Nav-icons" />,
+          text: "Branches",
+        },
+        {
+          to: "/layout/regulations",
+          icon: <HubIcon className="Nav-icons" />,
+          text: "Regulations",
+        },
+        {
+          to: "/layout/courses",
+          icon: <HubIcon className="Nav-icons" />,
+          text: "Courses",
+        },
+        {
+          to: "/layout/courses",
+          icon: <HubIcon className="Nav-icons" />,
+          text: "Types of Admissions",
+        },
+        {
+          to: "/layout/batches",
+          icon: <GroupsIcon className="Nav-icons" />,
+          text: "Batches",
+        },
+        {
+          to: "/layout/courses",
+          icon: <HubIcon className="Nav-icons" />,
+          text: "Subjects",
+        },
+      ],
     },
     {
       to: "/layout/examdata",
@@ -146,7 +166,7 @@ const RollData = {
       icon: <LogoutIcon className="Nav-icons" />,
       text: "LogOut",
     },
-  ]
+  ],
 };
 
 export default RollData;

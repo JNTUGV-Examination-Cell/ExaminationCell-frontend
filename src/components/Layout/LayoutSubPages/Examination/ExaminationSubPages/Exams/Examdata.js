@@ -31,15 +31,17 @@ const Examdata = () => {
     };
     fetchExamData();
   }, [loginUserDetails.collegeCode]);
-    const getQualifiledStudentsCount = async (collegeCode) => {
+    const getQualifiledStudentsCount = async (examCode) => {
       try{
         const response = await api.get(
-          `/api/examstudents/fetchQualifiedStudents/${collegeCode}`
+          `/api/examstudents/fetchQualifiedStudents/${examCode}`
         );  
-        console.log({response})  
+        const count = response.data.length;
+        return count;
       }
       catch(err){
         console.log(err);
+        return 0;
       }
     }
 
@@ -63,8 +65,8 @@ const Examdata = () => {
         const college = collegeData.find(
           (college) => college.college_code === exam.college_code
         );
-        const studentCount = getQualifiledStudentsCount(collegeData.college_code);
-        console.log(studentCount)
+        const studentCount = getQualifiledStudentsCount(exam.exam_code);
+        console.log({studentCount})
         return {
           id: exam.id,
           college_name: college.college_name,
