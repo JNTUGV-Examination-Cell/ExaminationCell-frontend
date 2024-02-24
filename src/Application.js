@@ -30,6 +30,7 @@ import ExamNotification from "./components/Layout/LayoutSubPages/ExamNotificatio
 import RegulationPage from "./components/Layout/LayoutSubPages/Regulations/Regulations";
 import AddRegulationPage from "./components/Layout/LayoutSubPages/Regulations/RegulationsSubPages/AddRegulations";
 import Branches from "./components/Layout/LayoutSubPages/University/Branches/Branches";
+import BranchesAddEdit from "./components/Layout/LayoutSubPages/University/BranchesAddEdit/BranchesAddEdit";
 
 
 const Application = () => {
@@ -146,10 +147,8 @@ const Application = () => {
             element={<SetForParticularExam />}
           />
           <Route path="examdata" element={<Examdata />} />
-          <Route
-            path="examdata/manageexamination"
-            element={<ExaminationSubPage />}
-          />
+          <Route path="examdata/manageexamination" element={<ExaminationSubPage />} />
+          <Route path="branches/branchesAdd" element={<BranchesAddEdit/>} />
         </Route>
         <Route path="/home" element={<Home />} />
         <Route path="/random" element={<Random />} />

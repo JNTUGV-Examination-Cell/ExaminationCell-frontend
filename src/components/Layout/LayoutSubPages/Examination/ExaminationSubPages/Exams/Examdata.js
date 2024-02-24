@@ -31,11 +31,23 @@ const Examdata = () => {
     };
     fetchExamData();
   }, [loginUserDetails.collegeCode]);
+    const getQualifiledStudentsCount = async (collegeCode) => {
+      try{
+        const response = await api.get(
+          `/api/examstudents/fetchQualifiedStudents/${collegeCode}`
+        );  
+        console.log({response})  
+      }
+      catch(err){
+        console.log(err);
+      }
+    }
 
   const fetchAllExams = async (req, res) => {
     try {
       const response = await api.get("/api/examination/fetchAllExams");
       setUniversityExamationsData(response.data.data);
+      console.log({ response });
     } catch (err) {
       console.log(err);
     }
@@ -51,13 +63,15 @@ const Examdata = () => {
         const college = collegeData.find(
           (college) => college.college_code === exam.college_code
         );
+        const studentCount = getQualifiledStudentsCount(collegeData.college_code);
+        console.log(studentCount)
         return {
           id: exam.id,
           college_name: college.college_name,
           college_code: college.college_code,
           exam_name: exam.exam_code,
           exam_code: exam.exam_code,
-          total_students_applied: "500",
+          total_students_applied: "studentCount",
           amount: 1500.0,
           path: "/layout/examdata/manageexamination",
         };
