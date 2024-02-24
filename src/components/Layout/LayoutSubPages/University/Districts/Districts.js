@@ -4,14 +4,11 @@ import {
   GridToolbarContainer,
   GridToolbarExport,
 } from "@mui/x-data-grid";
-import { Link } from "react-router-dom";
 import {
   Typography,
   Button,
   TextField,
   InputAdornment,
-  Modal,
-  Box,
 } from "@mui/material";
 import { SearchIcon } from "lucide-react";
 import api from "../../../../apiReference";
@@ -30,7 +27,6 @@ const Districts = () => {
     district_slug: "",
   });
 
-  // Search Functionality
   const handleSearch = () => {
     const filteredData = districtsData.filter((district) =>
       district.district_name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -38,7 +34,6 @@ const Districts = () => {
     setFilteredDistrictsData(filteredData);
   };
 
-  // Modal Popup for Adding Districts
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
@@ -48,9 +43,7 @@ const Districts = () => {
   };
 
   const handleAddDistrict = () => {
-    // Add logic to submit new district data
     console.log("Adding district:", newDistrictData);
-    // Reset form data and close modal
     setNewDistrictData({
       district_id: "",
       district_name: "",
@@ -93,9 +86,7 @@ const Districts = () => {
   const handleClose = () => setOpen(false);
 
   const handleSave = async () => {
-    // Implement logic to send a POST request to update the data
     console.log("Saving edited data:", filteredDistrictsData);
-    // Example POST request
     // await api.post("api/district/updateDistricts", { data: filteredDistrictsData });
   };
   function CustomToolbar() {
