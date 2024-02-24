@@ -6,7 +6,6 @@ import Random from "./components/Home/Random";
 import Batchesmain from "./components/Batches/Batchesmain";
 import Layout from "./components/Layout/Layout";
 import ManageBatches from "./components/Batches/BatchesSubPages/ManageBatches";
-import UploadStudentDetails from "./components/Batches/BatchesSubPages/UploadStudentDetails";
 import CollegePage from "./components/Layout/LayoutSubPages/CollegeSection/CollegePage";
 import ProfilePage from "./components/Layout/LayoutSubPages/ProfileSection/ProfilePage";
 import HomePage from "./components/Layout/LayoutSubPages/HomeSection/HomePage";
@@ -30,6 +29,8 @@ import AddRegulationPage from "./components/Layout/LayoutSubPages/Regulations/Re
 import Examnotification from "./components/Layout/LayoutSubPages/ExamNotification/Examnotification";
 import Branches from "./components/Layout/LayoutSubPages/University/Branches/Branches";
 import BranchesAddEdit from "./components/Layout/LayoutSubPages/University/BranchesAddEdit/BranchesAddEdit";
+import Districts from "./components/Layout/LayoutSubPages/University/Districts/Districts";
+import Courses from "./components/Layout/LayoutSubPages/University/Courses/Courses";
 
 const Application = () => {
   return (
@@ -102,16 +103,14 @@ const Application = () => {
           />
           <Route path="regulations/addregulation" element={<AddRegulationPage />} />
           <Route path="regulations" element={<RegulationPage />} />
+          <Route path="districts" element={<Districts />} />
+          <Route path="courses" element={<Courses />} />
           <Route path="branches" element={<Branches/>}/>
           <Route path="colleges" element={<CollegePage />} />
           <Route path="profilepage" element={<ProfilePage />} />
           <Route path="homepage" element={<HomePage />} />
           <Route path="batches" element={<Batchesmain />} />
           <Route path="batches/managebatches" element={<ManageBatches />} />
-          <Route
-            path="batches/managebatches/uploadstudents"
-            element={<UploadStudentDetails />}
-          />
           <Route
             path="batches/studentphotos"
             element={<StudentPhotosButton />}
