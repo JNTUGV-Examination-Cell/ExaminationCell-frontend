@@ -26,12 +26,9 @@ import SetForParticularExam from "./components/Layout/LayoutSubPages/Examination
 import ExaminationSubPage from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/ExaminationSubPage";
 import CondonationandDetention from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/CondonationandDetention/CondonationandDetention";
 import StudentPhotosButton from "./components/Batches/StudentPhotosButton";
-
-import ExamNotification from "./components/Layout/LayoutSubPages/ExamNotification/examNotification";
-
+import ExamNotification from "./components/Layout/LayoutSubPages/ExamNotification/Examnotification";
 import RegulationPage from "./components/Layout/LayoutSubPages/Regulations/Regulations";
 import AddRegulationPage from "./components/Layout/LayoutSubPages/Regulations/RegulationsSubPages/AddRegulations";
-
 import Branches from "./components/Layout/LayoutSubPages/University/Branches/Branches";
 
 
@@ -122,15 +119,13 @@ const Application = () => {
           />
           <Route path="notifications" element={<PortalNotification />} />
           <Route path="staff" element={<Staff />} />
-
-          <Route path="examnotification" element={<ExamNotification />} />
+          
           <Route path="InternalMarks" element={<InternalMarks />} />
           <Route path="examdata/manageexamination/Sets/examsets/setforparticularexam/markabsent" element={<MarkAbsents />} />
           <Route path="examdata/manageexamination/Sets/examsets/setforparticularexam/markmalpractice" element={<MarkMalpractice />} />
           <Route path="examdata/manageexamination/Sets/examsets/setforparticularexam/dform" element={<DataForm />} />
           <Route path="examdata/manageexamination/Sets/examsets" element={<ExamSets />} />
-
-          <Route path="examnotifications" element={<Examnotification />} />
+          <Route path="examnotifications" element={<ExamNotification />} />
           <Route path="InternalMarks" element={<InternalMarks />} />
           <Route
             path="examdata/manageexamination/Sets/examsets/setforparticularexam/markabsent"

@@ -10,20 +10,20 @@ function DataForm() {
   const [openModal, setOpenModal] = useState(false);
   const [editedRow, setEditedRow] = useState({
     id: null,
-    rollNumber: "",
-    name: "",
+    roll_no: "",
+    student_name: "",
     year: "",
-    branch: "",
+    branch_full_nane: "",
     course: "",
   });
 
   const handleDataForm = () => {
     const dataForDownload = personDetails.map((person, index) => ({
       id: index + 1,
-      rollNumber: person.rollNumber,
-      name: person.name,
+      roll_no: person.roll_no,
+      student_name: person.student_name,
       year: person.year,
-      branch: person.branch,
+      branch_full_nane: person.branch_full_nane,
       course: person.course,
     }));
 
@@ -38,10 +38,10 @@ function DataForm() {
     setOpenModal(false);
     setEditedRow({
       id: null,
-      rollNumber: "",
-      name: "",
+      roll_no: "",
+      student_name: "",
       year: "",
-      branch: "",
+      branch_full_nane: "",
       course: "",
     });
     setSelectedRow(null);
@@ -85,10 +85,10 @@ function DataForm() {
   const handleAddRow = () => {
     setEditedRow({
       id: null,
-      rollNumber: "",
-      name: "",
+      roll_no: "",
+      student_name: "",
       year: "",
-      branch: "",
+      branch_full_nane: "",
       course: "",
     });
     setOpenModal(true);
@@ -100,10 +100,10 @@ function DataForm() {
   };
 
   const columns = [
-    { field: "rollNumber", headerName: "Roll Number", width: 150 },
-    { field: "name", headerName: "Name", width: 150 },
+    { field: "roll_no", headerName: "Roll Number", width: 150 },
+    { field: "student_name", headerName: "Name", width: 150 },
     { field: "year", headerName: "Year", width: 150 },
-    { field: "branch", headerName: "Branch", width: 150 },
+    { field: "branch_full_nane", headerName: "Branch", width: 150 },
     { field: "course", headerName: "Course", width: 150 },
     { field: "reason", headerName: "Reason", width: 150 },
     {
@@ -175,8 +175,8 @@ function DataForm() {
       <TextField
         label="Roll Number"
         variant="outlined"
-        name="rollNumber"
-        value={editedRow.rollNumber}
+        name="roll_no"
+        value={editedRow.roll_no}
         onChange={handleTextFieldChange}
         style={{ marginBottom: 10 }}
         fullWidth
@@ -184,8 +184,8 @@ function DataForm() {
       <TextField
         label="Name"
         variant="outlined"
-        name="name"
-        value={editedRow.name}
+        name="student_name"
+        value={editedRow.student_name}
         onChange={handleTextFieldChange}
         style={{ marginBottom: 10 }}
         fullWidth
@@ -202,8 +202,8 @@ function DataForm() {
       <TextField
         label="Branch"
         variant="outlined"
-        name="branch"
-        value={editedRow.branch}
+        name="branch_full_nane"
+        value={editedRow.branch_full_nane}
         onChange={handleTextFieldChange}
         style={{ marginBottom: 10 }}
         fullWidth
@@ -228,8 +228,6 @@ function DataForm() {
     </div>
   </div>
 </Modal>
-
-
 
     </div>
   );

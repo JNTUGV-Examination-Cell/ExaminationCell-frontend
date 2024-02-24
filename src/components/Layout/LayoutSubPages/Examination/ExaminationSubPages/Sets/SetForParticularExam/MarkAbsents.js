@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
-import Papa from "papaparse";
+import { CSVLink } from "react-csv";
 import { v4 as uuidv4 } from 'uuid';
+import Papa from "papaparse";
 import "./MarkAbsents.css";
 
 function MarkAbsents() {
@@ -15,61 +17,59 @@ function MarkAbsents() {
   const [absentees, setAbsentees] = useState([]);
   const [showAbsentees, setShowAbsentees] = useState(false);
   const [absenteeDetails, setAbsenteeDetails] = useState([]);
+  const [downloadData, setDownloadData] = useState([]); 
   const [openModal, setOpenModal] = useState(false);
-
-  const fetchPersonDetails = async (rollNumber) => {
+  
+  const fetchPersonDetails = async (roll_no) => {
     try {
-      const response = await fetch(`http://localhost:9000/api/examstudents/fetchfaildStudents/${rollNumber}`);
-      if (!response.ok) {
-        throw new Error(`Failed to fetch details for roll number ${rollNumber}. Status: ${response.status}`);
-      }
-      const contentType = response.headers.get('content-type');
-      if (contentType && contentType.indexOf('application/json') !== -1) {
-        const data = await response.json();
-        return data;
+      const response = await fetch(`http://localhost:9000/api/students/fetchStudentsdataByRollnumber/${roll_no}`);
+      if (response.ok) {
+        return await response.json();
       } else {
-        throw new Error('Response is not in JSON format');
+        console.error("Failed to fetch student data");
+        return null;
       }
     } catch (error) {
-      console.error("Error fetching person details:", error);
-      throw error; // Rethrow the error to propagate it to the caller
+      console.error("Error fetching student data:", error);
+      return null;
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (inputRollNumber.trim() !== "") {
       try {
         const details = await fetchPersonDetails(inputRollNumber);
-        if (details) {
-          const isAlreadyAbsent = absentees.some(
-            (item) => item["Roll Number"] === inputRollNumber
-          );
-
+  
+        if (details && details.roll_no) {
+          const formattedRollNumber = details.roll_no.toUpperCase();
+          const isAlreadyAbsent = absentees.some(item => item["Roll Number"] === formattedRollNumber);
+  
           if (isAlreadyAbsent) {
             window.alert("Roll number is already marked as absent.");
           } else {
-            const id = uuidv4();
-            setAbsentees([...absentees, { id, "Roll Number": inputRollNumber }]);
-            setAbsenteeDetails([...absenteeDetails, { id, ...details }]);
+            const id = uuidv4(); 
+            setAbsentees([...absentees, { id, "Roll Number": formattedRollNumber }]);
+            setAbsenteeDetails([...absenteeDetails, { id, ...details }]); 
             setInputRollNumber("");
-            setShowAbsentees(true);
+            setShowAbsentees(true); // Set showAbsentees to true after marking absent
             window.alert("Roll number marked as absent.");
           }
         } else {
           window.alert("No details found for the provided roll number.");
         }
       } catch (error) {
-        console.error("Error fetching person details:", error);
-        window.alert("An error occurred while fetching person details.");
+        console.error("Error fetching student data:", error);
+        window.alert("Failed to fetch student data. Please try again.");
       }
     }
   };
+   
 
   const handleViewAbsentees = () => {
-    setShowAbsentees(true);
-    setOpenModal(true);
+    setShowAbsentees(true); // Set showAbsentees to true to show the absentees
+    setOpenModal(true); // Open the modal to show the absentees
   };
 
   const handleCloseModal = () => {
@@ -79,20 +79,20 @@ function MarkAbsents() {
   const absenteesButtonText = "Show Absentees";
 
   const columns = [
-    { field: "rollNumber", headerName: "Roll Number", width: 150 },
-    { field: "name", headerName: "Name", width: 150 },
+    { field: "roll_no", headerName: "Roll Number", width: 150 },
+    { field: "student_name", headerName: "Name", width: 150 },
     { field: "year", headerName: "Year", width: 150 },
-    { field: "branch", headerName: "Branch", width: 150 },
+    { field: "branch_full_nane", headerName: "Branch", width: 150 },
     { field: "course", headerName: "Course", width: 150 },
   ];
 
   const handleDownloadAbsentees = () => {
     const dataForDownload = absenteeDetails.map((details, index) => ({
       id: index + 1,
-      rollNumber: absentees[index]["Roll Number"],
-      name: details.name,
+      roll_no: absentees[index]["Roll Number"],
+      student_name: details.student_name,
       year: details.year,
-      branch: details.branch,
+      branch_full_nane: details.branch_full_nane,
       course: details.course,
     }));
 
@@ -121,30 +121,35 @@ function MarkAbsents() {
       <div className="set" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <div className="set5" style={{ textAlign: 'center', height: 'auto' }}>
           <div>
-            <h2>Absentees for the Slot</h2>
+            <br/>
+            <Typography style={{ fontSize: "30px", fontWeight: "bold" }}>Absentees for the Slot</Typography>
+            <br/>
             <hr />
             <form onSubmit={handleSubmit}>
               <div>
-                <label htmlFor="rollNumberInput">Roll Numbers for marking Absent</label>
-                <div style={{ marginBottom: '12px' }}></div>
+                <br/>
+              <Typography htmlFor="roll_noInput"  style={{ fontSize: "18px"}}>Roll Numbers for marking Absent</Typography>
+                <div style={{ marginBottom: '12px' }}></div> {/* Add space */}
                 <TextField
-                  id="rollNumberInput"
+                  id="roll_noInput"
                   label="Enter Roll Number"
                   variant="outlined"
                   value={inputRollNumber}
                   onChange={(e) => setInputRollNumber(e.target.value)}
                   style={{ marginBottom: '10px' }}
                 />
-                <div style={{ marginBottom: '5px' }}></div>
+                <div style={{ marginBottom: '5px' }}></div> {/* Add space */}
                 <Button type="submit" variant="contained" color="primary">
                   Proceed
                 </Button>
-              </div>
+                <br/>
+                <br/>
+              </div>   
             </form>
           </div>
         </div>
       </div>
-      <br />
+      <br/>
       <div>
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <Button variant="contained" color="primary" onClick={handleViewAbsentees}>

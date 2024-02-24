@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import { CSVLink } from "react-csv";
-import personDetails from "./personDetails";
 import { v4 as uuidv4 } from 'uuid';
 import Papa from "papaparse";
 import "./MarkMalpractice.css";
@@ -20,35 +20,52 @@ function MarkMalpractice() {
   const [downloadData, setDownloadData] = useState([]);
   const [openModal, setOpenModal] = useState(false);
 
-  const fetchPersonDetails = (rollNumber) => {
-    const rollNumberLowerCase = rollNumber.toLowerCase();
-    return personDetails.find((person) => person.rollNumber.toLowerCase() === rollNumberLowerCase);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (inputRollNumber.trim() !== "") {
-      const details = fetchPersonDetails(inputRollNumber);
-      const formattedRollNumber = details ? details.rollNumber : inputRollNumber.toUpperCase();
-      const isAlreadyMalpractice = malpractice.some(item => item["Roll Number"] === formattedRollNumber);
-
-      if (isAlreadyMalpractice) {
-        window.alert("Roll number is already marked as malpractice.");
-      } else if (details) {
-        const id = uuidv4(); 
-        setMalpractice([...malpractice, { id, "Roll Number": formattedRollNumber }]);
-        setMalpracticeDetails([...malpracticeDetails, { id, ...details }]); 
-        setInputRollNumber("");
-        setShowMalpractice(true);
-        window.alert("Roll number marked as malpractice.");
+  const fetchPersonDetails = async (roll_no) => {
+    try {
+      const response = await fetch(`http://localhost:9000/api/students/fetchStudentsdataByRollnumber/${roll_no}`);
+      if (response.ok) {
+        return await response.json();
       } else {
-        window.alert("No details found for the provided roll number.");
+        console.error("Failed to fetch student data");
+        return null;
       }
+    } catch (error) {
+      console.error("Error fetching student data:", error);
+      return null;
     }
   };
 
- 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    if (inputRollNumber.trim() !== "") {
+      try {
+        const details = await fetchPersonDetails(inputRollNumber);
+  
+        if (details && details.roll_no) {
+          const formattedRollNumber = details.roll_no.toUpperCase();
+          const isAlreadyMalpractice = malpractice.some(item => item["Roll Number"] === formattedRollNumber);
+  
+          if (isAlreadyMalpractice) {
+            window.alert("Roll number is already marked as malpractice.");
+          } else {
+            const id = uuidv4(); 
+            setMalpractice([...malpractice, { id, "Roll Number": formattedRollNumber }]);
+            setMalpracticeDetails([...malpracticeDetails, { id, ...details }]); 
+            setInputRollNumber("");
+            setShowMalpractice(true); // Set showAbsentees to true after marking absent
+            window.alert("Roll number marked as malpractice.");
+          }
+        } else {
+          window.alert("No details found for the provided roll number.");
+        }
+      } catch (error) {
+        console.error("Error fetching student data:", error);
+        window.alert("Failed to fetch student data. Please try again.");
+      }
+    }
+  };
+  
 
   const handleViewMalpractice = () => {
     setShowMalpractice(true);
@@ -63,20 +80,20 @@ function MarkMalpractice() {
   const MalpracticeButtonText = "Show Malpractice";
 
   const columns = [
-    { field: "rollNumber", headerName: "Roll Number", width: 150 },
-    { field: "name", headerName: "Name", width: 150 },
+    { field: "roll_no", headerName: "Roll Number", width: 150 },
+    { field: "student_name", headerName: "Name", width: 150 },
     { field: "year", headerName: "Year", width: 150 },
-    { field: "branch", headerName: "Branch", width: 150 },
+    { field: "branch_full_nane", headerName: "Branch", width: 150 },
     { field: "course", headerName: "Course", width: 150 },
   ];
 
   const handleDownloadMalpractice = () => {
     const dataForDownload = malpracticeDetails.map((details, index) => ({
       id: index + 1,
-      rollNumber: malpractice[index]["Roll Number"],
-      name: details.name,
+      roll_no: malpractice[index]["Roll Number"],
+      student_name: details.student_name,
       year: details.year,
-      branch: details.branch,
+      branch_full_nane: details.branch_full_nane,
       course: details.course,
     }));
 
@@ -105,11 +122,14 @@ function MarkMalpractice() {
       <div className="set" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <div className="set5" style={{ textAlign: 'center', height: 'auto' }}>
           <div>
-            <h2>Malpractice for the Slot</h2>
+          <br/>
+            <Typography style={{ fontSize: "30px", fontWeight: "bold" }}>Malpractice for the Slot</Typography>
+            <br/>
             <hr />
             <form onSubmit={handleSubmit}>
               <div>
-                <label htmlFor="rollNumberInput">Roll Numbers for marking Malpractice</label>
+              <br/>
+              <Typography htmlFor="roll_noInput"  style={{ fontSize: "18px"}}>Roll Numbers for marking Malpractice</Typography>
                 <div style={{ marginBottom: '12px' }}></div> {/* Add space */}
                 <TextField
                   id="rollNumberInput"
@@ -123,6 +143,8 @@ function MarkMalpractice() {
                 <Button type="submit" variant="contained" color="primary">
                   Proceed
                 </Button>
+                <br/>
+                <br/>
               </div>
             </form>
           </div>
