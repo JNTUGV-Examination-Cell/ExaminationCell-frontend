@@ -1,55 +1,77 @@
+// SetForParticularExam.js
 import React, { useState } from "react";
 import "./SetForParticularExam.css";
-import { Typography, Button, Grid, Snackbar } from "@mui/material";
+import { Typography, Button, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { selectCurrentExam } from "../../../../../../../features/exams/examSlice";
+
+// Corrected import paths
+// import DownloadDForm from './DownloadDForm';
+
+//import DownloadDForm from './DownloadDForm';
+
+import MarkAbsents from './MarkAbsents';
+import MarkMalpractice from './MarkMalpractice';
+import * as XLSX from 'xlsx';
 
 function SetForParticularExam() {
-  const set = "SET-1";
-  const currentExam = useSelector(selectCurrentExam);
-  const [uploadedFile, setUploadedFile] = useState(null);
-  const [showDownloadButton, setShowDownloadButton] = useState(false);
-  const [uploadInProgress, setUploadInProgress] = useState(false); 
-
-  const handleFileUpload = (event) => {
-    const selectedFile = event.target.files[0];
-    if (selectedFile) {
-      setUploadInProgress(true); 
-      setUploadedFile(selectedFile);
-      setTimeout(() => {
-        setUploadInProgress(false); 
-      }, 3000); 
-    }
+  const [absentees, setAbsentees] = useState([]);
+  const [malpractice, setMalpractice] = useState([]);
+  const [showMarkAbsents, setShowMarkAbsents] = useState(false);
+  const [showMarkMalpractice, setShowMarkMalpractice] = useState(false);
+  
+  const handleMarkAbsent = (rollNumber) => {
+    console.log("Handling Mark Absent", rollNumber);
+    setAbsentees([...absentees, rollNumber]);
   };
 
-  const handleDownload = () => {
-    if (uploadedFile) {
-      const fileUrl = URL.createObjectURL(uploadedFile);
-      const downloadLink = document.createElement("a");
-      downloadLink.href = fileUrl;
-      downloadLink.download = uploadedFile.name;
-      downloadLink.style.display = "none";
-      document.body.appendChild(downloadLink);
-      downloadLink.click();
-      document.body.removeChild(downloadLink);
-    } else {
-      console.log("No file uploaded to download.");
-    }
+  const handleMarkMalpractice = (rollNumber) => {
+    console.log("Handling Mark Malpractice", rollNumber);
+    setMalpractice([...malpractice, rollNumber]);
   };
 
-  const handlePublish = () => {
-    if (uploadedFile) {
-      setShowDownloadButton(true);
-    } else {
-      console.log("No file uploaded to publish.");
-    }
+  const handleDownloadDForm = () => {
+    const wb = XLSX.utils.book_new();
+
+
+    const absenteeWS = XLSX.utils.json_to_sheet(
+      absentees.map((rollNumber, index) => ({ 'Absentees RollNumber': rollNumber }))
+    );
+    XLSX.utils.book_append_sheet(wb, absenteeWS, 'Absentees');
+
+
+    const malpracticeWS = XLSX.utils.json_to_sheet(
+      malpractice.map((rollNumber, index) => ({ 'Malpractice Students RollNumber': rollNumber }))
+    );
+    XLSX.utils.book_append_sheet(wb, malpracticeWS, 'Malpractice');
+
+    XLSX.writeFile(wb, 'Download_D_Form.xlsx');
   };
+
+  const setstitle =
+    'Sets - R111223 - B.Tech I Year I sem R20 Reg February 2023 - R201102 - COMMUNICATIVE ENGLISH - 20 February 2023 10:00 AM';
+  const set = 'SET-1';
+  const ntable = 'Not Available';
+
+  const handleProceed = (section) => {
+    console.log("Handling Proceed button click");
+
+    if (section === "markAbsents") {
+      setShowMarkAbsents(true);
+      setShowMarkMalpractice(false);
+
+    }
+    else if (section === "markMalpractice"){
+      setShowMarkMalpractice(true);
+      setShowMarkAbsents(false);
+    }
+  }
+
+  console.log("Rendering SetForParticularExam", showMarkAbsents, showMarkMalpractice);
 
   return (
-    <div className="malpractice">
+    <div className="malpractice" align="center">
       <Typography variant="h5" className="head">
-        Sets - {currentExam.currentExam} - {currentExam.currentExamName} - R201102 - COMMUNICATIVE ENGLISH - 20 February 2023 10:00 AM
+        {setstitle}
       </Typography>
       <Grid container spacing={2} className="buttons">
         <Grid item>
@@ -65,17 +87,20 @@ function SetForParticularExam() {
           </Button>
         </Grid>
         <Grid item>
-          <Button
-            variant="contained"
-            style={{
-              height: 30,
-            }}
-            component={Link}
-            to="/layout/examdata/manageexamination/Sets/examsets/setforparticularexam/markabsent"
-          >
-            Mark Absent
-          </Button>
+        <Button
+  variant="contained"
+  style={{
+    height: 30,
+  }}
+  
+  onClick={() => handleProceed("markAbsents")}
+>
+  Mark Absent
+</Button>
+
+
         </Grid>
+
         <Grid item>
           <Button
             variant="contained"
@@ -84,87 +109,52 @@ function SetForParticularExam() {
             }}
             component={Link}
             to="/layout/examdata/manageexamination/Sets/examsets/setforparticularexam/markmalpractice"
+
+            onClick={() => handleProceed("markMalpractice")}
           >
+
+
             Mark MalPractice
+            
           </Button>
+          
+
         </Grid>
         <Grid item>
-          <Button
-            variant="contained"
-            style={{
-              height: 30,
-            }}
-            component={Link}
-            to="/layout"
-          >
-            Download D Form
-          </Button>
-        </Grid>
+      <Button variant="contained" style={{ height: 30 }} onClick={handleDownloadDForm}>
+        Download D Form
+      </Button>
+
+      
+      </Grid>
       </Grid>
       <div className="setblock">
         <Typography variant="h6" className="set">
           {set}
         </Typography>
-        <hr style={{ width: "50%" }}></hr>
+        <hr style={{ width: '50%' }}></hr>
         <Typography variant="h6" className="ntable">
-          {showDownloadButton ? (
-            <span style={{ color: "green" }}>Available</span>
-          ) : (
-            "Not Available"
-          )}
+          {ntable}
         </Typography>
-        <hr style={{ width: "50%" }}></hr>
-        <Grid container spacing={2} className="center-buttons">
-          <Grid item>
-            <label htmlFor="file-upload" style={{ display: "block" }}>
-              <Button
-                variant="contained"
-                style={{
-                  height: 30,
-                }}
-                component="span"
-              >
-                Upload
-              </Button>
-            </label>
-            <input
-              type="file"
-              id="file-upload"
-              style={{ display: "none" }}
-              accept=".pdf"
-              onChange={handleFileUpload}
-            />
-          </Grid>
-          <Grid item>
-            {showDownloadButton ? (
-              <Button
-                variant="contained"
-                style={{
-                  height: 30,
-                }}
-                onClick={handleDownload}
-              >
-                Download
-              </Button>
-            ) : (
-              <Button
-                variant="contained"
-                style={{
-                  height: 30,
-                }}
-                onClick={handlePublish}
-              >
-                Publish
-              </Button>
-            )}
-          </Grid>
-        </Grid>
+        <hr style={{ width: '50%' }}></hr>
       </div>
-      <Snackbar
-        open={uploadInProgress} 
-        autoHideDuration={3000}
-        message="File upload in progress..."
-      />
+
+
+
+      {showMarkAbsents && (
+  <MarkAbsents handleMarkAbsent={handleMarkAbsent} absentees={absentees} />
+)}
+
+{showMarkMalpractice && (
+        <MarkMalpractice
+          handleMarkMalpractice={handleMarkMalpractice}
+          malpractice={malpractice}
+        />
+      )}
+
+
+
+    
     </div>
   );
 }
