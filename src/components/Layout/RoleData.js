@@ -130,6 +130,11 @@ const RollData = {
           text: "Regulations",
         },
         {
+          to:"/layout/subjects",
+          icon: <HubIcon className="Nav-icons" />,
+          text:"Subjects",
+          },
+        {
           to: "/layout/courses",
           icon: <HubIcon className="Nav-icons" />,
           text: "Courses",
