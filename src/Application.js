@@ -31,7 +31,7 @@ import Branches from "./components/Layout/LayoutSubPages/University/Branches/Bra
 import BranchesAddEdit from "./components/Layout/LayoutSubPages/University/BranchesAddEdit/BranchesAddEdit";
 import Districts from "./components/Layout/LayoutSubPages/University/Districts/Districts";
 import Courses from "./components/Layout/LayoutSubPages/University/Courses/Courses";
-
+import CollegeDetails from "./components/Layout/LayoutSubPages/CollegeSubSection/CollegeDetails";
 const Application = () => {
   return (
     <div>
@@ -120,6 +120,10 @@ const Application = () => {
           <Route path="examnotifications" element={<Examnotification />} />
           <Route path="InternalMarks" element={<InternalMarks />} />
           <Route
+            path="CollegeDetails"
+            element={<CollegeDetails />}
+          />
+          <Route
             path="examdata/manageexamination/Sets/examsets/setforparticularexam/markabsent"
             element={<MarkAbsents />}
           />
@@ -143,6 +147,7 @@ const Application = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/random" element={<Random />} />
         <Route path="/" element={<LoginPage />} />
+
       </Routes>
     </div>
   );
