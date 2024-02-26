@@ -1,0 +1,43 @@
+.bulkadmissionsupload{
+    text-align: center;
+    align-items: center;
+}
+.head{
+    color: rgb(88, 88, 230);
+}
+.buttonproceed{
+    padding-top: 5%;
+    padding-left : 30% ;
+}
+.textchoose{
+    padding: 0.5% 10%;
+}
+.textfill{
+    padding: 12% 12%;
+}
+.container{
+    width: auto;
+    padding-top: 30px;
+  
+  }
+  .CollegeTitle{
+    text-align: left;
+  }
+  .AddButton-SearchBar{
+    display: flex;
+      align-items: center;
+  }
+  .CollegessearchBar{
+      width: 250px;
+      margin-left: 900px;
+      display: inline-block;
+  }
+  
+  .addbutton{
+    padding-left: 20px;
+    padding-top: 30px;
+  }
+  .data-table{
+    width: 1250px;
+  }
+  
