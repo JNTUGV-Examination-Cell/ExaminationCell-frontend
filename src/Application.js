@@ -27,7 +27,7 @@ import CondonationandDetention from "./components/Layout/LayoutSubPages/Examinat
 import StudentPhotosButton from "./components/Batches/StudentPhotosButton";
 import RegulationPage from "./components/Layout/LayoutSubPages/Regulations/Regulations";
 import AddRegulationPage from "./components/Layout/LayoutSubPages/Regulations/RegulationsSubPages/AddRegulations";
-import Examnotification from "./components/Layout/LayoutSubPages/ExamNotification/Examnotification";
+// import Examnotification from "./components/Layout/LayoutSubPages/ExamNotification/Examnotification";
 import Branches from "./components/Layout/LayoutSubPages/University/Branches/Branches";
 import BranchesAddEdit from "./components/Layout/LayoutSubPages/University/BranchesAddEdit/BranchesAddEdit";
 import Districts from "./components/Layout/LayoutSubPages/University/Districts/Districts";
@@ -119,7 +119,7 @@ const Application = () => {
           />
           <Route path="notifications" element={<PortalNotification />} />
           <Route path="staff" element={<Staff />} />
-          <Route path="examnotifications" element={<Examnotification />} />
+          {/* <Route path="examnotifications" element={<Examnotification />} /> */}
           <Route path="InternalMarks" element={<InternalMarks />} />
 
           <Route path="examdata/manageexamination/Sets/examsets/setforparticularexam/markabsent" element={<MarkAbsents />} />
