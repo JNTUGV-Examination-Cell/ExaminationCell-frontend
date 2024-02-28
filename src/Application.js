@@ -23,9 +23,6 @@ import FinalListOfExamination from "./components/Layout/LayoutSubPages/Examinati
 import SetForParticularExam from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/Sets/SetForParticularExam/SetForParticularExam";
 import ExaminationSubPage from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/ExaminationSubPage";
 import CondonationandDetention from "./components/Layout/LayoutSubPages/Examination/ExaminationSubPages/CondonationandDetention/CondonationandDetention";
-import AnotherCollegePage from "./components/Layout/LayoutSubPages/CollegeSubPages/CollegeDetails";
-import AddCollegePage from './components/Layout/LayoutSubPages/CollegeSubPages/AddCollegePage';
-
 import StudentPhotosButton from "./components/Batches/StudentPhotosButton";
 import RegulationPage from "./components/Layout/LayoutSubPages/Regulations/Regulations";
 import AddRegulationPage from "./components/Layout/LayoutSubPages/Regulations/RegulationsSubPages/AddRegulations";

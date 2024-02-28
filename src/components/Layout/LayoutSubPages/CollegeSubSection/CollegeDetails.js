@@ -65,7 +65,7 @@ const Colleges = () => {
         if (!filteredCollegesData.some(existingRow => existingRow.id === row.id)) {
           setFilteredCollegesData(prevData => [...prevData, row]);
         }
-        enqueueSnackbar("New college added successfully", { variant: 'success' });
+       enqueueSnackbar("New college added successfully", { variant: 'success' });
       } else {
         await api.put(`/api/college/updatecolleges`, row);
         console.log("Row updated successfully");
