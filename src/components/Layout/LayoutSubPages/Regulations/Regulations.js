@@ -1,41 +1,40 @@
 import { useState, useCallback, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
-import { Typography, Button, TextField, InputAdornment } from "@mui/material";
+import { Typography, Button, TextField } from "@mui/material";
 import api from "../../../apiReference";
 import "./Regulations.css";
-import { SearchIcon } from "lucide-react";
-
 
 const Regulations = () => {
-  const [regulationsData, setregulationsData] = useState([]);
-  const [filteredRegulationsData, setfilteredRegulationsData] = useState([]);
+  const [regulationsData, setRegulationsData] = useState([]);
+  const [filteredRegulationsData, setFilteredRegulationsData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+
   useEffect(() => {
     const fetchRegulationsData = async () => {
       try {
         const response = await api.get("/api/course/getCompleteRegulations");
-        setregulationsData(response.data);
-        setfilteredRegulationsData(response.data);
+        setRegulationsData(response.data);
+        setFilteredRegulationsData(response.data);
       } catch (error) {
         console.log(error);
       }
     };
     fetchRegulationsData();
-  });
+  }, []);
 
   const filterRegulations = useCallback(() => {
     const filteredData = regulationsData.filter(
-      (regulations) =>
-        Object.values(regulations).some(
+      (regulation) =>
+        Object.values(regulation).some(
           (value) =>
             typeof value === "string" &&
             value.toLowerCase().includes(searchQuery.toLowerCase())
         ) ||
-        regulations.regulation_id.toString().includes(searchQuery) ||
-        regulations.regulation.toString().includes(searchQuery)
+        regulation.regulation_id.toString().includes(searchQuery) ||
+        regulation.regulation.toString().includes(searchQuery)
     );
-    setfilteredRegulationsData(filteredData);
+    setFilteredRegulationsData(filteredData);
   }, [searchQuery, regulationsData]);
 
   useEffect(() => {
@@ -43,27 +42,14 @@ const Regulations = () => {
   }, [filterRegulations]);
 
   const columns = [
-    { field: "regulation_id", headerName: "Regulation Id", width:400},
-    { field: "regulation", headerName: "Regulation",  width:400 },
+    { field: "regulation_id", headerName: "Regulation Id", width: 400 },
+    { field: "regulation", headerName: "Regulation", width: 400 },
     {
       field: "regulation_start_year",
       headerName: "Regulation Start Year",
-      width:400
+      width: 400
     },
   ];
-
-  const filteredRegulationsDataWithPlaceholder = filteredRegulationsData.map(
-    (row) =>
-      Object.fromEntries(
-        Object.entries(row).map(([key, value]) => [
-          key,
-          value === "" || value === null ? "Not Uploaded" : value,
-        ])
-      )
-  );
-  useEffect(() =>{
-    setfilteredRegulationsData(filteredRegulationsDataWithPlaceholder);
-  }, [filteredRegulationsDataWithPlaceholder, regulationsData]);
 
   return (
     <>
@@ -92,19 +78,13 @@ const Regulations = () => {
             variant="outlined"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <SearchIcon />
-                </InputAdornment>
-              ),
-            }}
           />
         </div>
       </div>
+      <br />
       <div className="w-50" style={{ maxWidth: "100%" }}>
         <DataGrid
-          rows={filteredRegulationsDataWithPlaceholder}
+          rows={filteredRegulationsData}
           columns={columns}
           getRowId={(row) => row.regulation_id}
         />

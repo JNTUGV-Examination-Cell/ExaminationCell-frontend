@@ -3,183 +3,164 @@ import axios from "axios";
 import {
   Typography,
   Button,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
   Table,
   TableHead,
   TableRow,
   TableCell,
   TableBody,
+  Paper,
+  styled,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  TextField,
+  FormControl,
+  Select,
+  MenuItem,
+  InputLabel,
+  RadioGroup,
+  Radio,
+  FormControlLabel,
+  useTheme,
 } from "@mui/material";
-import { styled } from "@mui/system";
-import { TextField } from "@mui/material";
-
-const StyledFormControl = styled(FormControl)({
-  marginRight: "20px",
-  minWidth: 150,
+import { DataGrid } from "@mui/x-data-grid";
+const StyledPaper = styled(Paper)({
+  margin: (theme) => theme.spacing(2),
 });
 
-const years = ["2020", "2021", "2022", "2023", "2024"];
+const StyledTable = styled(Table)({
+  minWidth: 700,
+});
 
-function Examnotification() {
-  const [selectedCourse, setSelectedCourse] = useState("");
-  const [selectedBranch, setSelectedBranch] = useState("");
-  const [collegeCodes, setCollegeCodes] = useState([]);
-  const [selectedYear, setSelectedYear] = useState("");
-  const [courses, setCourses] = useState([]);
-  const [branches, setBranches] = useState([]);
-  const [showAccordion, setShowAccordion] = useState(false);
-  const [confirmDialogOpen, setConfirmDialogOpen] = useState(false);
-  const [tableData, setTableData] = useState(true);
-  const [selectedCollegeCode, setSelectedCollegeCode] = useState("");
-  const [open, setOpen] = useState(false);
+const Examnotification = () => {
+  const [tableData, setTableData] = useState([]);
+  const [openForm, setOpenForm] = useState(false);
   const [formData, setFormData] = useState({
-    exam_code: "",
+    // initialize with default values or an empty string for each input
+    notification_id: "",
+    date: "",
     payment_status: "",
     course: "",
     branch: "",
-    year: "",
+    course_year: "",
+    exam_year: "",
+    exam_month: "",
+    exam_date: "",
+    type: "",
     fee: "",
     last_date: "",
     late_fee: "",
     late_fee_lastdate: "",
     notification_title: "",
-    college_code: "",
+  });
+  const [filters, setFilters] = useState({
+    course: "",
+    branch: "",
+    type: "",
   });
 
-  const handleConfirmDialogClose = (confirmed) => {
-    setConfirmDialogOpen(false);
-    if (confirmed) {
-      setShowAccordion(true);
-    }
-  };
+  // Filtered data state
+  const [filteredData, setFilteredData] = useState([]);
 
+  // Update filtered data whenever filters change
   useEffect(() => {
-    const fetchCoursesAndBranches = async () => {
-      try {
-        const coursesResponse = await fetch(
-          "http://localhost:9000/api/examination/fetchCourses"
+    const applyFilters = () => {
+      let filteredResult = tableData;
+
+      if (filters.course) {
+        filteredResult = filteredResult.filter(
+          (item) => item.course === filters.course
         );
-        if (coursesResponse.ok) {
-          const coursesData = await coursesResponse.json();
-          setCourses(coursesData);
-        } else {
-          console.error("Error fetching courses:", coursesResponse.status);
-        }
-        const branchesResponse = await fetch(
-          "http://localhost:9000/api/examination/fetchBranches"
-        );
-        if (branchesResponse.ok) {
-          const branchesData = await branchesResponse.json();
-          setBranches(branchesData);
-        } else {
-          console.error("Error fetching branches:", branchesResponse.status);
-        }
-      } catch (error) {
-        console.error("Error fetching courses and branches:", error);
       }
+
+      if (filters.branch) {
+        filteredResult = filteredResult.filter(
+          (item) => item.branch === filters.branch
+        );
+      }
+
+      if (filters.type) {
+        filteredResult = filteredResult.filter(
+          (item) => item.type === filters.type
+        );
+      }
+
+      setFilteredData(filteredResult);
     };
 
-    fetchCoursesAndBranches();
-  }, []);
+    applyFilters();
+  }, [filters, tableData]);
 
-  useEffect(() => {
-    const fetchCollegeCodes = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:9000/api/examination/fetchCollegecode"
-        );
-
-        if (response.status === 200) {
-          setCollegeCodes(response.data);
-        } else {
-          console.error("Error fetching college codes:", response.status);
-        }
-      } catch (error) {
-        console.error("Error fetching college codes:", error);
-      }
-    };
-
-    fetchCollegeCodes();
-  }, []);
-
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleFilterChange = (filterType, value) => {
+    setFilters({
+      ...filters,
+      [filterType]: value,
+    });
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const daysInMonth = (month, year) => {
+    return new Date(year, month + 1, 0).getDate();
   };
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
   };
+  
 
-  const handleAddSubmit = async () => {
-    try {
-      await axios.post(
-        "http://localhost:9000/api/examination/addexam_notification",
-        [formData]
-      );
-      handleClose();
-    } catch (error) {
-      console.error(error);
+  const handleChangeNumber = (e) => {
+    const { name, value } = e.target;
+
+    // Only allow numeric values
+    if (/^\d+$/.test(value) || value === "") {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
     }
   };
 
-  const handleSubmit = async () => {
-    try {
-      let url =
-        "http://localhost:9000/api/examination/fetchAllExam_notifications";
+  const handleDateChange = (date) => {
+    // Extract day, month, and year from the selected date
+    const day = date.getDate();
+    const month = date.getMonth() + 1; // Months are zero-based
+    const year = date.getFullYear();
 
-      const queryParams = [];
-      if (selectedCollegeCode) {
-        queryParams.push(`college_code=${selectedCollegeCode}`);
-      }
-      if (selectedCourse) {
-        queryParams.push(`course=${selectedCourse}`);
-      }
-      if (selectedBranch) {
-        queryParams.push(`branch=${selectedBranch}`);
-      }
-      if (selectedYear) {
-        queryParams.push(`year=${selectedYear}`);
-      }
-
-      if (queryParams.length > 0) {
-        url += `?${queryParams.join("&")}`;
-      }
-
-      const response = await fetch(url);
-
-      if (response.ok) {
-        const data = await response.json();
-        setTableData(data);
-        setShowAccordion(true);
-      } else {
-        console.error("Error fetching exam data:", response.status);
-      }
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
+    // Update the form data with the selected values
+    setFormData({
+      ...formData,
+      exam_date: day,
+      exam_month: month,
+      exam_year: year,
+    });
   };
-
   useEffect(() => {
     const fetchAllExamNotifications = async () => {
       try {
-        const response = await fetch(
+        const response = await axios.get(
           "http://localhost:9000/api/examination/fetchAllExam_notifications"
         );
-        if (response.ok) {
-          const data = await response.json();
-          setTableData(data);
-          setShowAccordion(true); // Show accordion once data is fetched
+        if (response.status === 200) {
+          setTableData(response.data);
         } else {
           console.error("Error fetching exam data:", response.status);
         }
@@ -191,312 +172,364 @@ function Examnotification() {
     fetchAllExamNotifications();
   }, []);
 
+  const handleOpenForm = () => {
+    setOpenForm(true);
+  };
+
+  const handleCloseForm = () => {
+    setOpenForm(false);
+  };
+
+  const handleAddNotification = async () => {
+    try {
+      await axios.post(
+        "http://localhost:9000/api/examination/addexam_notification",
+        [formData]
+      );
+
+      // close the form after successful addition
+      handleCloseForm();
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
-    <div style={{ marginRight: "10px" }}>
-      <StyledFormControl>
-        <InputLabel htmlFor="college_code-select">College Code</InputLabel>
-        <Select
-          value={selectedCollegeCode}
-          onChange={(e) => setSelectedCollegeCode(e.target.value)}
-          label="College Code"
-          inputProps={{
-            name: "college_code",
-            id: "collegecode-select",
+    <div>
+      <div style={{ display: "flex" }}>
+        <div style={{ display: "flex" }}>
+          <FormControl
+            fullWidth
+            margin="normal"
+            style={{ marginRight: "20px" }}
+          >
+            <InputLabel htmlFor="course-filter">Course</InputLabel>
+            <Select
+              value={filters.course}
+              onChange={(e) => handleFilterChange("course", e.target.value)}
+              label="Course"
+              inputProps={{
+                name: "course-filter",
+                id: "course-filter",
+              }}
+              style={{ width: "200px" }}
+            >
+              <MenuItem>Select</MenuItem>
+              <MenuItem value="">All</MenuItem>
+              {Array.from(new Set(tableData.map((item) => item.course))).map(
+                (course, index) => (
+                  <MenuItem key={index} value={course}>
+                    {course}
+                  </MenuItem>
+                )
+              )}
+            </Select>
+          </FormControl>
+
+          <FormControl
+            fullWidth
+            margin="normal"
+            style={{ marginRight: "20px" }}
+          >
+            <InputLabel htmlFor="branch-filter">Branch</InputLabel>
+            <Select
+              value={filters.branch}
+              onChange={(e) => handleFilterChange("branch", e.target.value)}
+              label="Branch"
+              inputProps={{
+                name: "branch-filter",
+                id: "branch-filter",
+              }}
+              style={{ width: "200px" }}
+            >
+              <MenuItem>Select</MenuItem>
+              <MenuItem value="">All</MenuItem>
+              {Array.from(new Set(tableData.map((item) => item.branch))).map(
+                (branch, index) => (
+                  <MenuItem key={index} value={branch}>
+                    {branch}
+                  </MenuItem>
+                )
+              )}
+            </Select>
+          </FormControl>
+
+          <FormControl
+            fullWidth
+            margin="normal"
+            style={{ marginRight: "20px" }}
+          >
+            <InputLabel htmlFor="type-filter">Type</InputLabel>
+            <Select
+              value={filters.type}
+              onChange={(e) => handleFilterChange("type", e.target.value)}
+              label="Type"
+              inputProps={{
+                name: "type-filter",
+                id: "type-filter",
+              }}
+              style={{ width: "200px" }}
+            >
+              <MenuItem>Select</MenuItem>
+              <MenuItem value="">All</MenuItem>
+              {Array.from(new Set(tableData.map((item) => item.type))).map(
+                (type, index) => (
+                  <MenuItem key={index} value={type}>
+                    {type}
+                  </MenuItem>
+                )
+              )}
+            </Select>
+          </FormControl>
+        </div>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleOpenForm}
+          style={{
+            marginBottom: "10px",
+            marginLeft: "350px",
+            marginTop: "10px",
           }}
         >
-          <MenuItem>Select</MenuItem>
-          {collegeCodes.map((collegeCode, index) => (
-            <MenuItem key={index} value={collegeCode}>
-              {collegeCode}
-            </MenuItem>
-          ))}
-        </Select>
-      </StyledFormControl>
-      <StyledFormControl>
-        <InputLabel htmlFor="course-select">Course</InputLabel>
-        <Select
-          value={selectedCourse}
-          onChange={(e) => setSelectedCourse(e.target.value)}
-          label="Course"
-          inputProps={{
-            name: "course",
-            id: "course-select",
-          }}
-        >
-          <MenuItem>Select</MenuItem>
+          Add New Notification
+        </Button>
+      </div>
+      <br />
+      <StyledPaper elevation={3}>
+        <DataGrid
+          rows={filteredData.map((row) => ({
+            ...row,
+            id: row.notification_id,
+          }))}
+          columns={[
+            {
+              field: "notification_id",
+              headerName: "Notification ID",
+              flex: 1,
+            },
+            { field: "date", headerName: "Date", flex: 1 },
+            { field: "payment_status", headerName: "Payment Status", flex: 1 },
+            { field: "course", headerName: "Course", flex: 1 },
+            { field: "branch", headerName: "Branch", flex: 1 },
+            { field: "course_year", headerName: "Course Year", flex: 1 },
+            { field: "exam_year", headerName: "Exam Year", flex: 1 },
+            { field: "exam_month", headerName: "Exam Month", flex: 1 },
+            { field: "exam_date", headerName: "Exam Date", flex: 1 },
+            { field: "type", headerName: "Type", flex: 1 },
+            { field: "fee", headerName: "Fee", flex: 1 },
+            { field: "last_date", headerName: "Last Date", flex: 1 },
+            { field: "late_fee", headerName: "Late Fee", flex: 1 },
+            {
+              field: "late_fee_lastdate",
+              headerName: "Late Fee Last Date",
+              flex: 1,
+            },
+            {
+              field: "notification_title",
+              headerName: "Notification Title",
+              flex: 1,
+            },
+          ]}
+          pageSize={10}
+        />
+      </StyledPaper>
 
-          {courses.map((course, index) => (
-            <MenuItem key={index} value={course}>
-              {course}
-            </MenuItem>
-          ))}
-        </Select>
-      </StyledFormControl>
-
-      <StyledFormControl>
-        <InputLabel htmlFor="branch-select">Branch</InputLabel>
-        <Select
-          value={selectedBranch}
-          onChange={(e) => setSelectedBranch(e.target.value)}
-          label="Branch"
-          inputProps={{
-            name: "branch",
-            id: "branch-select",
-          }}
-        >
-          <MenuItem>Select</MenuItem>
-
-          {branches.map((branch, index) => (
-            <MenuItem key={index} value={branch}>
-              {branch}
-            </MenuItem>
-          ))}
-        </Select>
-      </StyledFormControl>
-
-      <StyledFormControl>
-        <InputLabel htmlFor="year-select">Year</InputLabel>
-        <Select
-          value={selectedYear}
-          onChange={(e) => setSelectedYear(e.target.value)}
-          label="Year"
-          inputProps={{
-            name: "year",
-            id: "year-select",
-          }}
-        >
-          <MenuItem>Select</MenuItem>
-
-          {years.map((year, index) => (
-            <MenuItem key={index} value={year}>
-              {year}
-            </MenuItem>
-          ))}
-        </Select>
-      </StyledFormControl>
-
-      <Button
-        variant="contained"
-        color="primary"
-        style={{
-          marginTop: "10px",
-          marginBottom: "10px",
-          marginRight: "100px",
-        }}
-        onClick={handleSubmit}
-      >
-        Search
-      </Button>
-      <Button
-        variant="contained"
-        color="primary"
-        style={{
-          marginTop: "10px",
-          marginBottom: "10px",
-          marginRight: "70px",
-        }}
-        onClick={handleClickOpen}
-      >
-        Add Exam Notification
-      </Button>
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Add Exam Notification</DialogTitle>
+      <Dialog open={openForm} onClose={handleCloseForm}>
+        <DialogTitle>Add New Notification</DialogTitle>
         <DialogContent>
-          <form style={{ minWidth: "500px" }}>
-            <br />
+          <form>
             <TextField
-              label="Exam Code"
-              name="exam_code"
-              value={formData.exam_code}
+              label="Date"
+              type="date"
+              name="date"
+              value={formData.date}
               onChange={handleChange}
               fullWidth
+              margin="normal"
+              InputLabelProps={{
+                shrink: true,
+              }}
             />
-            <br />
-            <br />
+            <Typography variant="h6">Payment Status:</Typography>
 
-            <TextField
-              label="Payment Status"
+            <RadioGroup
+              row
               name="payment_status"
               value={formData.payment_status}
               onChange={handleChange}
               fullWidth
-            />
-            <br />
-            <br />
+            >
+              <FormControlLabel value="paid" control={<Radio />} label="paid" />
+              <FormControlLabel
+                value="unpaid"
+                control={<Radio />}
+                label="unpaid"
+              />
+            </RadioGroup>
+            <FormControl fullWidth margin="normal">
+              <InputLabel htmlFor="course">Course</InputLabel>
+              <Select
+                value={formData.course}
+                onChange={handleChange}
+                label="Course"
+                inputProps={{
+                  name: "course",
+                  id: "course",
+                }}
+              >
+                <MenuItem value="Btech">BTech</MenuItem>
+                <MenuItem value="MTech">Mtech</MenuItem>
+                <MenuItem value="MCA">MCA</MenuItem>
+                <MenuItem value="MBA">MBA</MenuItem>
+                <MenuItem value="B.Pharm">B.Pharm</MenuItem>
+                <MenuItem value="BCom">B.Com</MenuItem>
+              </Select>
+            </FormControl>
+            <FormControl fullWidth margin="normal">
+              <InputLabel htmlFor="branch">Branch</InputLabel>
+              <Select
+                value={formData.branch}
+                onChange={handleChange}
+                label="Branch"
+                inputProps={{
+                  name: "branch",
+                  id: "branch",
+                }}
+              >
+                <MenuItem value="CSE">CSE</MenuItem>
+                <MenuItem value="IT">IT</MenuItem>
+                <MenuItem value="CIVIL">CIVIL</MenuItem>
+                <MenuItem value="EEE">EEE</MenuItem>
+                <MenuItem value="ECE">ECE</MenuItem>
+                <MenuItem value="MET">MET</MenuItem>
+              </Select>
+            </FormControl>
             <TextField
-              label="course"
-              name="course"
-              value={formData.course}
+              label="Course Year"
+              name="course_year"
+              value={formData.course_year}
               onChange={handleChange}
               fullWidth
+              margin="normal"
             />
-            <br />
-            <br />
             <TextField
-              label="branch"
-              name="branch"
-              value={formData.branch}
+              label="Exam Date"
+              type="date"
+              name="exam_date"
+              value={formData.exam_date}
               onChange={handleChange}
               fullWidth
+              margin="normal"
+              InputLabelProps={{
+                shrink: true,
+              }}
             />
-            <br />
-            <br />
-            <TextField
-              label="year"
-              name="year"
-              value={formData.year}
+
+            <Typography variant="h6">Exam Type:</Typography>
+            <RadioGroup
+              row
+              name="type"
+              value={formData.type}
               onChange={handleChange}
-              fullWidth
-            />
-            <br />
-            <br />
+            >
+              <FormControlLabel
+                value="regular"
+                control={<Radio />}
+                label="Regular"
+              />
+              <FormControlLabel
+                value="supply"
+                control={<Radio />}
+                label="Supply"
+              />
+            </RadioGroup>
             <TextField
-              label="fee"
+              label="Fee"
+              type="text"
               name="fee"
               value={formData.fee}
-              onChange={handleChange}
+              onChange={handleChangeNumber}
               fullWidth
+              margin="normal"
+              InputProps={{
+                inputProps: { pattern: "[0-9]*" },
+              }}
             />
-            <br />
-            <br />
             <TextField
-              label="last date"
+              label="Last Date"
+              type="date"
               name="last_date"
               value={formData.last_date}
               onChange={handleChange}
               fullWidth
+              margin="normal"
+              InputLabelProps={{
+                shrink: true,
+              }}
             />
-            <br />
-            <br />
             <TextField
-              label="late fee"
+              label="Late Fee"
+              type="text"
               name="late_fee"
               value={formData.late_fee}
-              onChange={handleChange}
+              onChange={handleChangeNumber}
               fullWidth
+              margin="normal"
+              InputProps={{
+                inputProps: { pattern: "[0-9]*" },
+              }}
             />
-            <br />
-            <br />
+
             <TextField
-              label="last date for late fee"
+              label="Late Fee Last Date"
+              type="date"
               name="late_fee_lastdate"
               value={formData.late_fee_lastdate}
               onChange={handleChange}
               fullWidth
+              margin="normal"
+              InputLabelProps={{
+                shrink: true,
+              }}
             />
-            <br />
-            <br />
             <TextField
-              label="Notification title"
+              label="Notification Title"
+              type="text"
               name="notification_title"
               value={formData.notification_title}
               onChange={handleChange}
               fullWidth
-            />
-            <br />
-            <br />
-            <TextField
-              label="college"
-              name="college_code"
-              value={formData.college_code}
-              onChange={handleChange}
-              fullWidth
-            />
-            <br />
-            <br />
-            <Button
-              onClick={handleAddSubmit}
-              color="primary"
-              variant="contained"
-              style={{ marginLeft: "90px" }}
-            >
-              Add Notification
-            </Button>
-            <Button
-              onClick={handleClose}
-              variant="contained"
-              style={{
-                marginLeft: "50px",
-                color: "white",
-                backgroundColor: "red",
-              }}
-            >
-              Cancel
-            </Button>
+              margin="normal"
+            ></TextField>
           </form>
         </DialogContent>
-      </Dialog>
-
-      <Dialog
-        open={confirmDialogOpen}
-        onClose={() => handleConfirmDialogClose(false)}
-      >
-        <DialogTitle>Confirmation</DialogTitle>
-        <DialogContent>
-          <Typography>Do you want to submit the details?</Typography>
-        </DialogContent>
-        <DialogActions>
+        <DialogActions style={{ justifyContent: "center" }}>
           <Button
-            onClick={() => handleConfirmDialogClose(false)}
+            onClick={handleAddNotification}
             color="primary"
+            variant="contained"
+            style={{ marginLeft: "50px" }}
+            fullWidth
+          >
+            Add
+          </Button>
+          <Button
+            onClick={handleCloseForm}
+            variant="contained"
+            style={{
+              marginRight: "50px",
+              marginLeft: "50px",
+              color: "white",
+              backgroundColor: "red",
+            }}
+            fullWidth
           >
             Cancel
           </Button>
-          <br></br>
-          <Button
-            onClick={() => handleConfirmDialogClose(true)}
-            color="primary"
-          >
-            Search
-          </Button>
         </DialogActions>
       </Dialog>
-
-      <div>
-        <h3>
-          {selectedCourse} {selectedBranch} {selectedYear} Exam Notifications
-        </h3>
-        {showAccordion && (
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Date</TableCell>
-                <TableCell>Exam Code</TableCell>
-                <TableCell>Payment Status</TableCell>
-                <TableCell>Course</TableCell>
-                <TableCell>Branch</TableCell>
-                <TableCell>Year</TableCell>
-                <TableCell>Fee</TableCell>
-                <TableCell>Last Date</TableCell>
-                <TableCell>Late Fee</TableCell>
-                <TableCell>Late Fee Last Date</TableCell>
-                <TableCell>Notification Title</TableCell>
-                <TableCell>College</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {tableData.map((item, index) => (
-                <TableRow key={index}>
-                  <TableCell>{item.date}</TableCell>
-                  <TableCell>{item.exam_code}</TableCell>
-                  <TableCell>{item.payment_status}</TableCell>
-                  <TableCell>{item.course}</TableCell>
-                  <TableCell>{item.branch}</TableCell>
-                  <TableCell>{item.year}</TableCell>
-                  <TableCell>{item.fee}</TableCell>
-                  <TableCell>{item.last_date}</TableCell>
-                  <TableCell>{item.late_fee}</TableCell>
-                  <TableCell>{item.late_fee_lastdate}</TableCell>
-                  <TableCell>{item.notification_title}</TableCell>
-                  <TableCell>{item.college_code}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        )}
-      </div>
     </div>
   );
-}
+};
 
 export default Examnotification;
