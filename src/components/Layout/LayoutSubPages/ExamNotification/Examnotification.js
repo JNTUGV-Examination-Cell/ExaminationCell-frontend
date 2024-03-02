@@ -3,11 +3,6 @@ import axios from "axios";
 import {
   Typography,
   Button,
-  Table,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableBody,
   Paper,
   styled,
   Dialog,
@@ -22,22 +17,17 @@ import {
   RadioGroup,
   Radio,
   FormControlLabel,
-  useTheme,
 } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 const StyledPaper = styled(Paper)({
   margin: (theme) => theme.spacing(2),
 });
 
-const StyledTable = styled(Table)({
-  minWidth: 700,
-});
 
 const Examnotification = () => {
   const [tableData, setTableData] = useState([]);
   const [openForm, setOpenForm] = useState(false);
   const [formData, setFormData] = useState({
-    // initialize with default values or an empty string for each input
     notification_id: "",
     date: "",
     payment_status: "",
@@ -60,10 +50,8 @@ const Examnotification = () => {
     type: "",
   });
 
-  // Filtered data state
   const [filteredData, setFilteredData] = useState([]);
 
-  // Update filtered data whenever filters change
   useEffect(() => {
     const applyFilters = () => {
       let filteredResult = tableData;
@@ -99,25 +87,8 @@ const Examnotification = () => {
     });
   };
 
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
 
-  const daysInMonth = (month, year) => {
-    return new Date(year, month + 1, 0).getDate();
-  };
-
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
@@ -130,7 +101,6 @@ const Examnotification = () => {
   const handleChangeNumber = (e) => {
     const { name, value } = e.target;
 
-    // Only allow numeric values
     if (/^\d+$/.test(value) || value === "") {
       setFormData({
         ...formData,
@@ -139,20 +109,7 @@ const Examnotification = () => {
     }
   };
 
-  const handleDateChange = (date) => {
-    // Extract day, month, and year from the selected date
-    const day = date.getDate();
-    const month = date.getMonth() + 1; // Months are zero-based
-    const year = date.getFullYear();
-
-    // Update the form data with the selected values
-    setFormData({
-      ...formData,
-      exam_date: day,
-      exam_month: month,
-      exam_year: year,
-    });
-  };
+ 
   useEffect(() => {
     const fetchAllExamNotifications = async () => {
       try {
@@ -187,7 +144,6 @@ const Examnotification = () => {
         [formData]
       );
 
-      // close the form after successful addition
       handleCloseForm();
     } catch (error) {
       console.error(error);
