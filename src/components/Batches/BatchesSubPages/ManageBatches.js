@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 import { USER_LEVELS } from "../../../constants/AllConstants";
 import { Typography, Box } from "@mui/material";
 import UploadAndEdit from "../../useFullCustomComponents/UploadAndEdit";
+import { validSchemaForStudents } from "../../../constants/validSchemaForStudents";
 // import api from "../../apiReference";
 
 const ManageBatches = () => {
@@ -12,6 +13,7 @@ const ManageBatches = () => {
   const userLevel = USER_LEVELS[loginUserDetails.role];
   const [bulkadmissions, setBulkAdmission] = useState(false);
   const [newAdmission, setNewAdmission] = useState(false);
+  const [openUpload, setOpenUpload] = useState(false);
   const location = useLocation();
   const record = location.state?.record;
   // const addStudents = async () => {
@@ -63,13 +65,21 @@ const ManageBatches = () => {
         {bulkadmissions && (
           <>
             <Typography variant="h5">Upload Students</Typography>
-            <UploadAndEdit />
+            <UploadAndEdit 
+              openUpload={openUpload}
+              setOpenUpload={setOpenUpload}
+              validSchemaData={validSchemaForStudents}
+            />
           </>
         )}
         {newAdmission && (
           <>
             <Typography variant="h5">Upload New Students</Typography>
-            <UploadAndEdit />
+            <UploadAndEdit 
+              openUpload={openUpload}
+              setOpenUpload={setOpenUpload}
+              validSchemaData={validSchemaForStudents}
+            />
           </>
         )}
       </Box>
