@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+
 import {
   Typography,
   Button,
@@ -23,10 +24,11 @@ const StyledPaper = styled(Paper)({
   margin: (theme) => theme.spacing(2),
 });
 
-
 const Examnotification = () => {
   const [tableData, setTableData] = useState([]);
   const [openForm, setOpenForm] = useState(false);
+  const [courseOptions, setCourseOptions] = useState([]);
+  const [branchOptions, setBranchOptions] = useState([]);
   const [formData, setFormData] = useState({
     notification_id: "",
     date: "",
@@ -87,8 +89,6 @@ const Examnotification = () => {
     });
   };
 
-
-  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
@@ -96,7 +96,6 @@ const Examnotification = () => {
       [name]: value,
     }));
   };
-  
 
   const handleChangeNumber = (e) => {
     const { name, value } = e.target;
@@ -108,8 +107,51 @@ const Examnotification = () => {
       });
     }
   };
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:9000/api/course/getCompleteCourses"
+        );
+        if (response.status === 200) {
+          setCourseOptions(
+            response.data.map((course) => ({
+              label: course.course,
+              value: course.course,
+            }))
+          );
+        } else {
+          console.error("Error fetching courses:", response.status);
+        }
+      } catch (error) {
+        console.error("Error fetching courses:", error);
+      }
+    };
 
- 
+    const fetchBranches = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:9000/api/branch/getCompleteBranches"
+        );
+        if (response.status === 200) {
+          setBranchOptions(
+            response.data.map((branch) => ({
+              label: branch.branch,
+              value: branch.branch,
+            }))
+          );
+        } else {
+          console.error("Error fetching branches:", response.status);
+        }
+      } catch (error) {
+        console.error("Error fetching branches:", error);
+      }
+    };
+
+    fetchCourses();
+    fetchBranches();
+  }, []);
+
   useEffect(() => {
     const fetchAllExamNotifications = async () => {
       try {
@@ -118,6 +160,7 @@ const Examnotification = () => {
         );
         if (response.status === 200) {
           setTableData(response.data);
+          console.log(response.data);
         } else {
           console.error("Error fetching exam data:", response.status);
         }
@@ -149,6 +192,7 @@ const Examnotification = () => {
       console.error(error);
     }
   };
+
   return (
     <div>
       <div style={{ display: "flex" }}>
@@ -169,7 +213,6 @@ const Examnotification = () => {
               }}
               style={{ width: "200px" }}
             >
-              <MenuItem>Select</MenuItem>
               <MenuItem value="">All</MenuItem>
               {Array.from(new Set(tableData.map((item) => item.course))).map(
                 (course, index) => (
@@ -197,7 +240,6 @@ const Examnotification = () => {
               }}
               style={{ width: "200px" }}
             >
-              <MenuItem>Select</MenuItem>
               <MenuItem value="">All</MenuItem>
               {Array.from(new Set(tableData.map((item) => item.branch))).map(
                 (branch, index) => (
@@ -225,7 +267,6 @@ const Examnotification = () => {
               }}
               style={{ width: "200px" }}
             >
-              <MenuItem>Select</MenuItem>
               <MenuItem value="">All</MenuItem>
               {Array.from(new Set(tableData.map((item) => item.type))).map(
                 (type, index) => (
@@ -252,60 +293,58 @@ const Examnotification = () => {
       </div>
       <br />
       <StyledPaper elevation={3}>
-        <DataGrid
-          rows={filteredData.map((row) => ({
-            ...row,
-            id: row.notification_id,
-          }))}
-          columns={[
-            {
-              field: "notification_id",
-              headerName: "Notification ID",
-              flex: 1,
-            },
-            { field: "date", headerName: "Date", flex: 1 },
-            { field: "payment_status", headerName: "Payment Status", flex: 1 },
-            { field: "course", headerName: "Course", flex: 1 },
-            { field: "branch", headerName: "Branch", flex: 1 },
-            { field: "course_year", headerName: "Course Year", flex: 1 },
-            { field: "exam_year", headerName: "Exam Year", flex: 1 },
-            { field: "exam_month", headerName: "Exam Month", flex: 1 },
-            { field: "exam_date", headerName: "Exam Date", flex: 1 },
-            { field: "type", headerName: "Type", flex: 1 },
-            { field: "fee", headerName: "Fee", flex: 1 },
-            { field: "last_date", headerName: "Last Date", flex: 1 },
-            { field: "late_fee", headerName: "Late Fee", flex: 1 },
-            {
-              field: "late_fee_lastdate",
-              headerName: "Late Fee Last Date",
-              flex: 1,
-            },
-            {
-              field: "notification_title",
-              headerName: "Notification Title",
-              flex: 1,
-            },
-          ]}
-          pageSize={10}
-        />
+        {filteredData.length > 0 ? (
+          <DataGrid
+            rows={filteredData.map((row) => ({
+              ...row,
+              id: row.notification_id,
+            }))}
+            columns={[
+              {
+                field: "notification_id",
+                headerName: "Notification ID",
+                flex: 1,
+              },
+              { field: "date", headerName: "Date", flex: 1 },
+              {
+                field: "payment_status",
+                headerName: "Payment Status",
+                flex: 1,
+              },
+              { field: "course", headerName: "Course", flex: 1 },
+              { field: "branch", headerName: "Branch", flex: 1 },
+              { field: "course_year", headerName: "Course Year", flex: 1 },
+              { field: "exam_year", headerName: "Exam Year", flex: 1 },
+              { field: "exam_month", headerName: "Exam Month", flex: 1 },
+              { field: "exam_date", headerName: "Exam Date", flex: 1 },
+              { field: "type", headerName: "Type", flex: 1 },
+              { field: "fee", headerName: "Fee", flex: 1 },
+              { field: "last_date", headerName: "Last Date", flex: 1 },
+              { field: "late_fee", headerName: "Late Fee", flex: 1 },
+              {
+                field: "late_fee_lastdate",
+                headerName: "Late Fee Last Date",
+                flex: 1,
+              },
+              {
+                field: "notification_title",
+                headerName: "Notification Title",
+                flex: 1,
+              },
+            ]}
+            pageSize={10}
+          />
+        ) : (
+          <Typography variant="body1" align="center">
+            No data found for the selected filters.
+          </Typography>
+        )}
       </StyledPaper>
 
       <Dialog open={openForm} onClose={handleCloseForm}>
         <DialogTitle>Add New Notification</DialogTitle>
         <DialogContent>
           <form>
-            <TextField
-              label="Date"
-              type="date"
-              name="date"
-              value={formData.date}
-              onChange={handleChange}
-              fullWidth
-              margin="normal"
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />
             <Typography variant="h6">Payment Status:</Typography>
 
             <RadioGroup
@@ -333,14 +372,15 @@ const Examnotification = () => {
                   id: "course",
                 }}
               >
-                <MenuItem value="Btech">BTech</MenuItem>
-                <MenuItem value="MTech">Mtech</MenuItem>
-                <MenuItem value="MCA">MCA</MenuItem>
-                <MenuItem value="MBA">MBA</MenuItem>
-                <MenuItem value="B.Pharm">B.Pharm</MenuItem>
-                <MenuItem value="BCom">B.Com</MenuItem>
+                <MenuItem value="">Select Course</MenuItem>
+                {courseOptions.map((course, index) => (
+                  <MenuItem key={index} value={course.value}>
+                    {course.label}
+                  </MenuItem>
+                ))}
               </Select>
             </FormControl>
+
             <FormControl fullWidth margin="normal">
               <InputLabel htmlFor="branch">Branch</InputLabel>
               <Select
@@ -352,14 +392,15 @@ const Examnotification = () => {
                   id: "branch",
                 }}
               >
-                <MenuItem value="CSE">CSE</MenuItem>
-                <MenuItem value="IT">IT</MenuItem>
-                <MenuItem value="CIVIL">CIVIL</MenuItem>
-                <MenuItem value="EEE">EEE</MenuItem>
-                <MenuItem value="ECE">ECE</MenuItem>
-                <MenuItem value="MET">MET</MenuItem>
+                <MenuItem value="">Select Branch</MenuItem>
+                {branchOptions.map((branch, index) => (
+                  <MenuItem key={index} value={branch.value}>
+                    {branch.label}
+                  </MenuItem>
+                ))}
               </Select>
             </FormControl>
+
             <TextField
               label="Course Year"
               name="course_year"
