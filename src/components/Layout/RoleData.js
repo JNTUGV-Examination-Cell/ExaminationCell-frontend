@@ -6,6 +6,7 @@ import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import GradingIcon from "@mui/icons-material/Grading";
 import HubIcon from "@mui/icons-material/Hub";
 import LogoutIcon from "@mui/icons-material/Logout";
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 
 const RollData = {
   Admin: [
@@ -130,10 +131,10 @@ const RollData = {
           text: "Regulations",
         },
         {
-          to:"/layout/subjects",
-          icon: <HubIcon className="Nav-icons" />,
-          text:"Subjects",
-          },
+          to: "/layout/students",
+          icon: <PeopleAltIcon className="Nav-icons" />,
+          text: "Students",
+        },
         {
           to: "/layout/courses",
           icon: <HubIcon className="Nav-icons" />,
