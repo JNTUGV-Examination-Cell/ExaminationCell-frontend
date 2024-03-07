@@ -32,11 +32,16 @@ import BranchesAddEdit from "./components/Layout/LayoutSubPages/University/Branc
 import Districts from "./components/Layout/LayoutSubPages/University/Districts/Districts";
 import Courses from "./components/Layout/LayoutSubPages/University/Courses/Courses";
 import CollegeDetails from "./components/Layout/LayoutSubPages/CollegeSubSection/CollegeDetails";
+import Students from "./components/Layout/LayoutSubPages/StudentsSection/Students";
+import StudentProfile from "./components/Layout/LayoutSubPages/StudentsSection/components/StudentProfile";
+
 const Application = () => {
   return (
     <div>
       <Routes>
         <Route path="/layout" element={<Layout />}>
+          <Route path="students" element={<Students />} />
+          <Route path="students/:studentId" element={<StudentProfile />} />
           <Route
             path="CondonationandDetention"
             element={<CondonationandDetention />}

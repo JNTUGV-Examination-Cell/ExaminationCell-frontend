@@ -7,6 +7,8 @@ import GradingIcon from "@mui/icons-material/Grading";
 import HubIcon from "@mui/icons-material/Hub";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { MdApartment } from "react-icons/md";
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+
 const RollData = {
   Admin: [
     {
@@ -133,6 +135,11 @@ const RollData = {
           to: "/layout/regulations",
           icon: <HubIcon className="Nav-icons" />,
           text: "Regulations",
+        },
+        {
+          to: "/layout/students",
+          icon: <PeopleAltIcon className="Nav-icons" />,
+          text: "Students",
         },
         {
           to: "/layout/courses",
