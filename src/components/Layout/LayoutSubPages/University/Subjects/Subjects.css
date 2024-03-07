@@ -1,0 +1,28 @@
+.subject-container {
+    padding-top: 30px;
+  }
+  
+  .SubjectTitle {
+    text-align: left;
+    padding-top: 20px;
+  }
+  
+  .AddButton-Upload-SearchBar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 40px;
+  }
+  
+  .addbutton {
+    padding-left: 10px; 
+    margin-right: 150px;
+  }
+  .uploadButton {
+    padding-left: 10px; 
+    margin-right: 10px;
+  }
+  
+  .SubjectssearchBar {
+    width: 250px;
+  }

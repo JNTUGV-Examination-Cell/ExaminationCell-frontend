@@ -100,8 +100,17 @@ export default function UploadStudentDetails() {
 
   return (
     <div>
-      <div>
-        <h2>Upload Student basic details - step one - MCA R16 [2018-2021]</h2>
+      <h1>Upload Student basic details</h1>
+      <div className="bulkadmissionsupload">
+        <h1 className="head">upload Student Basic Details File - .txt format</h1>
+        <Button component="label" variant="contained" startIcon={<CloudUploadIcon />}>
+         Upload file
+        <VisuallyHiddenInput type="file" />
+        </Button>
+        <input type='text' id="filled-basic" placeholder="No file Chosen" variant="outlined" className='textchoose'/>
+        <div className='buttonproceed'>
+        <Button variant='contained'>Proceed</Button>
+        </div>
         <br />
         <div className="bulkadmissionsupload">
           <h2 className="head">
@@ -152,3 +161,4 @@ export default function UploadStudentDetails() {
     </div>
   );
 }
+

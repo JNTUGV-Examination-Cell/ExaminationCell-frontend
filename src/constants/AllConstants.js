@@ -2,7 +2,6 @@ const USER_LEVELS = {
   UNIVERSITY_HEAD_LEVEL: 1,
   COLLEGE_HEAD_LEVEL: 2,
   PROFESSOR_LEVEL: 3,
-  Professor: 3,
 };
 
 const COURSE_OPTIONS = [
@@ -21,4 +20,18 @@ const REGULATION_OPTIONS = [
   { label: "R20", value: "R20" },
   { label: "R23", value: "R23" },
 ];
-export { USER_LEVELS, COURSE_OPTIONS, REGULATION_OPTIONS };
+
+const COLLEGES_LIST = [
+  { label: "Gokul Institute of Technology & Science, Bobbili", value: "H9" },
+  {
+    label: "Gonna Institute of Technology & Management, Aganampudi",
+    value: "9D",
+  },
+  { label: "GVP College of Engg for Women", value: "JG" },
+  {
+    label: "Indo American Institutions - Technical Campus, Anakapalli",
+    value: "2Z",
+  },
+  { label: "Sri Chaitanya Engineering College, Madhurawada", value: "6H" },
+];
+export { USER_LEVELS, COURSE_OPTIONS, REGULATION_OPTIONS, COLLEGES_LIST };
