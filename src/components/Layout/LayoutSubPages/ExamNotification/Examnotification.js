@@ -20,6 +20,7 @@ import {
   FormControlLabel,
 } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
+import api from "../../../apiReference";
 const StyledPaper = styled(Paper)({
   margin: (theme) => theme.spacing(2),
 });
@@ -29,15 +30,15 @@ const Examnotification = () => {
   const [openForm, setOpenForm] = useState(false);
   const [courseOptions, setCourseOptions] = useState([]);
   const [branchOptions, setBranchOptions] = useState([]);
+  const [isUnpaid, setIsUnpaid] = useState(false);
   const [formData, setFormData] = useState({
     notification_id: "",
-    date: "",
+    college_code: "",
+    regulation: "",
     payment_status: "",
     course: "",
     branch: "",
     course_year: "",
-    exam_year: "",
-    exam_month: "",
     exam_date: "",
     type: "",
     fee: "",
@@ -45,6 +46,7 @@ const Examnotification = () => {
     late_fee: "",
     late_fee_lastdate: "",
     notification_title: "",
+    semester: 0,
   });
   const [filters, setFilters] = useState({
     course: "",
@@ -88,15 +90,29 @@ const Examnotification = () => {
       [filterType]: value,
     });
   };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
-  };
 
+    if (
+      name === "exam_date" ||
+      name === "last_date" ||
+      name === "late_fee_lastdate"
+    ) {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        [name]: new Date(value),
+      }));
+    } else {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        [name]: value,
+      }));
+    }
+
+    if (name === "payment_status") {
+      setIsUnpaid(value === "unpaid");
+    }
+  };
   const handleChangeNumber = (e) => {
     const { name, value } = e.target;
 
@@ -110,9 +126,7 @@ const Examnotification = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:9000/api/course/getCompleteCourses"
-        );
+        const response = await api.get("/api/course/getCompleteCourses");
         if (response.status === 200) {
           setCourseOptions(
             response.data.map((course) => ({
@@ -314,9 +328,7 @@ const Examnotification = () => {
               { field: "course", headerName: "Course", flex: 1 },
               { field: "branch", headerName: "Branch", flex: 1 },
               { field: "course_year", headerName: "Course Year", flex: 1 },
-              { field: "exam_year", headerName: "Exam Year", flex: 1 },
-              { field: "exam_month", headerName: "Exam Month", flex: 1 },
-              { field: "exam_date", headerName: "Exam Date", flex: 1 },
+              { field: "exam_full_date", headerName: "Exam Date", flex: 1 },
               { field: "type", headerName: "Type", flex: 1 },
               { field: "fee", headerName: "Fee", flex: 1 },
               { field: "last_date", headerName: "Last Date", flex: 1 },
@@ -345,6 +357,24 @@ const Examnotification = () => {
         <DialogTitle>Add New Notification</DialogTitle>
         <DialogContent>
           <form>
+            <TextField
+              label="College Code"
+              type="text"
+              name="college_code"
+              value={formData.college_code}
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+            />
+            <TextField
+              label="Regulation"
+              type="text"
+              name="regulation"
+              value={formData.regulation}
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+            />
             <Typography variant="h6">Payment Status:</Typography>
 
             <RadioGroup
@@ -451,6 +481,7 @@ const Examnotification = () => {
               InputProps={{
                 inputProps: { pattern: "[0-9]*" },
               }}
+              disabled={isUnpaid}
             />
             <TextField
               label="Last Date"
@@ -463,6 +494,7 @@ const Examnotification = () => {
               InputLabelProps={{
                 shrink: true,
               }}
+              disabled={isUnpaid}
             />
             <TextField
               label="Late Fee"
@@ -475,6 +507,7 @@ const Examnotification = () => {
               InputProps={{
                 inputProps: { pattern: "[0-9]*" },
               }}
+              disabled={isUnpaid}
             />
 
             <TextField
@@ -488,6 +521,7 @@ const Examnotification = () => {
               InputLabelProps={{
                 shrink: true,
               }}
+              disabled={isUnpaid}
             />
             <TextField
               label="Notification Title"
@@ -498,6 +532,18 @@ const Examnotification = () => {
               fullWidth
               margin="normal"
             ></TextField>
+            <TextField
+              label="Semester"
+              type="number"
+              name="semester"
+              value={formData.semester}
+              onChange={handleChangeNumber}
+              fullWidth
+              margin="normal"
+              InputProps={{
+                inputProps: { pattern: "[0-9]*" },
+              }}
+            />
           </form>
         </DialogContent>
         <DialogActions style={{ justifyContent: "center" }}>
