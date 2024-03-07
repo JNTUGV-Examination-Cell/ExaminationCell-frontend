@@ -32,6 +32,7 @@ import Subjects from "./components/Layout/LayoutSubPages/University/Subjects/Sub
 import BranchesAddEdit from "./components/Layout/LayoutSubPages/University/BranchesAddEdit/BranchesAddEdit";
 import Districts from "./components/Layout/LayoutSubPages/University/Districts/Districts";
 import Courses from "./components/Layout/LayoutSubPages/University/Courses/Courses";
+import CollegeDetails from "./components/Layout/LayoutSubPages/CollegeSubSection/CollegeDetails";
 import Students from "./components/Layout/LayoutSubPages/StudentsSection/Students";
 import StudentProfile from "./components/Layout/LayoutSubPages/StudentsSection/components/StudentProfile";
 
@@ -98,6 +99,11 @@ const Application = () => {
             path="examdata/manageexamination/CondonationandDetention"
             element={<CondonationandDetention />}
           />
+          <Route path="examdata/manageexamination/FinalListOfExamination" element={<FinalListOfExamination />} />
+          <Route path="examdata/manageexamination/InternalMarks" element={<InternalMarks />} />
+          <Route path="examdata/manageexamination/FinalListOfExamination" element={<FinalListOfExamination />} />
+          <Route path="examdata/manageexamination/CondonationandDetention" element={<CondonationandDetention />} />
+
           <Route
             path="examdata/manageexamination/studentexamapplication"
             element={<StudentApplicationForm />}
@@ -126,6 +132,10 @@ const Application = () => {
           <Route path="examnotifications" element={<Examnotification />} />
           <Route path="InternalMarks" element={<InternalMarks />} />
           <Route
+            path="CollegeDetails"
+            element={<CollegeDetails />}
+          />
+          <Route
             path="examdata/manageexamination/Sets/examsets/setforparticularexam/markabsent"
             element={<MarkAbsents />}
           />
@@ -149,6 +159,7 @@ const Application = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/random" element={<Random />} />
         <Route path="/" element={<LoginPage />} />
+
       </Routes>
     </div>
   );
