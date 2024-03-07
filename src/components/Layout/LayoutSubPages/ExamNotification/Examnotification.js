@@ -22,7 +22,7 @@ import {
 import { DataGrid } from "@mui/x-data-grid";
 import api from "../../../apiReference";
 const StyledPaper = styled(Paper)({
-  margin: (theme) => theme.spacing(2),
+  margin: "theme.spacing(2)",
 });
 
 const Examnotification = () => {
@@ -173,8 +173,15 @@ const Examnotification = () => {
           "http://localhost:9000/api/examination/fetchAllExam_notifications"
         );
         if (response.status === 200) {
-          setTableData(response.data);
-          console.log(response.data);
+          let slNo = 1;
+          const updatedData = response.data.map((data) => {
+            return {
+              id: slNo++,
+              ...data,
+            };
+          });
+          setTableData(updatedData);
+          console.log({updatedData});
         } else {
           console.error("Error fetching exam data:", response.status);
         }
@@ -306,42 +313,42 @@ const Examnotification = () => {
         </Button>
       </div>
       <br />
-      <StyledPaper elevation={3}>
+      <StyledPaper elevation={3} style={{width: "90%"}}>
         {filteredData.length > 0 ? (
           <DataGrid
             rows={filteredData.map((row) => ({
               ...row,
-              id: row.notification_id,
+              id: row.id,
             }))}
             columns={[
               {
+                id: "id",
+                headerName: "Sl.NO",
+              },
+              {
                 field: "notification_id",
                 headerName: "Notification ID",
-                flex: 1,
               },
-              { field: "date", headerName: "Date", flex: 1 },
+              { field: "date", headerName: "Date" },
               {
                 field: "payment_status",
                 headerName: "Payment Status",
-                flex: 1,
               },
-              { field: "course", headerName: "Course", flex: 1 },
-              { field: "branch", headerName: "Branch", flex: 1 },
-              { field: "course_year", headerName: "Course Year", flex: 1 },
-              { field: "exam_full_date", headerName: "Exam Date", flex: 1 },
-              { field: "type", headerName: "Type", flex: 1 },
-              { field: "fee", headerName: "Fee", flex: 1 },
-              { field: "last_date", headerName: "Last Date", flex: 1 },
-              { field: "late_fee", headerName: "Late Fee", flex: 1 },
+              { field: "course", headerName: "Course" },
+              { field: "branch", headerName: "Branch" },
+              { field: "course_year", headerName: "Course Year" },
+              { field: "exam_full_date", headerName: "Exam Date" },
+              { field: "type", headerName: "Type" },
+              { field: "fee", headerName: "Fee" },
+              { field: "last_date", headerName: "Last Date" },
+              { field: "late_fee", headerName: "Late Fee" },
               {
                 field: "late_fee_lastdate",
                 headerName: "Late Fee Last Date",
-                flex: 1,
               },
               {
                 field: "notification_title",
                 headerName: "Notification Title",
-                flex: 1,
               },
             ]}
             pageSize={10}
