@@ -28,6 +28,7 @@ import RegulationPage from "./components/Layout/LayoutSubPages/Regulations/Regul
 import AddRegulationPage from "./components/Layout/LayoutSubPages/Regulations/RegulationsSubPages/AddRegulations";
 import Examnotification from "./components/Layout/LayoutSubPages/ExamNotification/Examnotification";
 import Branches from "./components/Layout/LayoutSubPages/University/Branches/Branches";
+import Subjects from "./components/Layout/LayoutSubPages/University/Subjects/Subjects";
 import BranchesAddEdit from "./components/Layout/LayoutSubPages/University/BranchesAddEdit/BranchesAddEdit";
 import Districts from "./components/Layout/LayoutSubPages/University/Districts/Districts";
 import Courses from "./components/Layout/LayoutSubPages/University/Courses/Courses";
@@ -110,6 +111,7 @@ const Application = () => {
           <Route path="districts" element={<Districts />} />
           <Route path="courses" element={<Courses />} />
           <Route path="branches" element={<Branches/>}/>
+          <Route path="subjects" element={<Subjects />} />
           <Route path="colleges" element={<CollegePage />} />
           <Route path="profilepage" element={<ProfilePage />} />
           <Route path="homepage" element={<HomePage />} />
