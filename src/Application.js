@@ -149,7 +149,7 @@ const Application = () => {
           />
           <Route path="managesubject" element={<ManageSubjects />} />
           <Route
-            path="examdata/manageexamination/Sets/examsets/setforparticularexam"
+            path="examdata/manageexamination/Sets/examSet/setforparticularexam"
             element={<SetForParticularExam />}
           />
           <Route path="examdata" element={<Examdata />} />
